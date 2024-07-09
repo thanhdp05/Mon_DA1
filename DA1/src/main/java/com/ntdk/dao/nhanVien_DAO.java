@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class nhanVien_DAO extends NTDK_DAO<nhanVien , String>{
 
     String INSERT_NHANVIEN = "insert nhanVien (maNV, hoTen, matKhau, vaiTro, hinh, email) values (?,?,?,?,?,?)";
-    String UPDATE_NHANVIEN = "update sanPham set hoTen = ?, matKhau = ?, vaiTro = ?, hinh = ?, email = ? where maNV = ?";
+    String UPDATE_NHANVIEN = "update nhanVien set hoTen = ?, matKhau = ?, vaiTro = ?, hinh = ?, email = ? where maNV = ?";
     String DELETE_NHANVIEN = "delete nhanVien where maNV = ?";
     String SELECT_NHANVIEN_ALL = "select * from nhanVien";
     String SELECT_NHANVIEN_WHERE = "select * from nhanVien where maNV = ?";
@@ -88,4 +88,9 @@ public class nhanVien_DAO extends NTDK_DAO<nhanVien , String>{
         }
     }
     
+    
+     public List<nhanVien> selectByKeyWord(String keyword) {
+        String sql = "SELECT * FROM nhanVien WHERE HOTEN LIKE ?";
+        return this.selectBySql(sql, "%" + keyword + "%");
+    }
 }
