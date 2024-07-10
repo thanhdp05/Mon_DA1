@@ -44,7 +44,7 @@ public class nguoiDung_DAO extends NTDK_DAO<nguoiDung , Integer>{
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         try {
             JdbcHelper.update(DELETE_NGUOIDUNG, id);
         } catch (SQLException ex) {

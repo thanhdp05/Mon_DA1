@@ -12,7 +12,7 @@ public class loaiSP {
     int maLoai ;
     String tenLoai ;
 
-    public loaiSP() {
+    public loaiSP(String maLoai1, String tenLoai1) {
     }
 
     public loaiSP(int maLoai, String tenLoai) {
