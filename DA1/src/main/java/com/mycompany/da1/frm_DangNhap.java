@@ -4,6 +4,10 @@
  */
 package com.mycompany.da1;
 
+import com.ntdk.dao.nhanVien_DAO;
+import com.ntdk.entity.nhanVien;
+import com.tndk.utils.Auth;
+import com.tndk.utils.MsgBox;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -13,22 +17,46 @@ import java.awt.Dialog;
  *
  * @author Asus
  */
-public class DangNhap extends javax.swing.JDialog {
+public class frm_DangNhap extends javax.swing.JDialog {
 
     /**
      * Creates new form DangNhap
      */
-    public DangNhap(java.awt.Frame parent, boolean modal) {
+    
+     nhanVien_DAO dao = new nhanVien_DAO();
+    public frm_DangNhap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
        
     }
     
+    public void DangNhap(){
+        String maNv = txtTenDN.getText();
+        String matKhau = new String(txtMatKhau.getPassword());
+        nhanVien nhanVien = dao.selectById(maNv);
+        if(nhanVien == null){
+            MsgBox.alert(this,"Sai tên đăng nhập");
+        }
+        else if(!matKhau.equals(nhanVien.getMatKhau())){
+            MsgBox.alert(this,"Nhập sai mật khẩu");
+        }
+        else{
+            Auth.user = nhanVien;
+            this.dispose();
+        }
+    }
+    
+        public void Kethuc(){
+            if(MsgBox.confirm(this,"Bạn có muốn thoát ứng dụng")){
+                System.exit(0);
+            }
+        }
+    
     
     
   
     
-    String t = "";
+   
 
 
 
@@ -280,7 +308,7 @@ public class DangNhap extends javax.swing.JDialog {
     }//GEN-LAST:event_cboShowActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-         System.exit(0);
+         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
    
@@ -290,7 +318,7 @@ public class DangNhap extends javax.swing.JDialog {
     }//GEN-LAST:event_lblQuenMkMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       DangNhap();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -311,21 +339,23 @@ public class DangNhap extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+                frm_DangNhap dialog = new frm_DangNhap(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
