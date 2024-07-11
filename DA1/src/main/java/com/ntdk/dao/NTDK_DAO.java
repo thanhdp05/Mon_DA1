@@ -17,7 +17,7 @@ abstract public class NTDK_DAO <EntityType,KeyType>{
     //KeyType đại diện cho kiểu của khóa chính (primary key)
     abstract  public void insert(EntityType entity);
     abstract  public void update(EntityType entity);
-    abstract public void delete(String id);
+    abstract public void delete(KeyType id);
     abstract public EntityType selectById(KeyType id);
     abstract public List<EntityType> selectAll();
     abstract protected List<EntityType> selectBySql (String sql, Object... args);
