@@ -44,7 +44,7 @@ public class loaiSP_DAO extends NTDK_DAO<loaiSP , Integer>{
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Integer id) {
         try {
             JdbcHelper.update(DELETE_LOAISP, id);
         } catch (SQLException ex) {
@@ -72,7 +72,7 @@ public class loaiSP_DAO extends NTDK_DAO<loaiSP , Integer>{
         try {
             ResultSet rs = JdbcHelper.query(sql, args);
             while (rs.next()) {                
-                var lsp = new loaiSP(maLoai, tenLoai);
+                loaiSP lsp = new loaiSP();
                 lsp.setMaLoai(rs.getInt("maLoai"));
                 lsp.setTenLoai(rs.getString("tenLoai"));
                 list_lsp.add(lsp);
