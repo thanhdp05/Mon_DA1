@@ -19,7 +19,7 @@ public class JdbcHelper {
     // java database connectivity
     static String driver = "com.microsoft.sqlserver.SQLServerDriver";
     static String username = "sa";
-    static String password = "123456";
+    static String password = "123";
     static String database = "TDVCT_test";
     static String url = "jdbc:sqlserver://localhost:1433;database="+database+";encrypt=false";
 
