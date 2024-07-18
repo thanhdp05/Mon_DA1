@@ -15,7 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ *GFHT
  * @author dangt
  */
 public class frm_QLNhanVien extends javax.swing.JDialog {
