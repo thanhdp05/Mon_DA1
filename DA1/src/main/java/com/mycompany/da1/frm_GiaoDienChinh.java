@@ -8,6 +8,7 @@ import com.ntdk.entity.nhanVien;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
 import com.tndk.utils.XImage;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -23,9 +24,13 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     /**
      * Creates new form frm_GiaoDienChinh
      */
+    Color mauBtn = new Color(0,0,0,0);
+    
     public frm_GiaoDienChinh() {
         initComponents();
         init();
+        
+        btn_CCgido.setBackground(mauBtn);
     }
     
     
@@ -37,12 +42,12 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Date now = new Date();
                 SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
-                lbl_DongHo.setText(format.format(now));
+                //lbl_DongHo.setText(format.format(now));
             }
         }).start();
 
         new frm_ManHinhChao(this, true).setVisible(true);
-        new frm_DangNhap(this, true).setVisible(true);
+        new frm_DangNhapJdialog(this, true).setVisible(true);
     }
 
     /**
@@ -54,301 +59,142 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
-        btn_DangXuat = new javax.swing.JButton();
-        btn_KetThuc = new javax.swing.JButton();
-        jSeparator7 = new javax.swing.JToolBar.Separator();
+        jPanel1 = new javax.swing.JPanel();
+        btn_CCgido = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btn_SanPham = new javax.swing.JButton();
-        btn_NhanVien = new javax.swing.JButton();
-        btn_HoaDon = new javax.swing.JButton();
-        jSeparator8 = new javax.swing.JToolBar.Separator();
-        btnHuongDan = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btn_SanPham1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        BackGround = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lbl_TrangThai = new javax.swing.JLabel();
-        lbl_DongHo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Minu_HeThong = new javax.swing.JMenu();
-        jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        Mini_DoiMk = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        Mini_DangXuat = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        Mini_KetThuc = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        Minu_ThongKe = new javax.swing.JMenu();
-        Mini_DoanhThu = new javax.swing.JMenuItem();
-        Minu_TroGiup = new javax.swing.JMenu();
-        Mini_HuongDan = new javax.swing.JMenuItem();
-        jSeparator10 = new javax.swing.JPopupMenu.Separator();
-        Mini_GioiThieu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setRollover(true);
+        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_DangXuat.setText("Đăng xuất");
-        btn_DangXuat.setFocusable(false);
-        btn_DangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_DangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_DangXuat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_DangXuatActionPerformed(evt);
+        btn_CCgido.setText("jButton1");
+        btn_CCgido.setBorder(null);
+        btn_CCgido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_CCgido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CCgidoMouseClicked(evt);
             }
         });
-        jToolBar1.add(btn_DangXuat);
+        jPanel1.add(btn_CCgido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 320, 30));
 
-        btn_KetThuc.setText("Kết thúc");
-        btn_KetThuc.setFocusable(false);
-        btn_KetThuc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_KetThuc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_KetThuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_KetThucActionPerformed(evt);
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 180, 370, 30));
+
+        btn_SanPham.setText("jButton1");
+        btn_SanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_SanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_SanPhamMouseClicked(evt);
             }
         });
-        jToolBar1.add(btn_KetThuc);
-        jToolBar1.add(jSeparator7);
+        jPanel1.add(btn_SanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 320, 30));
 
-        btn_SanPham.setText("Sản Phẩm");
-        btn_SanPham.setFocusable(false);
-        btn_SanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_SanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_SanPham.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_SanPhamActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btn_SanPham);
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 300, 370, 30));
 
-        btn_NhanVien.setText("Nhân Viên");
-        btn_NhanVien.setFocusable(false);
-        btn_NhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_NhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_NhanVien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_NhanVienActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btn_NhanVien);
-
-        btn_HoaDon.setText("Hóa Đơn");
-        btn_HoaDon.setFocusable(false);
-        btn_HoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_HoaDon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btn_HoaDon);
-        jToolBar1.add(jSeparator8);
-
-        btnHuongDan.setText("Hướng dẫn");
-        btnHuongDan.setFocusable(false);
-        btnHuongDan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHuongDan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnHuongDan);
-
-        lbl_TrangThai.setText("SHop Thời Trang @NTDK");
-
-        lbl_DongHo.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel4.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                lbl_DongHoAncestorAdded(evt);
+                jLabel4AncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 240, 370, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_TrangThai)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_DongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+        btn_SanPham1.setText("jButton1");
+        btn_SanPham1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_SanPham1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_SanPham1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_SanPham1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 320, 30));
+
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 130, 120));
+
+        BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/background.jpg"))); // NOI18N
+        jPanel1.add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 580));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_TrangThai)
-                    .addComponent(lbl_DongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        Minu_HeThong.setText("Hệ Thống");
-        Minu_HeThong.add(jSeparator6);
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
-        Mini_DoiMk.setText("Đổi Mật Khẩu");
-        Mini_DoiMk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mini_DoiMkActionPerformed(evt);
-            }
-        });
-        Minu_HeThong.add(Mini_DoiMk);
-        Minu_HeThong.add(jSeparator1);
-
-        Mini_DangXuat.setText("Đăng Xuất");
-        Mini_DangXuat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mini_DangXuatActionPerformed(evt);
-            }
-        });
-        Minu_HeThong.add(Mini_DangXuat);
-        Minu_HeThong.add(jSeparator2);
-
-        Mini_KetThuc.setText("Kết Thúc");
-        Mini_KetThuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mini_KetThucActionPerformed(evt);
-            }
-        });
-        Minu_HeThong.add(Mini_KetThuc);
-
-        jMenuBar1.add(Minu_HeThong);
-
-        jMenu1.setText("Quản lý");
-
-        jMenuItem1.setText("Sản Phẩm");
-        jMenu1.add(jMenuItem1);
-        jMenu1.add(jSeparator3);
-
-        jMenuItem2.setText("Nhân Viên");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator4);
-
-        jMenuItem3.setText("Khách hàng");
-        jMenu1.add(jMenuItem3);
-        jMenu1.add(jSeparator5);
-
-        jMenuItem4.setText("Hóa Đơn");
-        jMenu1.add(jMenuItem4);
-
-        jMenuBar1.add(jMenu1);
-
-        Minu_ThongKe.setText("Thống kê");
-
-        Mini_DoanhThu.setText("Doanh thu");
-        Mini_DoanhThu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mini_DoanhThuActionPerformed(evt);
-            }
-        });
-        Minu_ThongKe.add(Mini_DoanhThu);
-
-        jMenuBar1.add(Minu_ThongKe);
-
-        Minu_TroGiup.setText("Trợ Giúp");
-
-        Mini_HuongDan.setText("Hướng dẫn sử dụng");
-        Mini_HuongDan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mini_HuongDanActionPerformed(evt);
-            }
-        });
-        Minu_TroGiup.add(Mini_HuongDan);
-        Minu_TroGiup.add(jSeparator10);
-
-        Mini_GioiThieu.setText("Giới thiệu sản phẩm");
-        Mini_GioiThieu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mini_GioiThieuActionPerformed(evt);
-            }
-        });
-        Minu_TroGiup.add(Mini_GioiThieu);
-
-        jMenuBar1.add(Minu_TroGiup);
-
-        setJMenuBar(jMenuBar1);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 378, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Mini_DoiMkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mini_DoiMkActionPerformed
-       
-    }//GEN-LAST:event_Mini_DoiMkActionPerformed
+    private void btn_CCgidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CCgidoMouseClicked
+        Color doiMau = new Color(255,0,0,1);
+        btn_CCgido.setBackground(doiMau);
+    }//GEN-LAST:event_btn_CCgidoMouseClicked
 
-    private void Mini_DangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mini_DangXuatActionPerformed
-        DangXuat();
-    }//GEN-LAST:event_Mini_DangXuatActionPerformed
-
-    private void Mini_KetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mini_KetThucActionPerformed
-        KetThuc();
-    }//GEN-LAST:event_Mini_KetThucActionPerformed
-
-    private void Mini_DoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mini_DoanhThuActionPerformed
-        
-    }//GEN-LAST:event_Mini_DoanhThuActionPerformed
-
-    private void Mini_HuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mini_HuongDanActionPerformed
-        
-    }//GEN-LAST:event_Mini_HuongDanActionPerformed
-
-    private void Mini_GioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mini_GioiThieuActionPerformed
-        
-    }//GEN-LAST:event_Mini_GioiThieuActionPerformed
-
-    private void lbl_DongHoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lbl_DongHoAncestorAdded
+    private void btn_SanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SanPhamMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_DongHoAncestorAdded
+    }//GEN-LAST:event_btn_SanPhamMouseClicked
 
-    private void btn_KetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_KetThucActionPerformed
-        KetThuc();
-    }//GEN-LAST:event_btn_KetThucActionPerformed
+    private void btn_SanPham1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SanPham1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SanPham1MouseClicked
 
-    private void btn_NhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NhanVienActionPerformed
-        OpenNhanVien();
-    }//GEN-LAST:event_btn_NhanVienActionPerformed
+    private void jLabel4AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel4AncestorAdded
+        
+    }//GEN-LAST:event_jLabel4AncestorAdded
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        OpenNhanVien();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void btn_SanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SanPhamActionPerformed
-       OpenSanPham();
-    }//GEN-LAST:event_btn_SanPhamActionPerformed
-
-    private void btn_DangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangXuatActionPerformed
-        DangXuat();
-    }//GEN-LAST:event_btn_DangXuatActionPerformed
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        btn_CCgido.setBackground(mauBtn);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     
     public void DangXuat() {
         Auth.clear();
-        new frm_DangNhap(this, true).setVisible(true);
+        new frm_DangNhapJdialog(this, true).setVisible(true);
     }
 
     public void KetThuc() {
@@ -360,6 +206,14 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     public void OpenNhanVien(){
         if (Auth.isLogin()) {
             new frm_QLNhanVien(this, true).setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
+      public void OpenLoaisanPham(){
+        if (Auth.isLogin()) {
+            new frm_quanLiLoaiSP(this, true).setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
@@ -408,39 +262,16 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Mini_DangXuat;
-    private javax.swing.JMenuItem Mini_DoanhThu;
-    private javax.swing.JMenuItem Mini_DoiMk;
-    private javax.swing.JMenuItem Mini_GioiThieu;
-    private javax.swing.JMenuItem Mini_HuongDan;
-    private javax.swing.JMenuItem Mini_KetThuc;
-    private javax.swing.JMenu Minu_HeThong;
-    private javax.swing.JMenu Minu_ThongKe;
-    private javax.swing.JMenu Minu_TroGiup;
-    private javax.swing.JButton btnHuongDan;
-    private javax.swing.JButton btn_DangXuat;
-    private javax.swing.JButton btn_HoaDon;
-    private javax.swing.JButton btn_KetThuc;
-    private javax.swing.JButton btn_NhanVien;
+    private javax.swing.JLabel BackGround;
+    private javax.swing.JButton btn_CCgido;
     private javax.swing.JButton btn_SanPham;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JButton btn_SanPham1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator10;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JPopupMenu.Separator jSeparator6;
-    private javax.swing.JToolBar.Separator jSeparator7;
-    private javax.swing.JToolBar.Separator jSeparator8;
-    private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel lbl_DongHo;
-    private javax.swing.JLabel lbl_TrangThai;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
