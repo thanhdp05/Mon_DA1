@@ -40,7 +40,7 @@ public class frm_QlKhachHang extends javax.swing.JDialog {
          try {
             List<nguoiDung> list = dao.selectAll(); // đọc dữ liệu từ cơ sở dữ liệu
             for (nguoiDung nd : list) {
-                Object[] row = {nd.getHoTen(),nd.getSdt(),nd.getEmail(),nd.getNgayDK(),nd.isVip()};
+                Object[] row = {nd.getMaND(),nd.getHoTen(),nd.getSdt(),nd.getEmail(),nd.getNgayDK(),nd.isVip()};
                 model.addRow(row);
             }
         } catch (Exception e) {
@@ -51,7 +51,7 @@ public class frm_QlKhachHang extends javax.swing.JDialog {
     
     
      public void setForm(nguoiDung nd) {
-        
+        lbl_maNd.setText(String.valueOf(nd.getMaND()));
         txt_HoTen.setText(nd.getHoTen());
         txtSdt.setText(nd.getSdt());
         txtEmail.setText(nd.getEmail());
@@ -68,9 +68,8 @@ public class frm_QlKhachHang extends javax.swing.JDialog {
      
      nguoiDung getForm(){
          nguoiDung nd = new nguoiDung();
-         if(this.row >= 0){
-            int maNd = (Integer) tbl_Bang.getValueAt(this.row, 0);
-            nd.setMaND(maNd);
+         if(this.row > 0){
+            nd.setMaND(Integer.parseInt(lbl_maNd.getText()));
         }
          nd.setHoTen(txt_HoTen.getText());
          nd.setSdt(txtSdt.getText());
@@ -385,6 +384,7 @@ public class frm_QlKhachHang extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
