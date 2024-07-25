@@ -51,7 +51,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         txtMatKhau = new javax.swing.JPasswordField();
         txtMaNv = new javax.swing.JTextField();
         lblClose = new javax.swing.JLabel();
-        lbl_Khung = new javax.swing.JLabel();
         lbl_Hinh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -69,7 +68,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         });
         jPanel1.add(cboShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, -1, -1));
 
-        lblQuenMk.setForeground(new java.awt.Color(255, 255, 255));
+        lblQuenMk.setForeground(new java.awt.Color(0, 0, 0));
         lblQuenMk.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuenMk.setText("Quên mật khẩu?");
         lblQuenMk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -98,7 +97,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(lbl_IconKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 40, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Đ Ă N G   N H Ậ P");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 200, 40));
@@ -109,7 +108,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(lbl_IconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 40, 40));
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        txtMatKhau.setForeground(new java.awt.Color(0, 0, 0));
         txtMatKhau.setText("Showlamcaichogi");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -123,7 +122,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 230, 40));
 
         txtMaNv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMaNv.setForeground(new java.awt.Color(255, 255, 255));
+        txtMaNv.setForeground(new java.awt.Color(0, 0, 0));
         txtMaNv.setText("TenDangNhap");
         txtMaNv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         txtMaNv.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -132,6 +131,11 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtMaNvFocusLost(evt);
+            }
+        });
+        txtMaNv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaNvActionPerformed(evt);
             }
         });
         jPanel1.add(txtMaNv, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 230, 40));
@@ -146,11 +150,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
             }
         });
         jPanel1.add(lblClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, -10, 40, 50));
-
-        lbl_Khung.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_Khung.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Khung.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(lbl_Khung, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 370, 390));
         jPanel1.add(lbl_Hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,6 +216,10 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         Kethuc();
     }//GEN-LAST:event_lblCloseMouseClicked
+
+    private void txtMaNvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaNvActionPerformed
     
     public void setbackground(){
         ImageIcon icon2 = new ImageIcon(getClass().getResource("/background/login-bg.png"));
@@ -299,7 +302,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     private javax.swing.JLabel lbl_Hinh;
     private javax.swing.JLabel lbl_IconKey;
     private javax.swing.JLabel lbl_IconUser;
-    private javax.swing.JLabel lbl_Khung;
     private javax.swing.JTextField txtMaNv;
     private javax.swing.JPasswordField txtMatKhau;
     // End of variables declaration//GEN-END:variables
