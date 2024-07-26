@@ -120,7 +120,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
         btn_QL_LSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_QL_LSP.setForeground(new java.awt.Color(255, 255, 255));
         btn_QL_LSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/listClothes.png"))); // NOI18N
-        btn_QL_LSP.setText("Quản lý loại sản phẩm");
+        btn_QL_LSP.setText("Thanh toán");
         btn_QL_LSP.setBorder(null);
         btn_QL_LSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
