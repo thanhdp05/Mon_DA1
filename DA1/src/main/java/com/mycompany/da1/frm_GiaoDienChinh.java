@@ -63,7 +63,6 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
             new frm_ManHinhChao(this, true).setVisible(true);
             new frm_DangNhapJdialog(this, true).setVisible(true);
         }
-
     }
 
     /**
@@ -270,7 +269,8 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
 
     public void OpenSanPham() {
         if (Auth.isLogin()) {
-            new frm_QlSanPham(this, true).setVisible(true);
+            new frm_QL_SanPham().setVisible(true);
+            dispose();
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }

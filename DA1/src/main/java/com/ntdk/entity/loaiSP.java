@@ -35,5 +35,11 @@ public class loaiSP {
     public void setTenLoai(String tenLoai) {
         this.tenLoai = tenLoai;
     }
+
+    @Override
+    public String toString() {
+        return this.tenLoai;
+    }
+    
     
 }

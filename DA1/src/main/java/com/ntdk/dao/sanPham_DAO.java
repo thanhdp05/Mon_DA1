@@ -24,6 +24,11 @@ public class sanPham_DAO extends NTDK_DAO<sanPham , String>{
     String SELECT_SP_WHERE = "select * from sanPham where maSP = ?";
     String SELECT_ALL_SP = "select * from sanPham";
 
+    public List<sanPham> selectByKeyWord(String keyWord){
+        String sql = "select * from sanPham where tenSP like ?";
+        return this.selectBySql(sql, "%"+keyWord+"%");
+    }
+    
     @Override
     public void insert(sanPham e) {
         try {
