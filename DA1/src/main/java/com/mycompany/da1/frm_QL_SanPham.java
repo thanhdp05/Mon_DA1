@@ -1124,7 +1124,12 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }
 
     void setForm(sanPham sp) {
-        cboLoaiSP.setSelectedIndex(sp.getLoaiSP() - 1);
+        if(row1<0){
+            cboLoaiSP.setSelectedIndex(sp.getLoaiSP());
+        }else{
+            cboLoaiSP.setSelectedIndex(sp.getLoaiSP()-1);
+        }
+        
         txtMaSP.setText(sp.getMaSP());
         txtTenSP.setText(sp.getTenSP());
         txtHang.setText(sp.getHangSP());
@@ -1201,8 +1206,8 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     void clearForm_sp() {
         sanPham sp = new sanPham();
-        this.setForm(sp);
         this.row1 = -1;
+        this.setForm(sp);
         this.updateStatus_sp();
     }
 

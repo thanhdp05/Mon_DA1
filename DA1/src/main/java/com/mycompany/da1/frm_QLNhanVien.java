@@ -8,6 +8,7 @@ import com.ntdk.dao.nhanVien_DAO;
 import com.ntdk.entity.nhanVien;
 import com.tndk.utils.MsgBox;
 import com.tndk.utils.XImage;
+import java.awt.Image;
 import java.io.File;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -63,6 +64,10 @@ public class frm_QLNhanVien extends javax.swing.JDialog {
         rdo_truongPhong.setSelected(cd.isVaiTro());
         rdo_nhanVien.setSelected(!cd.isVaiTro());
         if (cd.getHinh() != null) {
+            ImageIcon icon = XImage.read(cd.getHinh());
+            Image image = icon.getImage();
+            Image resizeImage = image.getScaledInstance(150, 165, Image.SCALE_DEFAULT);
+            icon.setImage(resizeImage);
             lbl_hinhAnh.setToolTipText(cd.getHinh());
             lbl_hinhAnh.setIcon(XImage.read(cd.getHinh()));
         }
@@ -179,6 +184,9 @@ public class frm_QLNhanVien extends javax.swing.JDialog {
             File file = fileChooser.getSelectedFile();
             XImage.save(file);
             ImageIcon icon = XImage.read(file.getName());
+            Image image = icon.getImage();
+            Image resizeImage = image.getScaledInstance(150, 165, Image.SCALE_DEFAULT);
+            icon.setImage(resizeImage);
             lbl_hinhAnh.setIcon(icon);
             lbl_hinhAnh.setToolTipText(file.getName());
         }
