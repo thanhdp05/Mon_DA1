@@ -100,7 +100,6 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1019, 645));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,6 +123,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblBang_NV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBang_NVMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBang_NV);
 
         btnXoa.setText("Xoa");
@@ -133,6 +137,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         btnSau.setText("Sau");
 
         btnTruoc.setText("Truoc");
+        btnTruoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTruocActionPerformed(evt);
+            }
+        });
 
         btnDau.setText("Dau");
 
@@ -212,9 +221,6 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtMatKhau2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,12 +231,14 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                                 .addGap(0, 277, Short.MAX_VALUE)))
                         .addGap(49, 49, 49))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaNV)
-                            .addComponent(txtHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtMaNV)
+                                .addComponent(txtHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -465,6 +473,14 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhMouseClicked
+
+    private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTruocActionPerformed
+
+    private void tblBang_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_NVMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblBang_NVMouseClicked
 
     
     public void DangXuat() {

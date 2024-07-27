@@ -232,7 +232,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_NVActionPerformed
 
     private void btn_QL_LSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_LSPActionPerformed
-        this.OpenLoaisanPham();
+        this.OpenThanhToan();
     }//GEN-LAST:event_btn_QL_LSPActionPerformed
 
     private void btn_QL_SPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_SPActionPerformed
@@ -259,9 +259,9 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
         }
     }
 
-    public void OpenLoaisanPham() {
+    public void OpenThanhToan() {
         if (Auth.isLogin()) {
-            new frm_quanLiLoaiSP(this, true).setVisible(true);
+            new frm_QL_ThanhToan().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
