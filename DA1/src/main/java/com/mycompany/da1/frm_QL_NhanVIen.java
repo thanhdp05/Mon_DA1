@@ -221,25 +221,20 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtMatKhau2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMatKhau1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(0, 277, Short.MAX_VALUE)))
-                        .addGap(49, 49, 49))
+                    .addComponent(txtMatKhau2)
+                    .addComponent(txtMatKhau1)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtHoTen)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtMaNV)
-                                .addComponent(txtHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 277, Short.MAX_VALUE))
+                    .addComponent(txtMaNV))
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -454,33 +449,33 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         this.OpenLoaisanPham();
     }//GEN-LAST:event_btn_QL_LSPActionPerformed
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+    private void tblBang_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_NVMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHoTenActionPerformed
+    }//GEN-LAST:event_tblBang_NVMouseClicked
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void txtMatKhau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhau1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatKhau1ActionPerformed
-
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhMouseClicked
 
+    private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoTenActionPerformed
+
+    private void txtMatKhau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhau1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhau1ActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaActionPerformed
+
     private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTruocActionPerformed
-
-    private void tblBang_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_NVMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblBang_NVMouseClicked
 
     
     public void DangXuat() {
