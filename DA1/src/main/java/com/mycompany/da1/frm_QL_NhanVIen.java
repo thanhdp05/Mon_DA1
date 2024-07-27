@@ -26,12 +26,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     public void setBtn() {
         btnTrangChu.setBackground(cl_btn);
         btn_QL_SP.setBackground(cl_btn);
-        btn_QL_LSP.setBackground(cl_btn);
-        btn_QL_HD.setBackground(cl_btn);
+        btn_ThanhToan.setBackground(cl_btn);
+        btn_QL_KH.setBackground(cl_btn);
         btn_QL_DT.setBackground(cl_btn);
         btn_doiMatKhau.setBackground(cl_btn);
         btn_dangXuat.setBackground(cl_btn);
-
     }
     
     /**
@@ -77,9 +76,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btn_QL_SP = new javax.swing.JButton();
         btnTrangChu = new javax.swing.JButton();
-        btn_QL_LSP = new javax.swing.JButton();
+        btn_ThanhToan = new javax.swing.JButton();
         btn_QL_DT = new javax.swing.JButton();
-        btn_QL_HD = new javax.swing.JButton();
+        btn_QL_KH = new javax.swing.JButton();
         btn_dangXuat = new javax.swing.JButton();
         btn_doiMatKhau = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -343,15 +342,15 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         });
 
-        btn_QL_LSP.setBackground(new java.awt.Color(204, 204, 255));
-        btn_QL_LSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_QL_LSP.setForeground(new java.awt.Color(255, 255, 255));
-        btn_QL_LSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/listClothes.png"))); // NOI18N
-        btn_QL_LSP.setText("Quản lý loại sản phẩm");
-        btn_QL_LSP.setBorder(null);
-        btn_QL_LSP.addActionListener(new java.awt.event.ActionListener() {
+        btn_ThanhToan.setBackground(new java.awt.Color(204, 204, 255));
+        btn_ThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_ThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/listClothes.png"))); // NOI18N
+        btn_ThanhToan.setText("Thanh toán");
+        btn_ThanhToan.setBorder(null);
+        btn_ThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_QL_LSPActionPerformed(evt);
+                btn_ThanhToanActionPerformed(evt);
             }
         });
 
@@ -361,11 +360,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         btn_QL_DT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/thongke.png"))); // NOI18N
         btn_QL_DT.setText("Doanh thu");
 
-        btn_QL_HD.setBackground(new java.awt.Color(204, 204, 255));
-        btn_QL_HD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_QL_HD.setForeground(new java.awt.Color(255, 255, 255));
-        btn_QL_HD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bill.png"))); // NOI18N
-        btn_QL_HD.setText("Quản lý hóa đơn");
+        btn_QL_KH.setBackground(new java.awt.Color(204, 204, 255));
+        btn_QL_KH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_QL_KH.setForeground(new java.awt.Color(255, 255, 255));
+        btn_QL_KH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bill.png"))); // NOI18N
+        btn_QL_KH.setText("Quản lý khách hàng");
 
         btn_dangXuat.setBackground(new java.awt.Color(204, 204, 255));
         btn_dangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -389,8 +388,8 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             .addComponent(btn_QL_DT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_dangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_doiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_QL_LSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_QL_HD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_ThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_QL_KH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -406,9 +405,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_QL_SP, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_QL_LSP, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_ThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_QL_HD, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_QL_KH, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_QL_DT, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
@@ -445,9 +444,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         this.OpenTrangChu();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
-    private void btn_QL_LSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_LSPActionPerformed
+    private void btn_ThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThanhToanActionPerformed
         this.OpenLoaisanPham();
-    }//GEN-LAST:event_btn_QL_LSPActionPerformed
+    }//GEN-LAST:event_btn_ThanhToanActionPerformed
 
     private void tblBang_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_NVMouseClicked
         // TODO add your handling code here:
@@ -559,9 +558,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     private javax.swing.JButton btnTruoc;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btn_QL_DT;
-    private javax.swing.JButton btn_QL_HD;
-    private javax.swing.JButton btn_QL_LSP;
+    private javax.swing.JButton btn_QL_KH;
     private javax.swing.JButton btn_QL_SP;
+    private javax.swing.JButton btn_ThanhToan;
     private javax.swing.JButton btn_dangXuat;
     private javax.swing.JButton btn_doiMatKhau;
     private javax.swing.ButtonGroup buttonGroup1;

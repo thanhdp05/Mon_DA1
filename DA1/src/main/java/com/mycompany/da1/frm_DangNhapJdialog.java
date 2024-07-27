@@ -21,9 +21,9 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     /**
      * Creates new form frm_DangNhapJdialog
      */
-    
-    Color anNen = new Color(0,0,0,0);
+    Color anNen = new Color(0, 0, 0, 0);
     nhanVien_DAO dao = new nhanVien_DAO();
+
     public frm_DangNhapJdialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -170,9 +170,9 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboShowActionPerformed
-        if(cboShow.isSelected()){
-            txtMatKhau.setEchoChar((char)0);
-        }else{
+        if (cboShow.isSelected()) {
+            txtMatKhau.setEchoChar((char) 0);
+        } else {
             txtMatKhau.setEchoChar('*');
         }
     }//GEN-LAST:event_cboShowActionPerformed
@@ -186,30 +186,30 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void txtMaNvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNvFocusGained
-        if(txtMaNv.getText().equals("TenDangNhap")){
+        if (txtMaNv.getText().equals("TenDangNhap")) {
             txtMaNv.setText("");
-            txtMaNv.setForeground(new Color(255,255,255));
+            txtMaNv.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_txtMaNvFocusGained
 
     private void txtMaNvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNvFocusLost
-         if(txtMaNv.getText().equals("")){
+        if (txtMaNv.getText().equals("")) {
             txtMaNv.setText("TenDangNhap");
-            txtMaNv.setForeground(new Color(255,255,255));
+            txtMaNv.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_txtMaNvFocusLost
 
     private void txtMatKhauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusGained
-         if(txtMatKhau.getText().equals("Showlamcaichogi")){
+        if (txtMatKhau.getText().equals("Showlamcaichogi")) {
             txtMatKhau.setText("");
-            txtMatKhau.setForeground(new Color(255,255,255));
+            txtMatKhau.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_txtMatKhauFocusGained
 
     private void txtMatKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusLost
-        if(txtMatKhau.getText().equals("")){
+        if (txtMatKhau.getText().equals("")) {
             txtMatKhau.setText("Showlamcaichogi");
-            txtMatKhau.setForeground(new Color(255,255,255));
+            txtMatKhau.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_txtMatKhauFocusLost
 
@@ -220,36 +220,34 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     private void txtMaNvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNvActionPerformed
-    
-    public void setbackground(){
+
+    public void setbackground() {
         ImageIcon icon2 = new ImageIcon(getClass().getResource("/background/login-bg.png"));
-    Image img = icon2.getImage().getScaledInstance(lbl_Hinh.getWidth(), lbl_Hinh.getHeight(), Image.SCALE_SMOOTH);
-    lbl_Hinh.setIcon(new ImageIcon(img));
+        Image img = icon2.getImage().getScaledInstance(lbl_Hinh.getWidth(), lbl_Hinh.getHeight(), Image.SCALE_SMOOTH);
+        lbl_Hinh.setIcon(new ImageIcon(img));
     }
-    
-     public void DangNhap(){
+
+    public void DangNhap() {
         String maNv = txtMaNv.getText();
         String matKhau = new String(txtMatKhau.getPassword());
         nhanVien nhanVien = dao.selectById(maNv);
-        if(nhanVien == null){
-            MsgBox.alert(this,"Sai tên đăng nhập");
-        }
-        else if(!matKhau.equals(nhanVien.getMatKhau())){
-            MsgBox.alert(this,"Nhập sai mật khẩu");
-        }
-        else{
+        if (nhanVien == null) {
+            MsgBox.alert(this, "Sai tên đăng nhập");
+        } else if (!matKhau.equals(nhanVien.getMatKhau())) {
+            MsgBox.alert(this, "Nhập sai mật khẩu");
+        } else {
             Auth.user = nhanVien;
             this.dispose();
         }
     }
-    
-        public void Kethuc(){
-            if(MsgBox.confirm(this,"Bạn có muốn thoát ứng dụng")){
-                System.exit(0);
-            }
+
+    public void Kethuc() {
+        if (MsgBox.confirm(this, "Bạn có muốn thoát ứng dụng")) {
+            System.exit(0);
         }
-    
-      //  lblHinh.setIcon(new ImageIcon(img));
+    }
+
+    //  lblHinh.setIcon(new ImageIcon(img));
     /**
      * @param args the command line arguments
      */

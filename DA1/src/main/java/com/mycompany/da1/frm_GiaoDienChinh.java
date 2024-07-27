@@ -40,7 +40,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
         btn_QL_NV.setBackground(cl_btn);
         btn_QL_SP.setBackground(cl_btn);
         btn_QL_LSP.setBackground(cl_btn);
-        btn_QL_HD.setBackground(cl_btn);
+        btn_QL_KH.setBackground(cl_btn);
         btn_QL_DT.setBackground(cl_btn);
         btn_doiMatKhau.setBackground(cl_btn);
         btn_dangXuat.setBackground(cl_btn);
@@ -79,7 +79,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
         btn_QL_NV = new javax.swing.JButton();
         btn_QL_LSP = new javax.swing.JButton();
         btn_QL_DT = new javax.swing.JButton();
-        btn_QL_HD = new javax.swing.JButton();
+        btn_QL_KH = new javax.swing.JButton();
         btn_dangXuat = new javax.swing.JButton();
         btn_doiMatKhau = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -132,22 +132,42 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
         btn_QL_DT.setForeground(new java.awt.Color(255, 255, 255));
         btn_QL_DT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/thongke.png"))); // NOI18N
         btn_QL_DT.setText("Doanh thu");
+        btn_QL_DT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_QL_DTActionPerformed(evt);
+            }
+        });
 
-        btn_QL_HD.setBackground(new java.awt.Color(204, 204, 255));
-        btn_QL_HD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_QL_HD.setForeground(new java.awt.Color(255, 255, 255));
-        btn_QL_HD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bill.png"))); // NOI18N
-        btn_QL_HD.setText("Quản lý hóa đơn");
+        btn_QL_KH.setBackground(new java.awt.Color(204, 204, 255));
+        btn_QL_KH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_QL_KH.setForeground(new java.awt.Color(255, 255, 255));
+        btn_QL_KH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bill.png"))); // NOI18N
+        btn_QL_KH.setText("Quản lý Khách hàng");
+        btn_QL_KH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_QL_KHActionPerformed(evt);
+            }
+        });
 
         btn_dangXuat.setBackground(new java.awt.Color(204, 204, 255));
         btn_dangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_dangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangXuat.setText("Đăng xuất");
+        btn_dangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dangXuatActionPerformed(evt);
+            }
+        });
 
         btn_doiMatKhau.setBackground(new java.awt.Color(204, 204, 255));
         btn_doiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_doiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         btn_doiMatKhau.setText("Đổi mật khẩu");
+        btn_doiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doiMatKhauActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/snapedit_con4.png"))); // NOI18N
@@ -162,7 +182,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
             .addComponent(btn_dangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_doiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_QL_LSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_QL_HD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_QL_KH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,7 +200,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_QL_LSP, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_QL_HD, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_QL_KH, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_QL_DT, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,6 +259,22 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
         this.OpenSanPham();
     }//GEN-LAST:event_btn_QL_SPActionPerformed
 
+    private void btn_QL_KHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_KHActionPerformed
+        this.OpenKhachHang();
+    }//GEN-LAST:event_btn_QL_KHActionPerformed
+
+    private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
+
+    }//GEN-LAST:event_btn_doiMatKhauActionPerformed
+
+    private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
+        this.DangXuat();
+    }//GEN-LAST:event_btn_dangXuatActionPerformed
+
+    private void btn_QL_DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_DTActionPerformed
+        
+    }//GEN-LAST:event_btn_QL_DTActionPerformed
+
     public void DangXuat() {
         Auth.clear();
         new frm_DangNhapJdialog(this, true).setVisible(true);
@@ -261,7 +297,17 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
 
     public void OpenThanhToan() {
         if (Auth.isLogin()) {
+            this.dispose();
             new frm_QL_ThanhToan().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void OpenKhachHang() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_KhachHang().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
@@ -269,8 +315,8 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
 
     public void OpenSanPham() {
         if (Auth.isLogin()) {
+            this.dispose();
             new frm_QL_SanPham().setVisible(true);
-            dispose();
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
@@ -313,7 +359,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_QL_DT;
-    private javax.swing.JButton btn_QL_HD;
+    private javax.swing.JButton btn_QL_KH;
     private javax.swing.JButton btn_QL_LSP;
     private javax.swing.JButton btn_QL_NV;
     private javax.swing.JButton btn_QL_SP;

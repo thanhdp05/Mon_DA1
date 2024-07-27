@@ -21,15 +21,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dangt
  */
-
-    
 public class frm_QL_ThanhToan extends javax.swing.JFrame {
- 
+
     /**
      * Creates new form frm_QL_NhanVIen
      */
     sanPham_DAO dao = new sanPham_DAO();
-     Color cl_btn = new Color(0, 0, 0, 0);
+    Color cl_btn = new Color(0, 0, 0, 0);
+
     public frm_QL_ThanhToan() {
         initComponents();
         setBtn();
@@ -37,17 +36,65 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }
 
     int row = -1;
+
     public void setBtn() {
-        btnTrangChu.setBackground(cl_btn);
+        btn_QL_NV.setBackground(cl_btn);
         btn_QL_SP.setBackground(cl_btn);
-        btn_QL_LSP.setBackground(cl_btn);
-        btn_QL_HD.setBackground(cl_btn);
+        btn_TrangChu.setBackground(cl_btn);
+        btn_QL_KH.setBackground(cl_btn);
         btn_QL_DT.setBackground(cl_btn);
         btn_doiMatKhau.setBackground(cl_btn);
         btn_dangXuat.setBackground(cl_btn);
 
     }
-    
+
+    public void DangXuat() {
+        Auth.clear();
+        new frm_DangNhapJdialog(this, true).setVisible(true);
+    }
+
+    public void KetThuc() {
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc làm việc")) {
+            System.exit(0);
+        }
+    }
+
+    public void OpenNhanVien() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_NhanVIen().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void OpenTrangChu() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_GiaoDienChinh().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void OpenKhachHang() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_KhachHang().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void OpenSanPham() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_SanPham().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,10 +108,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         btn_QL_SP = new javax.swing.JButton();
-        btnTrangChu = new javax.swing.JButton();
-        btn_QL_LSP = new javax.swing.JButton();
+        btn_QL_NV = new javax.swing.JButton();
+        btn_TrangChu = new javax.swing.JButton();
         btn_QL_DT = new javax.swing.JButton();
-        btn_QL_HD = new javax.swing.JButton();
+        btn_QL_KH = new javax.swing.JButton();
         btn_dangXuat = new javax.swing.JButton();
         btn_doiMatKhau = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -123,26 +170,26 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             }
         });
 
-        btnTrangChu.setBackground(new java.awt.Color(204, 204, 255));
-        btnTrangChu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnTrangChu.setForeground(new java.awt.Color(255, 255, 255));
-        btnTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/nhanVien.png"))); // NOI18N
-        btnTrangChu.setText("Quản lý nhân viên");
-        btnTrangChu.setBorder(null);
-        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+        btn_QL_NV.setBackground(new java.awt.Color(204, 204, 255));
+        btn_QL_NV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_QL_NV.setForeground(new java.awt.Color(255, 255, 255));
+        btn_QL_NV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/nhanVien.png"))); // NOI18N
+        btn_QL_NV.setText("Quản lý nhân viên");
+        btn_QL_NV.setBorder(null);
+        btn_QL_NV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrangChuActionPerformed(evt);
+                btn_QL_NVActionPerformed(evt);
             }
         });
 
-        btn_QL_LSP.setBackground(new java.awt.Color(204, 204, 255));
-        btn_QL_LSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_QL_LSP.setForeground(new java.awt.Color(255, 255, 255));
-        btn_QL_LSP.setText("Trang Chủ");
-        btn_QL_LSP.setBorder(null);
-        btn_QL_LSP.addActionListener(new java.awt.event.ActionListener() {
+        btn_TrangChu.setBackground(new java.awt.Color(204, 204, 255));
+        btn_TrangChu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_TrangChu.setForeground(new java.awt.Color(255, 255, 255));
+        btn_TrangChu.setText("Trang Chủ");
+        btn_TrangChu.setBorder(null);
+        btn_TrangChu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_QL_LSPActionPerformed(evt);
+                btn_TrangChuActionPerformed(evt);
             }
         });
 
@@ -152,14 +199,14 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         btn_QL_DT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/thongke.png"))); // NOI18N
         btn_QL_DT.setText("Doanh thu");
 
-        btn_QL_HD.setBackground(new java.awt.Color(204, 204, 255));
-        btn_QL_HD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_QL_HD.setForeground(new java.awt.Color(255, 255, 255));
-        btn_QL_HD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bill.png"))); // NOI18N
-        btn_QL_HD.setText("Quản lý hóa đơn");
-        btn_QL_HD.addActionListener(new java.awt.event.ActionListener() {
+        btn_QL_KH.setBackground(new java.awt.Color(204, 204, 255));
+        btn_QL_KH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_QL_KH.setForeground(new java.awt.Color(255, 255, 255));
+        btn_QL_KH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bill.png"))); // NOI18N
+        btn_QL_KH.setText("Quản lý khách hàng");
+        btn_QL_KH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_QL_HDActionPerformed(evt);
+                btn_QL_KHActionPerformed(evt);
             }
         });
 
@@ -448,13 +495,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_QL_NV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_QL_SP, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                     .addComponent(btn_QL_DT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_dangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_doiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_QL_LSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_QL_HD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_TrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_QL_KH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
@@ -470,13 +517,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_QL_NV, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_QL_SP, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_QL_LSP, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_TrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_QL_HD, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_QL_KH, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_QL_DT, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
@@ -502,17 +549,17 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_QL_HDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_HDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_QL_HDActionPerformed
+    private void btn_QL_KHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_KHActionPerformed
+        this.OpenKhachHang();
+    }//GEN-LAST:event_btn_QL_KHActionPerformed
 
-    private void btn_QL_LSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_LSPActionPerformed
+    private void btn_TrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TrangChuActionPerformed
         this.OpenTrangChu();
-    }//GEN-LAST:event_btn_QL_LSPActionPerformed
+    }//GEN-LAST:event_btn_TrangChuActionPerformed
 
-    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        this.OpenTrangChu();
-    }//GEN-LAST:event_btnTrangChuActionPerformed
+    private void btn_QL_NVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_NVActionPerformed
+        this.OpenNhanVien();
+    }//GEN-LAST:event_btn_QL_NVActionPerformed
 
     private void btn_QL_SPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_SPActionPerformed
         this.OpenSanPham();
@@ -526,27 +573,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblSPMouseClicked
 
-    
-    public void DangXuat() {
-        Auth.clear();
-        new frm_DangNhapJdialog(this, true).setVisible(true);
-    }
-
-    public void KetThuc() {
-        if (MsgBox.confirm(this, "Bạn muốn kết thúc làm việc")) {
-            System.exit(0);
-        }
-    }
-    
-    public void OpenTrangChu(){
-        if (Auth.isLogin()) {
-            this.dispose();
-            new frm_GiaoDienChinh().setVisible(true);
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập");
-        }
-    }
-    
 //    public void Bill(){
 //         b.setText("                                   NTDK Shop \n");
 //            b.setText(b.getText() + "                                   Nguyen Van Cu noi dai, \n");
@@ -569,63 +595,43 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 //                b.setText(b.getText() +"  "+ Name+"\t\t"+Qty +"\t"+Price + "\n");
 //            }
 //    }
-    
-      public void OpenLoaisanPham(){
-        if (Auth.isLogin()) {
-            new frm_quanLiLoaiSP(this, true).setVisible(true);
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập");
-        }
-    }
-    
-    public void OpenSanPham(){
-        if (Auth.isLogin()) {
-            new frm_QlSanPham(this, true).setVisible(true);
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập");
-        }
-    }
-    
-    public void fillTableSanPham(){
+    public void fillTableSanPham() {
         DefaultTableModel model = (DefaultTableModel) tblSP.getModel();
-        
-   
+
         model.setRowCount(0);
         try {
-            
+
             List<sanPham> list_sp = dao.selectAll();
             for (sanPham e : list_sp) {
-                Object[] row = { e.getTenSP(), e.getLoaiSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
+                Object[] row = {e.getTenSP(), e.getLoaiSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
                 model.addRow(row);
             }
         } catch (Exception e) {
             e.printStackTrace();
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
-    
+
     }
-    
-    
-    public void fillTableSpCho(){
-        DefaultTableModel model = (DefaultTableModel) tbl_sanPhamCho.getModel();
-        
+
+    public void fillTableSpCho() {
+        DefaultTableModel model = (DefaultTableModel) tbl_sanPhamCho2.getModel();
+
         model.setRowCount(0);
-        
+
         try {
-            
+
             List<sanPham> list_sp = dao.selectAll();
             for (sanPham e : list_sp) {
-                Object[] row = { e.getTenSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
+                Object[] row = {e.getTenSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
                 model.addRow(row);
             }
         } catch (Exception e) {
             e.printStackTrace();
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
-    
+
     }
-    
-    
+
 //    public void addSpCho(){
 //         DefaultTableModel model = (DefaultTableModel) tbl_sanPhamCho.getModel();
 //            tblSP.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -685,42 +691,30 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTrangChu;
     private javax.swing.JButton btn_QL_DT;
-    private javax.swing.JButton btn_QL_HD;
-    private javax.swing.JButton btn_QL_LSP;
+    private javax.swing.JButton btn_QL_KH;
+    private javax.swing.JButton btn_QL_NV;
     private javax.swing.JButton btn_QL_SP;
+    private javax.swing.JButton btn_TrangChu;
     private javax.swing.JButton btn_dangXuat;
     private javax.swing.JButton btn_doiMatKhau;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -730,8 +724,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tblSP;
-    private javax.swing.JTable tbl_sanPhamCho;
-    private javax.swing.JTable tbl_sanPhamCho1;
     private javax.swing.JTable tbl_sanPhamCho2;
     // End of variables declaration//GEN-END:variables
 }

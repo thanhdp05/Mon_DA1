@@ -10,19 +10,19 @@ import java.util.Date;
  *
  * @author ASUS
  */
-public class nguoiDung {
-    int maND ;
+public class KhachHang {
+    int maKH ;
     String hoTen ;
     String sdt ;
     String email ;
     boolean vip ;
     Date ngayDK ;
 
-    public nguoiDung() {
+    public KhachHang() {
     }
 
-    public nguoiDung(int maND, String hoTen, String sdt, String email, boolean vip, Date ngayDK) {
-        this.maND = maND;
+    public KhachHang(int maKH, String hoTen, String sdt, String email, boolean vip, Date ngayDK) {
+        this.maKH = maKH;
         this.hoTen = hoTen;
         this.sdt = sdt;
         this.email = email;
@@ -30,12 +30,12 @@ public class nguoiDung {
         this.ngayDK = ngayDK;
     }
 
-    public int getMaND() {
-        return maND;
+    public int getMaKH() {
+        return maKH;
     }
 
-    public void setMaND(int maND) {
-        this.maND = maND;
+    public void setMaKH(int maKH) {
+        this.maKH = maKH;
     }
 
     public String getHoTen() {

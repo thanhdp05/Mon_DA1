@@ -740,8 +740,8 @@
               <Component id="btn_QL_DT" alignment="0" max="32767" attributes="0"/>
               <Component id="btn_dangXuat" alignment="0" max="32767" attributes="0"/>
               <Component id="btn_doiMatKhau" alignment="0" max="32767" attributes="0"/>
-              <Component id="btn_QL_LSP" alignment="0" max="32767" attributes="0"/>
-              <Component id="btn_QL_HD" alignment="0" max="32767" attributes="0"/>
+              <Component id="btn_ThanhToan" alignment="0" max="32767" attributes="0"/>
+              <Component id="btn_QL_KH" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
@@ -759,9 +759,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnTrangChu" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btn_QL_LSP" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="btn_ThanhToan" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btn_QL_HD" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="btn_QL_KH" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_QL_DT" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -814,7 +814,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_QL_NVActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_QL_LSP">
+        <Component class="javax.swing.JButton" name="btn_ThanhToan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -828,13 +828,13 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/IconNhe/listClothes.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; lo&#x1ea1;i s&#x1ea3;n ph&#x1ea9;m"/>
+            <Property name="text" type="java.lang.String" value="Thanh To&#xe1;n"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_QL_LSPActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThanhToanActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_QL_DT">
@@ -854,7 +854,7 @@
             <Property name="text" type="java.lang.String" value="Doanh thu"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_QL_HD">
+        <Component class="javax.swing.JButton" name="btn_QL_KH">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -868,8 +868,11 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Background/bill.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; h&#xf3;a &#x111;&#x1a1;n"/>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; kh&#xe1;ch h&#xe0;ng"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_QL_KHActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_dangXuat">
           <Properties>
