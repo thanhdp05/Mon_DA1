@@ -20,7 +20,8 @@ public class JdbcHelper {
     static String driver = "com.microsoft.sqlserver.SQLServerDriver";
     static String username = "sa";
     static String password = "123";
-    static String database = "TDVCT_test";
+    
+    static String database = "TDVCT_test2";
     static String url = "jdbc:sqlserver://localhost:1433;database="+database+";encrypt=false";
 
     static{

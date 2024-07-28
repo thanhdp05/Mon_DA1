@@ -4,6 +4,10 @@
  */
 package com.mycompany.da1;
 
+import com.ntdk.dao.nhanVien_DAO;
+import com.tndk.utils.Auth;
+import com.tndk.utils.MsgBox;
+
 /**
  *
  * @author dangt
@@ -13,6 +17,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     /**
      * Creates new form frm_DoiMatKhau
      */
+    nhanVien_DAO dao = new nhanVien_DAO();
     public frm_DoiMatKhau(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -36,7 +41,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         txt_mk1 = new javax.swing.JPasswordField();
         txt_mk2 = new javax.swing.JPasswordField();
         txt_mk3 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btn_doiMatKhau = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,7 +62,12 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Xác nhận");
+        btn_doiMatKhau.setText("Xác nhận");
+        btn_doiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doiMatKhauActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Hủy bỏ");
 
@@ -69,7 +79,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btn_doiMatKhau)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -107,7 +117,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btn_doiMatKhau)
                     .addComponent(jButton2))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -163,6 +173,29 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_tenDangNhapActionPerformed
 
+    private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
+        this.DoiMatKhau();
+    }//GEN-LAST:event_btn_doiMatKhauActionPerformed
+
+    
+      private void DoiMatKhau() {
+        String manv = txt_tenDangNhap.getText();
+        String mk = new String(txt_mk1.getText());
+        String mkMoi = new String(txt_mk2.getText());
+        String XacNahnmk = new String(txt_mk3.getText());
+
+        if (!manv.equalsIgnoreCase(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Sai tên đăng nhập");
+        } else if (!mk.equals(Auth.user.getMatKhau())) {
+            MsgBox.alert(this, "Sai mật khẩu");
+        } else if (!mkMoi.equals(XacNahnmk)) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
+        } else {
+            Auth.user.setMatKhau(mkMoi);
+            dao.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -206,7 +239,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_doiMatKhau;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
