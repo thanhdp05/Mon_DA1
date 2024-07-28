@@ -68,10 +68,18 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         });
         jPanel1.add(cboShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, -1, -1));
 
-        lblQuenMk.setForeground(new java.awt.Color(0, 0, 0));
         lblQuenMk.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuenMk.setText("Quên mật khẩu?");
         lblQuenMk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblQuenMk.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblQuenMkAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         lblQuenMk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblQuenMkMouseClicked(evt);
@@ -79,9 +87,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         });
         jPanel1.add(lblQuenMk, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
 
-        btnDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnDangNhap.setForeground(new java.awt.Color(0, 0, 0));
         btnDangNhap.setText("Đăng  Nhập");
         btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +103,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(lbl_IconKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 40, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Đ Ă N G   N H Ậ P");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 200, 40));
@@ -108,7 +113,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(lbl_IconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 40, 40));
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMatKhau.setForeground(new java.awt.Color(0, 0, 0));
         txtMatKhau.setText("Showlamcaichogi");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -122,7 +126,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 230, 40));
 
         txtMaNv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMaNv.setForeground(new java.awt.Color(0, 0, 0));
         txtMaNv.setText("TenDangNhap");
         txtMaNv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         txtMaNv.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -141,7 +144,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(txtMaNv, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 230, 40));
 
         lblClose.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblClose.setForeground(new java.awt.Color(0, 0, 0));
         lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblClose.setText("x");
         lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,6 +222,10 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     private void txtMaNvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNvActionPerformed
+
+    private void lblQuenMkAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblQuenMkAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblQuenMkAncestorAdded
 
     public void setbackground() {
         ImageIcon icon2 = new ImageIcon(getClass().getResource("/background/login-bg.png"));

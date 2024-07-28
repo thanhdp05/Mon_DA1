@@ -26,7 +26,8 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     /**
      * Creates new form frm_QL_NhanVIen
      */
-     Color cl_btn = new Color(0, 0, 0, 0);
+    Color cl_btn = new Color(0, 0, 0, 0);
+
     public frm_QL_NhanVIen() {
         initComponents();
         setBtn();
@@ -44,8 +45,12 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         btn_doiMatKhau.setBackground(cl_btn);
         btn_dangXuat.setBackground(cl_btn);
     }
-    
-    
+
+    public void OpenDoiMatKhau() {
+        Auth.clear();
+        new frm_DoiMatKhau(this, true).setVisible(true);
+    }
+
     public void DangXuat() {
         Auth.clear();
         new frm_DangNhapJdialog(this, true).setVisible(true);
@@ -92,6 +97,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -465,11 +471,21 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         btn_dangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_dangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangXuat.setText("Đăng xuất");
+        btn_dangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dangXuatActionPerformed(evt);
+            }
+        });
 
         btn_doiMatKhau.setBackground(new java.awt.Color(204, 204, 255));
         btn_doiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_doiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         btn_doiMatKhau.setText("Đổi mật khẩu");
+        btn_doiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doiMatKhauActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/snapedit_con4.png"))); // NOI18N
@@ -604,15 +620,20 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         this.OpenKhachHang();
     }//GEN-LAST:event_btn_QL_KHActionPerformed
 
-    
-    
-    
+    private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
+        this.OpenDoiMatKhau();
+    }//GEN-LAST:event_btn_doiMatKhauActionPerformed
+
+    private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
+        this.DangXuat();
+    }//GEN-LAST:event_btn_dangXuatActionPerformed
+
     private void innit() {
         rdoNhanVIen.setSelected(true);
         this.fillTable();
         this.updateStatus();
     }
-    
+
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblBang_NV.getModel();
         model.setRowCount(0);
@@ -629,7 +650,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             MsgBox.alert(this, "lỗi truy vấn dữ liệu");
         }
     }
-    
+
     public void setForm(nhanVien cd) {
         txtMaNV.setText(cd.getMaNV());
         txtHoTen.setText(cd.getHoTen());
@@ -647,7 +668,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             lblHinh.setIcon(icon);
         }
     }
-    
+
     nhanVien getForm() {
         nhanVien nv = new nhanVien();
         nv.setMaNV(txtMaNV.getText());
@@ -656,17 +677,17 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         nv.setMatKhau(new String(txtMatKhau1.getPassword()));
         nv.setVaiTro(rdoTruongPhong.isSelected());
         nv.setHinh(lblHinh.getToolTipText());
-        
+
         return nv;
     }
-    
+
     public void clearForm() {
         nhanVien cd = new nhanVien();
         this.setForm(cd);
         this.row = -1;
         this.updateStatus();
     }
-    
+
     public void insert() {
         nhanVien cd = getForm();
         try {
@@ -678,7 +699,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             MsgBox.alert(this, "Thêm không thành công");
         }
     }
-    
+
     public void update() {
         nhanVien nv = getForm();
         try {
@@ -690,7 +711,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             MsgBox.alert(this, "Cập nhật không thành công");
         }
     }
-    
+
     public void delete() {
         if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
             String macd = txtMaNV.getText();
@@ -705,54 +726,54 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void edit() {
         String manv = (String) tblBang_NV.getValueAt(this.row, 0);
         nhanVien nv = dao.selectById(manv);
         this.setForm(nv);
         this.updateStatus();
     }
-    
+
     public void dauTien() {
         this.row = 0;
         this.edit();
     }
-    
+
     public void troVe() {
         if (this.row > 0) {
             this.row--;
             this.edit();
         }
     }
-    
+
     public void tiepTheo() {
         if (this.row < tblBang_NV.getRowCount() - 1) {
             this.row++;
             this.edit();
         }
     }
-    
+
     public void cuoiCung() {
         this.row = tblBang_NV.getRowCount() - 1;
         this.edit();
     }
-    
+
     public void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblBang_NV.getRowCount() - 1);
-        
+
         txtMaNV.setEditable(!edit);
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
-        
+
         btnDau.setEnabled(edit && !first);
         btnTruoc.setEnabled(edit && !first);
         btnSau.setEnabled(edit && !last);
         btnCuoi.setEnabled(edit && !last);
     }
-    
+
     public void chonAnh() {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
@@ -765,13 +786,14 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             lblHinh.setToolTipText(file.getName());
         }
     }
-    
-     public void timKiem() {
+
+    public void timKiem() {
         this.fillTable();
         this.clearForm();
         this.row = -1;
         updateStatus();
     }
+
     /**
      * @param args the command line arguments
      */

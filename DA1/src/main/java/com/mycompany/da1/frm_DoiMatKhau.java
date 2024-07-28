@@ -18,6 +18,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
      * Creates new form frm_DoiMatKhau
      */
     nhanVien_DAO dao = new nhanVien_DAO();
+
     public frm_DoiMatKhau(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -47,6 +48,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel2.setText("Tên đăng nhập");
 
@@ -70,6 +72,11 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         });
 
         jButton2.setText("Hủy bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,6 +174,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_tenDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tenDangNhapActionPerformed
@@ -177,8 +185,11 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         this.DoiMatKhau();
     }//GEN-LAST:event_btn_doiMatKhauActionPerformed
 
-    
-      private void DoiMatKhau() {
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void DoiMatKhau() {
         String manv = txt_tenDangNhap.getText();
         String mk = new String(txt_mk1.getText());
         String mkMoi = new String(txt_mk2.getText());
@@ -196,6 +207,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
             MsgBox.alert(this, "Đổi mật khẩu thành công");
         }
     }
+
     /**
      * @param args the command line arguments
      */

@@ -92,6 +92,11 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         }
     }
 
+    public void OpenDoiMatKhau() {
+        Auth.clear();
+        new frm_DoiMatKhau(this, true).setVisible(true);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -140,7 +145,6 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1019, 645));
 
         buttonGroup1.add(rdo_YesVip);
         rdo_YesVip.setText("Yes");
@@ -375,16 +379,15 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDau)
                             .addComponent(btnCuoi)
-                            .addComponent(lblNgay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(lblNgay)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdo_NoVip)
-                            .addComponent(rdo_YesVip))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(rdo_YesVip))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -447,11 +450,21 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         btn_dangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_dangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangXuat.setText("Đăng xuất");
+        btn_dangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dangXuatActionPerformed(evt);
+            }
+        });
 
         btn_doiMatKhau.setBackground(new java.awt.Color(204, 204, 255));
         btn_doiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_doiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         btn_doiMatKhau.setText("Đổi mật khẩu");
+        btn_doiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doiMatKhauActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/snapedit_con4.png"))); // NOI18N
@@ -587,6 +600,14 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         this.last();
     }//GEN-LAST:event_btnCuoiActionPerformed
 
+    private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
+        this.OpenDoiMatKhau();
+    }//GEN-LAST:event_btn_doiMatKhauActionPerformed
+
+    private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
+        this.DangXuat();
+    }//GEN-LAST:event_btn_dangXuatActionPerformed
+
     void timKiem() {
         this.fillTable();
         this.clearForm();
@@ -621,7 +642,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }
 
     void setForm(KhachHang kh) {
-        txtMaKH.setText(""+kh.getMaKH());
+        txtMaKH.setText("" + kh.getMaKH());
         txtHoTen.setText(kh.getHoTen());
         txtEmail.setText(kh.getEmail());
         txtSDT.setText(kh.getSdt());

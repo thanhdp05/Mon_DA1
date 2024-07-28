@@ -264,7 +264,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_KHActionPerformed
 
     private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
-
+        this.OpenDoiMatKhau();
     }//GEN-LAST:event_btn_doiMatKhauActionPerformed
 
     private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
@@ -272,12 +272,26 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
     private void btn_QL_DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_DTActionPerformed
-        
+        this.OpenDoanhThu();
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
+    public void OpenDoanhThu() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_DoanhThu().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
     public void DangXuat() {
         Auth.clear();
         new frm_DangNhapJdialog(this, true).setVisible(true);
+    }
+    
+    public void OpenDoiMatKhau() {
+        Auth.clear();
+        new frm_DoiMatKhau(this, true).setVisible(true);
     }
 
     public void KetThuc() {

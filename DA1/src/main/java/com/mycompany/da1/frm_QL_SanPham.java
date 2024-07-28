@@ -57,7 +57,6 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         btn_dangXuat.setBackground(cl_btn);
     }
 
-    
     public void DangXuat() {
         Auth.clear();
         new frm_DangNhapJdialog(this, true).setVisible(true);
@@ -104,6 +103,12 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
+
+    public void OpenDoiMatKhau() {
+        Auth.clear();
+        new frm_DoiMatKhau(this, true).setVisible(true);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -661,7 +666,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 39, Short.MAX_VALUE)
+                .addGap(0, 45, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -724,11 +729,21 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         btn_dangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_dangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangXuat.setText("Đăng xuất");
+        btn_dangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dangXuatActionPerformed(evt);
+            }
+        });
 
         btn_doiMatKhau.setBackground(new java.awt.Color(204, 204, 255));
         btn_doiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_doiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         btn_doiMatKhau.setText("Đổi mật khẩu");
+        btn_doiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doiMatKhauActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/snapedit_con4.png"))); // NOI18N
@@ -914,6 +929,14 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     private void btn_QL_KHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_KHActionPerformed
         this.OpenKhachHang();
     }//GEN-LAST:event_btn_QL_KHActionPerformed
+
+    private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
+        this.OpenDoiMatKhau();
+    }//GEN-LAST:event_btn_doiMatKhauActionPerformed
+
+    private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
+        this.DangXuat();
+    }//GEN-LAST:event_btn_dangXuatActionPerformed
 
     void updateStatus_lsp() {
         boolean edit = (this.row2 >= 0);
@@ -1124,12 +1147,12 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }
 
     void setForm(sanPham sp) {
-        if(row1<0){
+        if (row1 < 0) {
             cboLoaiSP.setSelectedIndex(sp.getLoaiSP());
-        }else{
-            cboLoaiSP.setSelectedIndex(sp.getLoaiSP()-1);
+        } else {
+            cboLoaiSP.setSelectedIndex(sp.getLoaiSP() - 1);
         }
-        
+
         txtMaSP.setText(sp.getMaSP());
         txtTenSP.setText(sp.getTenSP());
         txtHang.setText(sp.getHangSP());
