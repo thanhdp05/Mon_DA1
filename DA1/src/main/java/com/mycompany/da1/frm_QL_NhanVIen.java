@@ -97,6 +97,15 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
+    
+     public void OpenDoanhThu() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_DoanhThu().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -455,6 +464,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         btn_QL_DT.setForeground(new java.awt.Color(255, 255, 255));
         btn_QL_DT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/thongke.png"))); // NOI18N
         btn_QL_DT.setText("Doanh thu");
+        btn_QL_DT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_QL_DTActionPerformed(evt);
+            }
+        });
 
         btn_QL_KH.setBackground(new java.awt.Color(204, 204, 255));
         btn_QL_KH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -627,6 +641,10 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
         this.DangXuat();
     }//GEN-LAST:event_btn_dangXuatActionPerformed
+
+    private void btn_QL_DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_DTActionPerformed
+        this.OpenDoanhThu();
+    }//GEN-LAST:event_btn_QL_DTActionPerformed
 
     private void innit() {
         rdoNhanVIen.setSelected(true);

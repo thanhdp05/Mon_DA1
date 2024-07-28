@@ -201,6 +201,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Doanh thu"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_QL_DTActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_QL_KH">
           <Properties>
