@@ -12,18 +12,20 @@ import java.util.Date;
  */
 public class hoaDon {
     int maHD ;
-    int maND ;
+    int maKH ;
     float tongTien ;
     Date ngayTao ;
+    String maNV ;
 
     public hoaDon() {
     }
 
-    public hoaDon(int maHD, int maND, float tongTien, Date ngayTao) {
+    public hoaDon(int maHD, int maKH, float tongTien, Date ngayTao, String maNV) {
         this.maHD = maHD;
-        this.maND = maND;
+        this.maKH = maKH;
         this.tongTien = tongTien;
         this.ngayTao = ngayTao;
+        this.maNV = maNV;
     }
 
     public int getMaHD() {
@@ -34,12 +36,12 @@ public class hoaDon {
         this.maHD = maHD;
     }
 
-    public int getMaND() {
-        return maND;
+    public int getMaKH() {
+        return maKH;
     }
 
-    public void setMaND(int maND) {
-        this.maND = maND;
+    public void setMaKH(int maKH) {
+        this.maKH = maKH;
     }
 
     public float getTongTien() {
@@ -57,5 +59,14 @@ public class hoaDon {
     public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
     }
+
+    public String getMaNV() {
+        return maNV;
+    }
+
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
+    }
+
     
 }

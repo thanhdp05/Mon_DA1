@@ -4,15 +4,24 @@
  */
 package com.mycompany.da1;
 
+import com.ntdk.dao.hoaDonChiTiet_DAO;
+import com.ntdk.dao.hoaDon_DAO;
+import com.ntdk.dao.khachHang_DAO;
 import com.ntdk.dao.sanPham_DAO;
+import com.ntdk.entity.KhachHang;
+import com.ntdk.entity.hoaDon;
+import com.ntdk.entity.nhanVien;
 import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
+import com.tndk.utils.XDate;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +40,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
      * Creates new form frm_QL_NhanVIen
      */
     sanPham_DAO dao = new sanPham_DAO();
+    khachHang_DAO khDao = new khachHang_DAO();
+    hoaDon_DAO dao_hd = new hoaDon_DAO();
+    hoaDonChiTiet_DAO dao_hdct = new hoaDonChiTiet_DAO();
     Color cl_btn = new Color(0, 0, 0, 0);
 
     public frm_QL_ThanhToan() {
@@ -149,8 +161,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
+        txtHoTen = new javax.swing.JTextField();
         txt_TienThu = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -315,6 +327,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         });
 
         jButton10.setText("Xóa");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -447,9 +464,20 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("SĐT");
-
-        jTextField2.setText("Tên Người Dùng");
+        txtSDT.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtSDTAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSDTActionPerformed(evt);
+            }
+        });
 
         txt_TienThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -470,8 +498,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)))
                 .addContainerGap(125, Short.MAX_VALUE))
@@ -480,9 +508,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -546,8 +574,18 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         lbl_tienKhachDua.setText("0 VNĐ");
 
         jButton1.setText("Tính Tiền");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xuất Hóa Đơn");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -739,7 +777,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_SPActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.insertkh();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void tblBang_SMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_SMouseClicked
@@ -760,11 +798,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-           this.them_sua();
+        this.them_sua();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void tbl_sanPhamChoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tbl_sanPhamChoAncestorAdded
-        
+
     }//GEN-LAST:event_tbl_sanPhamChoAncestorAdded
 
     private void tblBang_SAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblBang_SAncestorAdded
@@ -795,29 +833,77 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_TongTienAncestorAdded
 
     private void txt_TienThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TienThuActionPerformed
-        int tien = Integer.parseInt(txt_TienThu.getText()) ;
-        lbl_tienKhachDua.setText(tien+"");
+        int tien = Integer.parseInt(txt_TienThu.getText());
+        lbl_tienKhachDua.setText(tien + "");
         this.tienThua();
     }//GEN-LAST:event_txt_TienThuActionPerformed
 
-    public void tienThua(){
+    private void txtSDTAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtSDTAncestorAdded
+    }//GEN-LAST:event_txtSDTAncestorAdded
+
+    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+        this.fill();
+    }//GEN-LAST:event_txtSDTActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        this.xoaSpCho();
+        this.them_sua();
+
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.themHoaDon();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    khachHang_DAO dao_kh = new khachHang_DAO();
+
+    hoaDon getForm() {
+        hoaDon hd = new hoaDon();
+        hd.setNgayTao(new Date());
+        hd.setMaNV(Auth.user.getMaNV());
+        hd.setTongTien(Float.parseFloat(lbl_TongTien.getText()));
+        String keyWord = txtSDT.getText();
+        List<KhachHang> list_kh = dao_kh.selectByKeyWord(keyWord);
+        for (KhachHang e : list_kh) {
+            hd.setMaKH(e.getMaKH());
+        }
+        return hd;
+    }
+
+    public void themHoaDon() {
+        hoaDon hd = getForm();
+        try {
+            dao_hd.insert(hd);
+            txtHoTen.setText("");
+            txtSDT.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    public void tienThua() {
         float tienThu = Float.parseFloat(txt_TienThu.getText());
         float tienThua = tienThu - this.tong;
-        lbl_TienThua.setText(tienThua+"");
+        lbl_TienThua.setText(tienThua + "");
     }
-    
-    public void them_sua(){
+
+    public void them_sua() {
         b.setText("");
         tong = 0;
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
-            int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 1)+"");
-            float gia  = (float) tbl_sanPhamCho.getValueAt(i, 3);
+            int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 1) + "");
+            float gia = (float) tbl_sanPhamCho.getValueAt(i, 3);
             tong += soLuong * gia;
         }
-        lbl_TongTien.setText(tong+"");
+        lbl_TongTien.setText(tong + "");
         this.Bill();
     }
-    
+
     public void Bill() {
         b.setText("                                   NTDK Shop \n");
         b.setText(b.getText() + "                                   Nguyen Van Cu noi dai, \n");
@@ -833,11 +919,15 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
 
             String Name = df.getValueAt(i, 0).toString();
-            String Qty = df.getValueAt(i, 2).toString();
+            String Qty = df.getValueAt(i, 1).toString();
             String Price = df.getValueAt(i, 3).toString();
 
             b.setText(b.getText() + "  " + Name + "\t\t" + Qty + "\t" + Price + "\n");
+
+            b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
         }
+        b.setText(b.getText() + txtSDT.getText() + ": ");
+        b.setText(b.getText() + txtHoTen.getText());
     }
 
     public void fillTableSanPham() {
@@ -867,6 +957,46 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
         Object[] row = {sp.getTenSP(), sp.getSoLuong(), sp.getSize(), sp.getGiaTien()};
         model.addRow(row);
+    }
+
+    public void xoaSpCho() {
+        DefaultTableModel modelcho = (DefaultTableModel) tbl_sanPhamCho.getModel();
+        int i = tbl_sanPhamCho.getSelectedRow();
+        modelcho.removeRow(i);
+    }
+
+    KhachHang getForm_kh() {
+        KhachHang kh = new KhachHang();
+        kh.setHoTen(txtHoTen.getText());
+        kh.setSdt(txtSDT.getText());
+        kh.setNgayDK(new Date());
+        return kh;
+    }
+
+    void setForm_kh(KhachHang kh) {
+        txtHoTen.setText(kh.getHoTen());
+        txtSDT.setText(kh.getSdt());
+    }
+
+    public void fill() {
+        String timKiem = txtSDT.getText();
+        List<KhachHang> list_kh = khDao.selectByKeyWord(timKiem);
+        for (KhachHang entity : list_kh) {
+            Object[] row = {entity.getHoTen(), entity.getSdt()};
+            txtHoTen.setText(entity.getHoTen());
+            txtSDT.setText(entity.getSdt());
+        }
+    }
+
+    void insertkh() {
+        KhachHang kh = getForm_kh();
+        try {
+            khDao.insert(kh);
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
     }
 
     /**
@@ -940,13 +1070,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_TienThua;
     private javax.swing.JLabel lbl_TongTien;
     private javax.swing.JLabel lbl_tienKhachDua;
     private javax.swing.JTable tblBang_S;
     private javax.swing.JTable tbl_sanPhamCho;
+    private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txt_TienThu;
     // End of variables declaration//GEN-END:variables

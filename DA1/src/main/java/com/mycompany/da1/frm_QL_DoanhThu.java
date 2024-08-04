@@ -4,9 +4,14 @@
  */
 package com.mycompany.da1;
 
+import com.ntdk.dao.hoaDonChiTiet_DAO;
+import com.ntdk.dao.hoaDon_DAO;
 import com.ntdk.dao.loaiSP_DAO;
 import com.ntdk.dao.sanPham_DAO;
+import com.ntdk.entity.hoaDon;
+import com.ntdk.entity.hoaDonChiTiet;
 import com.ntdk.entity.loaiSP;
+import com.ntdk.entity.nhanVien;
 import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
@@ -16,6 +21,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -29,13 +35,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
+    hoaDon_DAO hdDao = new hoaDon_DAO();
+    hoaDonChiTiet_DAO hdctDao = new hoaDonChiTiet_DAO();
+
     /**
      * Creates new form frm_QL_SanPham
      */
     public frm_QL_DoanhThu() {
         initComponents();
         setBtn();
-
+        this.fillTableHoaDon();
     }
 
     sanPham_DAO dao_sp = new sanPham_DAO();
@@ -104,7 +113,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     }
 
     public void OpenDoiMatKhau() {
-     
+
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
 
@@ -186,13 +195,13 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
             }
         ));
         jScrollPane2.setViewportView(tblHoaDon);
@@ -404,26 +413,41 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
     private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
-       this.DangXuat();
+        this.DangXuat();
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
 //.....................................................................................................
-    
-    public void fillTableHoaDon(){
+    public void fillTableHoaDon() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
-//        try {
+        try {
+
+            List<hoaDon> list_spHD = hdDao.selectAll();
+//            List<hoaDonChiTiet> list_hdct = hdctDao.selectAll();
+//            List<Object> list = new ArrayList<>();
+//            list.addAll(list_hdct);
+//            list.addAll(list_spHD);
+
+            for (hoaDon e : list_spHD) {
+                Object[] row = {e.getMaHD(), e.getMaKH(), e.getTongTien(), e.getNgayTao(), e.getMaNV()};
+                model.addRow(row);
+            }
+
+//            for (hoaDonChiTiet e : list_hdct) {
 //
-//            //List<sanPham> list_sp = dao.selectAll();
-////            for (sanPham e : list_sp) {
-////                Object[] row = {e.getTenSP(), e.getLoaiSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
-////                model.addRow(row);
+//                Object[] row_hdct = { e.getMaSP(), e.getSoLuong(), e.getDonGia()};
+//                model.addRow(row_hdct);
 //            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
-//        }
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
+        }
     }
+
+    public void insertHoaDon() {
+
+    }
+
     /**
      * @param args the command line arguments
      */
