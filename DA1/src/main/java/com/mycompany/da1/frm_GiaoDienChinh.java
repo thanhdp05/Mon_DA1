@@ -290,7 +290,7 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
     }
     
     public void OpenDoiMatKhau() {
-        Auth.clear();
+       
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
 

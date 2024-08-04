@@ -47,7 +47,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }
 
     public void OpenDoiMatKhau() {
-        Auth.clear();
+      
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
 
