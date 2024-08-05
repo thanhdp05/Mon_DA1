@@ -26,7 +26,7 @@ public class hoaDonChiTiet_DAO extends NTDK_DAO<hoaDonChiTiet, Integer> {
     @Override
     public void insert(hoaDonChiTiet entity) {
         try {
-            JdbcHelper.update(INSERT_HOADONCT, entity.getMaSP(), entity.getSoLuong(), entity.getDonGia());
+            JdbcHelper.update(INSERT_HOADONCT, entity.getMaHD(), entity.getMaSP(), entity.getSoLuong(), entity.getDonGia());
         } catch (SQLException ex) {
             Logger.getLogger(loaiSP_DAO.class.getName()).log(Level.SEVERE, null, ex);
         }

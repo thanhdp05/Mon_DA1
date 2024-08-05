@@ -10,6 +10,7 @@ import com.ntdk.dao.khachHang_DAO;
 import com.ntdk.dao.sanPham_DAO;
 import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
+import com.ntdk.entity.hoaDonChiTiet;
 import com.ntdk.entity.nhanVien;
 import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
@@ -283,17 +284,17 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
         tbl_sanPhamCho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Tên SP", "Số lượng", "Size", "Giá"
+                "Mã SP", "Tên SP", "Số lượng", "Size", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false
+                false, false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -859,9 +860,34 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    hoaDonChiTiet getForm_hdct(){
+        hoaDonChiTiet hdct = new hoaDonChiTiet();
+        hoaDon hd = new hoaDon();
+        for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
+            int maHD = hd.getMaHD();
+            hdct.setMaHD(maHD);
+            String maSP = (String) tbl_sanPhamCho.getValueAt(i, 0);
+            int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2) + "");
+            float gia = (float) tbl_sanPhamCho.getValueAt(i, 4);
+            hdct.setMaSP(maSP);
+            hdct.setSoLuong(soLuong);
+            hdct.setDonGia(gia);
+        }
+        return hdct;
+    }
+    
+    public void themHDCT(){
+        hoaDonChiTiet hdct = getForm_hdct();
+        try {
+            dao_hdct.insert(hdct);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     khachHang_DAO dao_kh = new khachHang_DAO();
 
-    hoaDon getForm() {
+    hoaDon getForm_hd() {
         hoaDon hd = new hoaDon();
         hd.setNgayTao(new Date());
         hd.setMaNV(Auth.user.getMaNV());
@@ -875,9 +901,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }
 
     public void themHoaDon() {
-        hoaDon hd = getForm();
+        hoaDon hd = getForm_hd();
         try {
             dao_hd.insert(hd);
+            this.themHDCT();
             txtHoTen.setText("");
             txtSDT.setText("");
         } catch (Exception e) {
@@ -896,8 +923,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         b.setText("");
         tong = 0;
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
-            int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 1) + "");
-            float gia = (float) tbl_sanPhamCho.getValueAt(i, 3);
+            int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2) + "");
+            float gia = (float) tbl_sanPhamCho.getValueAt(i, 4);
             tong += soLuong * gia;
         }
         lbl_TongTien.setText(tong + "");
@@ -919,8 +946,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
 
             String Name = df.getValueAt(i, 0).toString();
-            String Qty = df.getValueAt(i, 1).toString();
-            String Price = df.getValueAt(i, 3).toString();
+            String Qty = df.getValueAt(i, 2).toString();
+            String Price = df.getValueAt(i, 4).toString();
 
             b.setText(b.getText() + "  " + Name + "\t\t" + Qty + "\t" + Price + "\n");
 
@@ -955,7 +982,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             model.setRowCount(0);
             a++;
         }
-        Object[] row = {sp.getTenSP(), sp.getSoLuong(), sp.getSize(), sp.getGiaTien()};
+        Object[] row = {sp.getMaSP(), sp.getTenSP(), sp.getSoLuong(), sp.getSize(), sp.getGiaTien()};
         model.addRow(row);
     }
 

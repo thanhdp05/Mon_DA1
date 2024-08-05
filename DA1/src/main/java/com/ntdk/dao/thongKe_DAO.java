@@ -31,6 +31,11 @@ public class thongKe_DAO {
         }
     }
     
+     public List<Object[]> getSlKhachHang (Integer makh){
+        String sql = "{CALL SP_slkh(?)}";
+        String[] cols = {"SoLuong"};
+        return this.getListOfArray(sql, cols, makh);
+    }
     
-//    public List<Object[]> get 
+    
 }

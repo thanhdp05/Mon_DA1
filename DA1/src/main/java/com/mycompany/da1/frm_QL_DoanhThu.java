@@ -8,26 +8,22 @@ import com.ntdk.dao.hoaDonChiTiet_DAO;
 import com.ntdk.dao.hoaDon_DAO;
 import com.ntdk.dao.loaiSP_DAO;
 import com.ntdk.dao.sanPham_DAO;
+import com.ntdk.dao.thongKe_DAO;
+import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
-import com.ntdk.entity.hoaDonChiTiet;
-import com.ntdk.entity.loaiSP;
-import com.ntdk.entity.nhanVien;
-import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
-import com.tndk.utils.XDate;
-import com.tndk.utils.XImage;
 import java.awt.Color;
-import java.awt.Image;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -37,6 +33,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
     hoaDon_DAO hdDao = new hoaDon_DAO();
     hoaDonChiTiet_DAO hdctDao = new hoaDonChiTiet_DAO();
+    thongKe_DAO dao_TKe = new thongKe_DAO();
 
     /**
      * Creates new form frm_QL_SanPham
@@ -45,6 +42,9 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         initComponents();
         setBtn();
         this.fillTableHoaDon();
+        ChartPanel bieuDoCot = new ChartPanel(createCharts());
+        bieuDoCot.setPreferredSize(new Dimension(400, 200));
+        tabs.addTab("Thống kê phiếu mượn", bieuDoCot);
     }
 
     sanPham_DAO dao_sp = new sanPham_DAO();
@@ -127,12 +127,13 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     private void initComponents() {
 
         fileChooser = new javax.swing.JFileChooser();
-        jPanel3 = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        tabs = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        tx = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
@@ -147,12 +148,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         btn_doiMatKhau = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -163,35 +159,46 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Doanh Thu");
+
+        tx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(88, 88, 88)
+                .addComponent(tx, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(310, 310, 310))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addGap(457, 457, 457))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(tx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Doanh Thu", jPanel2);
+        tabs.addTab("Doanh Thu", jPanel2);
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -233,19 +240,19 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 .addContainerGap(96, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Thống Kê Hóa Đơn", jPanel4);
+        tabs.addTab("Thống Kê Hóa Đơn", jPanel4);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(tabs)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
@@ -416,6 +423,48 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         this.DangXuat();
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
+    private void txActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txActionPerformed
+    }//GEN-LAST:event_txActionPerformed
+
+    //------------------------------------//
+    public JFreeChart createCharts() {
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê số lượng sản phẩm và khách hàng",
+                "Tháng", "sản phẩm và khách hàng",
+                createDatasets(), PlotOrientation.VERTICAL, false, false, false);
+        return barChart;
+    }
+
+    private CategoryDataset createDatasets() {
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+//        for (int i = 1; i < 13; i++) {
+//            List<Object[]> l = dao_TKe.getSlKhachHang(i);
+//            for (Object[] a : l) {
+//                Object[] row = {a[0]};
+//                model.addRow(row);
+//            }
+//            
+//        }
+        
+        dataset.addValue(90, "sản phẩm", "Tháng 4");
+        dataset.addValue(06, "khách hàng", "Tháng 4");
+
+        dataset.addValue(25, "sản phẩm", "Tháng 5");
+        dataset.addValue(205, "khách hàng", "Tháng 5");
+
+        dataset.addValue(75, "sản phẩm", "Tháng 6");
+        dataset.addValue(750, "khách hàng", "Tháng 6");
+
+        dataset.addValue(200, "sản phẩm", "Tháng 7");
+        dataset.addValue(300, "khách hàng", "Tháng 7");
+
+        dataset.addValue(250, "sản phẩm", "Tháng 9");
+        dataset.addValue(100, "khách hàng", "Tháng 9");
+
+        return dataset;
+    }
+
 //.....................................................................................................
     public void fillTableHoaDon() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
@@ -502,8 +551,9 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tbl;
     private javax.swing.JTable tblHoaDon;
+    private javax.swing.JTextField tx;
     // End of variables declaration//GEN-END:variables
 }
