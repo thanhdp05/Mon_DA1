@@ -5,14 +5,10 @@
 package com.ntdk.dao;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author ASUS
  */
-
 public class thongKe_DAO {
 
     private int getSingleValue(String sql, String[] cols, Object... args) {
@@ -34,11 +30,17 @@ public class thongKe_DAO {
         String[] cols = {"SoLuong"};
         return this.getSingleValue(sql, cols, thang);
     }
-    
-       public int getSlsanPham(Integer thang) {
+
+    public int getSlsanPham(Integer thang) {
         String sql = "{CALL SP_slsp(?)}";
         String[] cols = {"slBan"};
         return this.getSingleValue(sql, cols, thang);
     }
-       
+
+    public int getDoanhThu(Integer thang){
+        String sql = "{CALL SP_doanhThu(?)}";
+        String [] cols = {"doanhThu"};
+        return this.getSingleValue(sql, cols, thang);
+    }
+    
 }

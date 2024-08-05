@@ -11,6 +11,7 @@ import com.ntdk.dao.sanPham_DAO;
 import com.ntdk.dao.thongKe_DAO;
 import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
+import com.ntdk.entity.hoaDonChiTiet;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
 import java.awt.Color;
@@ -42,9 +43,14 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         initComponents();
         setBtn();
         this.fillTableHoaDon();
+        this.fillTableHDCT();
         ChartPanel bieuDoCot = new ChartPanel(createCharts());
         bieuDoCot.setPreferredSize(new Dimension(400, 200));
         tabs.addTab("Thống kê phiếu mượn", bieuDoCot);
+
+        ChartPanel bieuDoDuong = new ChartPanel(createLineChart());
+        bieuDoDuong.setPreferredSize(new Dimension(400, 200));
+        tabs.addTab("Thống kê người mượn", bieuDoDuong);
     }
 
     sanPham_DAO dao_sp = new sanPham_DAO();
@@ -131,13 +137,14 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         tbl = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        tx = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblHDCT = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnTrangChu = new javax.swing.JButton();
         btn_QL_NV = new javax.swing.JButton();
@@ -166,49 +173,15 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Doanh Thu");
-
-        tx.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(tx, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(310, 310, 310))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(457, 457, 457))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(tx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabs.addTab("Doanh Thu", jPanel2);
-
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         jScrollPane2.setViewportView(tblHoaDon);
@@ -223,12 +196,12 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(311, 311, 311)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,11 +215,56 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
         tabs.addTab("Thống Kê Hóa Đơn", jPanel4);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Thống kê HDCT");
+
+        tblHDCT.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tblHDCT);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(321, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(45, 45, 45)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(46, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(484, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(91, 91, 91)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(92, Short.MAX_VALUE)))
+        );
+
+        tabs.addTab("Thống kê HDCT", jPanel2);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs)
+            .addComponent(tabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,8 +441,31 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         this.DangXuat();
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
-    private void txActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txActionPerformed
-    }//GEN-LAST:event_txActionPerformed
+    public JFreeChart createLineChart() {
+        // Thay đổi hàm tạo để tạo biểu đồ đường
+        JFreeChart lineChart = ChartFactory.createLineChart(
+                "Biểu đồ thống kê doanh thu", // Tiêu đề
+                "Tháng", // Trục hoành
+                "Tiền (VND)", // Trục tung
+                createDataset(), // Dữ liệu
+                PlotOrientation.VERTICAL, // Phương hướng biểu đồ
+                true, // Hiển thị legend
+                true, // Tooltips
+                false // URL
+        );
+        return lineChart;
+    }
+
+    private CategoryDataset createDataset() {
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        for (int i = 1; i < 13; i++) {
+            float doanhThu = dao_TKe.getDoanhThu(i);
+            dataset.addValue(doanhThu, "doanh thu", "" + i);
+        }
+
+        return dataset;
+    }
 
     //------------------------------------//
     public JFreeChart createCharts() {
@@ -442,29 +483,11 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
             int soLuongKhachHang = dao_TKe.getSlKhachHang(i);
             int soLuongSanPham = dao_TKe.getSlsanPham(i);
 
-            dataset.addValue(soLuongKhachHang, "khách hàng","" + i);
-            dataset.addValue(soLuongSanPham, "sản phẩm", "" +i);
-
+            dataset.addValue(soLuongSanPham, "sản phẩm", "" + i);
+            dataset.addValue(soLuongKhachHang, "khách hàng", "" + i);
         }
 
         return dataset;
-
-//        dataset.addValue(90, "sản phẩm", "Tháng 4");
-//        dataset.addValue(06, "khách hàng", "Tháng 4");
-//
-//        dataset.addValue(25, "sản phẩm", "Tháng 5");
-//        dataset.addValue(205, "khách hàng", "Tháng 5");
-//
-//        dataset.addValue(75, "sản phẩm", "Tháng 6");
-//        dataset.addValue(750, "khách hàng", "Tháng 6");
-//
-//        dataset.addValue(200, "sản phẩm", "Tháng 7");
-//        dataset.addValue(300, "khách hàng", "Tháng 7");
-//
-//        dataset.addValue(250, "sản phẩm", "Tháng 9");
-//        dataset.addValue(100, "khách hàng", "Tháng 9");
-//
-//        return dataset;
     }
 
 //.....................................................................................................
@@ -474,29 +497,30 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         try {
 
             List<hoaDon> list_spHD = hdDao.selectAll();
-//            List<hoaDonChiTiet> list_hdct = hdctDao.selectAll();
-//            List<Object> list = new ArrayList<>();
-//            list.addAll(list_hdct);
-//            list.addAll(list_spHD);
-
             for (hoaDon e : list_spHD) {
                 Object[] row = {e.getMaHD(), e.getMaKH(), e.getTongTien(), e.getNgayTao(), e.getMaNV()};
                 model.addRow(row);
             }
-
-//            for (hoaDonChiTiet e : list_hdct) {
-//
-//                Object[] row_hdct = { e.getMaSP(), e.getSoLuong(), e.getDonGia()};
-//                model.addRow(row_hdct);
-//            }
         } catch (Exception e) {
             e.printStackTrace();
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
     }
 
-    public void insertHoaDon() {
+    public void fillTableHDCT() {
+        DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
+        model.setRowCount(0);
+        try {
 
+            List<hoaDonChiTiet> list_HDCT = hdctDao.selectAll();
+            for (hoaDonChiTiet e : list_HDCT) {
+                Object[] row = {e.getMaHD(), e.getMaSP(), e.getSoLuong(), e.getDonGia()};
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
+        }
     }
 
     /**
@@ -553,9 +577,10 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tbl;
+    private javax.swing.JTable tblHDCT;
     private javax.swing.JTable tblHoaDon;
-    private javax.swing.JTextField tx;
     // End of variables declaration//GEN-END:variables
 }
