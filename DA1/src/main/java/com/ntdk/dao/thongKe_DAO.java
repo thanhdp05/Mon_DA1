@@ -12,30 +12,33 @@ import java.util.List;
  *
  * @author ASUS
  */
+
 public class thongKe_DAO {
-    private List<Object[]> getListOfArray (String sql, String[] cols , Object...args){
+
+    private int getSingleValue(String sql, String[] cols, Object... args) {
         try {
-            List<Object[]> list = new ArrayList<>();
-            ResultSet rs = JdbcHelper.query(sql , args);
-            while(rs.next()){
-                Object[] vals = new Object[cols.length];
-                for (int i = 0; i < cols.length; i++) {
-                    vals[i] = rs.getObject(cols[i]);
-                }
-                list.add(vals);
+            int result = 0;
+            ResultSet rs = JdbcHelper.query(sql, args);
+            if (rs.next()) {
+                result = rs.getInt(cols[0]);
             }
             rs.getStatement().getConnection().close();
-            return list;
+            return result;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
-     public List<Object[]> getSlKhachHang (Integer makh){
+
+    public int getSlKhachHang(Integer thang) {
         String sql = "{CALL SP_slkh(?)}";
         String[] cols = {"SoLuong"};
-        return this.getListOfArray(sql, cols, makh);
+        return this.getSingleValue(sql, cols, thang);
     }
     
-    
+       public int getSlsanPham(Integer thang) {
+        String sql = "{CALL SP_slsp(?)}";
+        String[] cols = {"slBan"};
+        return this.getSingleValue(sql, cols, thang);
+    }
+       
 }

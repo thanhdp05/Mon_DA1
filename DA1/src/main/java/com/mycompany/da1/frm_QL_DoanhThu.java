@@ -437,32 +437,34 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
     private CategoryDataset createDatasets() {
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-//        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
-//        for (int i = 1; i < 13; i++) {
-//            List<Object[]> l = dao_TKe.getSlKhachHang(i);
-//            for (Object[] a : l) {
-//                Object[] row = {a[0]};
-//                model.addRow(row);
-//            }
-//            
-//        }
-        
-        dataset.addValue(90, "sản phẩm", "Tháng 4");
-        dataset.addValue(06, "khách hàng", "Tháng 4");
 
-        dataset.addValue(25, "sản phẩm", "Tháng 5");
-        dataset.addValue(205, "khách hàng", "Tháng 5");
+        for (int i = 1; i < 13; i++) {
+            int soLuongKhachHang = dao_TKe.getSlKhachHang(i);
+            int soLuongSanPham = dao_TKe.getSlsanPham(i);
 
-        dataset.addValue(75, "sản phẩm", "Tháng 6");
-        dataset.addValue(750, "khách hàng", "Tháng 6");
+            dataset.addValue(soLuongKhachHang, "khách hàng","" + i);
+            dataset.addValue(soLuongSanPham, "sản phẩm", "" +i);
 
-        dataset.addValue(200, "sản phẩm", "Tháng 7");
-        dataset.addValue(300, "khách hàng", "Tháng 7");
-
-        dataset.addValue(250, "sản phẩm", "Tháng 9");
-        dataset.addValue(100, "khách hàng", "Tháng 9");
+        }
 
         return dataset;
+
+//        dataset.addValue(90, "sản phẩm", "Tháng 4");
+//        dataset.addValue(06, "khách hàng", "Tháng 4");
+//
+//        dataset.addValue(25, "sản phẩm", "Tháng 5");
+//        dataset.addValue(205, "khách hàng", "Tháng 5");
+//
+//        dataset.addValue(75, "sản phẩm", "Tháng 6");
+//        dataset.addValue(750, "khách hàng", "Tháng 6");
+//
+//        dataset.addValue(200, "sản phẩm", "Tháng 7");
+//        dataset.addValue(300, "khách hàng", "Tháng 7");
+//
+//        dataset.addValue(250, "sản phẩm", "Tháng 9");
+//        dataset.addValue(100, "khách hàng", "Tháng 9");
+//
+//        return dataset;
     }
 
 //.....................................................................................................
