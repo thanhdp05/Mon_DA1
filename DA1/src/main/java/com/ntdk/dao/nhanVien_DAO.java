@@ -23,6 +23,8 @@ public class nhanVien_DAO extends NTDK_DAO<nhanVien , String>{
     String DELETE_NHANVIEN = "delete nhanVien where maNV = ?";
     String SELECT_NHANVIEN_ALL = "select * from nhanVien";
     String SELECT_NHANVIEN_WHERE = "select * from nhanVien where maNV = ?";
+     String UPDATE_MkMoi_NHANVIEN = "update nhanVien set  matKhau = ? where maNV = ?";
+    
     
     
     @Override
@@ -93,4 +95,13 @@ public class nhanVien_DAO extends NTDK_DAO<nhanVien , String>{
         String sql = "SELECT * FROM nhanVien WHERE HOTEN LIKE ?";
         return this.selectBySql(sql, "%" + keyword + "%");
     }
+     
+     public void updateMk(nhanVien entity){
+           try {
+            JdbcHelper.update(UPDATE_MkMoi_NHANVIEN,  entity.getMatKhau(),entity.getMaNV());
+        } catch (SQLException ex) {
+            Logger.getLogger(nhanVien_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+         
 }
