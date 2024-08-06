@@ -31,6 +31,10 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         txtMaNv.setBackground(anNen);
         txtMatKhau.setBackground(anNen);
     }
+    
+    public void OpenQuenMK(){
+        new form_QuenMk().setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,7 +184,8 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cboShowActionPerformed
 
     private void lblQuenMkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMkMouseClicked
-
+        this.dispose();
+        OpenQuenMK();
     }//GEN-LAST:event_lblQuenMkMouseClicked
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed

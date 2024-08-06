@@ -75,5 +75,4 @@ public class hoaDonChiTiet_DAO extends NTDK_DAO<hoaDonChiTiet, Integer> {
             throw new RuntimeException(ex);
         }
     }
-
 }

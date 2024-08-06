@@ -860,11 +860,19 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    hoaDonChiTiet getForm_hdct(){
+    public int maHD() {
+        List<hoaDon> list_hd = dao_hd.selectMax();
+        int ma = 0;
+        for (hoaDon hd : list_hd) {
+            ma = hd.getMaHD();
+        }
+        return ma;
+    }
+    hoaDonChiTiet getForm_hdct() {
         hoaDonChiTiet hdct = new hoaDonChiTiet();
         hoaDon hd = new hoaDon();
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
-            int maHD = hd.getMaHD();
+            int maHD = maHD();
             hdct.setMaHD(maHD);
             String maSP = (String) tbl_sanPhamCho.getValueAt(i, 0);
             int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2) + "");
@@ -875,8 +883,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
         return hdct;
     }
-    
-    public void themHDCT(){
+
+    public void themHDCT() {
         hoaDonChiTiet hdct = getForm_hdct();
         try {
             dao_hdct.insert(hdct);
@@ -884,7 +892,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     khachHang_DAO dao_kh = new khachHang_DAO();
 
     hoaDon getForm_hd() {
@@ -907,9 +915,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             this.themHDCT();
             txtHoTen.setText("");
             txtSDT.setText("");
+            MsgBox.alert(this, "Thanh toán thành công");
         } catch (Exception e) {
             e.printStackTrace();
-            MsgBox.alert(this, "Thêm mới thất bại!");
+            MsgBox.alert(this, "Thanh toán thất bại!");
         }
     }
 

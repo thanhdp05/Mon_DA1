@@ -25,6 +25,11 @@ public class hoaDon_DAO extends NTDK_DAO<hoaDon, Integer> {
     String SELECT_ALL_HOADON = "select * from hoaDon";
     String SELECT_HOADON_WHERE = "select * from hoaDon where maHD = ?";
 
+    public List<hoaDon> selectMax(){
+        String sql = "select maHD, maKH, tongTien, ngayTao, maNV from hoaDon where maHD = (select MAX(maHD) from hoaDon) group by maHD, maKH, tongTien, ngayTao, maNV";
+        return this.selectBySql(sql);
+    }
+    
     @Override
     public void insert(hoaDon entity) {
         try {

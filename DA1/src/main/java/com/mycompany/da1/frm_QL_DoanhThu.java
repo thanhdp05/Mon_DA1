@@ -46,11 +46,11 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         this.fillTableHDCT();
         ChartPanel bieuDoCot = new ChartPanel(createCharts());
         bieuDoCot.setPreferredSize(new Dimension(400, 200));
-        tabs.addTab("Thống kê phiếu mượn", bieuDoCot);
+        tabs.addTab("Thống kê sản phẩm và khách hàng", bieuDoCot);
 
         ChartPanel bieuDoDuong = new ChartPanel(createLineChart());
         bieuDoDuong.setPreferredSize(new Dimension(400, 200));
-        tabs.addTab("Thống kê người mượn", bieuDoDuong);
+        tabs.addTab("Thống kê doanh thu", bieuDoDuong);
     }
 
     sanPham_DAO dao_sp = new sanPham_DAO();

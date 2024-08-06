@@ -214,6 +214,17 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
+        txtMaSP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaSPFocusLost(evt);
+            }
+        });
+        txtMaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaSPActionPerformed(evt);
+            }
+        });
+
         txtTenSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenSPActionPerformed(evt);
@@ -231,6 +242,17 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
+        txtGiaTien.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtGiaTienFocusLost(evt);
+            }
+        });
+        txtGiaTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGiaTienActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Hinh");
 
         jLabel7.setText("Hãng");
@@ -241,6 +263,11 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
+        txtSoLuong.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSoLuongFocusLost(evt);
+            }
+        });
         txtSoLuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSoLuongActionPerformed(evt);
@@ -955,6 +982,50 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     private void btn_QL_DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_DTActionPerformed
         this.OpenDoanhThu();
     }//GEN-LAST:event_btn_QL_DTActionPerformed
+
+    private void txtMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSPActionPerformed
+        
+    }//GEN-LAST:event_txtMaSPActionPerformed
+
+    private void txtGiaTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaTienActionPerformed
+
+    }//GEN-LAST:event_txtGiaTienActionPerformed
+
+    private void txtMaSPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaSPFocusLost
+        if(!txtMaSP.getText().isEmpty()){
+            String reg = "SP\\d{3,}";
+            if(!txtMaSP.getText().trim().matches(reg)){
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: SP001.");
+                txtMaSP.setText("");
+            }
+        }
+        if(this.row1==-1){
+            if(dao_sp.selectById(txtMaSP.getText()) != null){
+                MsgBox.alert(this, "Mã đã tồn tại!");
+                txtMaSP.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtMaSPFocusLost
+
+    private void txtGiaTienFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiaTienFocusLost
+        if(!txtGiaTien.getText().isEmpty()){
+            String reg = "\\d{4,}";
+            if(!txtGiaTien.getText().trim().matches(reg)){
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10000.");
+                txtGiaTien.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtGiaTienFocusLost
+
+    private void txtSoLuongFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSoLuongFocusLost
+        if(!txtGiaTien.getText().isEmpty()){
+            String reg = "\\d";
+            if(!txtGiaTien.getText().trim().matches(reg)){
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10.");
+                txtGiaTien.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtSoLuongFocusLost
 
     void updateStatus_lsp() {
         boolean edit = (this.row2 >= 0);
