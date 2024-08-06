@@ -230,6 +230,11 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
 
         jLabel7.setText("Email");
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -238,6 +243,11 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
 
         jLabel8.setText("Số điện thoại");
 
+        txtSDT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSDTFocusLost(evt);
+            }
+        });
         txtSDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSDTActionPerformed(evt);
@@ -567,7 +577,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_txtHoTenActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
@@ -624,6 +634,26 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     private void btn_QL_DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_DTActionPerformed
         this.OpenDoanhThu();
     }//GEN-LAST:event_btn_QL_DTActionPerformed
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+          if(!txtEmail.getText().isEmpty()){
+            String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+            if(!txtEmail.getText().trim().matches(email)){
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
+                txtEmail.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
+          if(!txtSDT.getText().isEmpty()){
+            String reg = "\\d{10,10}";
+            if(!txtSDT.getText().trim().matches(reg)){
+                MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
+                txtSDT.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtSDTFocusLost
 
     void timKiem() {
         this.fillTable();

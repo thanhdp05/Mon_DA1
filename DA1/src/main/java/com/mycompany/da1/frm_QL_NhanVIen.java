@@ -32,6 +32,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         initComponents();
         setBtn();
         innit();
+        btnThem.setEnabled(false);
     }
     nhanVien_DAO dao = new nhanVien_DAO();
     int row = -1;
@@ -260,6 +261,15 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         });
 
+        txtMaNV.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMaNVFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaNVFocusLost(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Quan Ly Nhan Vien");
 
@@ -284,6 +294,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
 
         jLabel7.setText("Email");
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -307,6 +322,34 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTimKiemActionPerformed(evt);
+            }
+        });
+
+        txtMatKhau1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMatKhau1FocusLost(evt);
+            }
+        });
+        txtMatKhau1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatKhau1ActionPerformed(evt);
+            }
+        });
+
+        txtMatKhau2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMatKhau2FocusLost(evt);
+            }
+        });
+        txtMatKhau2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhau2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMatKhau2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMatKhau2KeyTyped(evt);
             }
         });
 
@@ -645,6 +688,71 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     private void btn_QL_DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_DTActionPerformed
         this.OpenDoanhThu();
     }//GEN-LAST:event_btn_QL_DTActionPerformed
+
+    private void txtMaNVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusLost
+         if(!txtMaNV.getText().isEmpty()){
+            String reg = "NV\\d{1,}";
+            if(!txtMaNV.getText().trim().matches(reg)){
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: NV1.");
+                txtMaNV.setText("");
+            }
+        }
+        if(this.row==-1){
+            if(dao.selectById(txtMaNV.getText()) != null){
+                MsgBox.alert(this, "Mã đã tồn tại!");
+                txtMaNV.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtMaNVFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        if(!txtEmail.getText().isEmpty()){
+            String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+            if(!txtEmail.getText().trim().matches(email)){
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
+                txtEmail.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtMatKhau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhau1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhau1ActionPerformed
+
+    private void txtMatKhau1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhau1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhau1FocusLost
+
+    private void txtMatKhau2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhau2FocusLost
+          char[] password1 = txtMatKhau1.getPassword();
+        char[] password2 = txtMatKhau2.getPassword();
+
+        if (password1.length != password2.length || !java.util.Arrays.equals(password1, password2)) {
+            MsgBox.alert(this,"Mật khẩu không trùng khớp với mật khẩu trên");
+            txtMatKhau2.setText("");
+            btnThem.setEnabled(false);
+            btnSua.setEnabled(false);
+        } else {
+            btnSua.setEnabled(true);
+            btnThem.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtMatKhau2FocusLost
+
+    private void txtMaNVFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaNVFocusGained
+
+    private void txtMatKhau2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhau2KeyPressed
+       
+    }//GEN-LAST:event_txtMatKhau2KeyPressed
+
+    private void txtMatKhau2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhau2KeyReleased
+        
+    }//GEN-LAST:event_txtMatKhau2KeyReleased
+
+    private void txtMatKhau2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhau2KeyTyped
+      
+    }//GEN-LAST:event_txtMatKhau2KeyTyped
 
     private void innit() {
         rdoNhanVIen.setSelected(true);

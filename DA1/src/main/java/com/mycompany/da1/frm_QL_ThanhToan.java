@@ -29,6 +29,8 @@ import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -826,6 +828,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         this.them_sua();
+        this.suaSp();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     float tong = 0;
@@ -954,7 +957,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // get table Product details
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
 
-            String Name = df.getValueAt(i, 0).toString();
+            String Name = df.getValueAt(i, 1).toString();
             String Qty = df.getValueAt(i, 2).toString();
             String Price = df.getValueAt(i, 4).toString();
 
@@ -980,7 +983,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // get table Product details
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
 
-            String Name = df.getValueAt(i, 0).toString();
+            String Name = df.getValueAt(i, 1).toString();
             String Qty = df.getValueAt(i, 2).toString();
             String Price = df.getValueAt(i, 4).toString();
 
@@ -988,9 +991,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
             b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
         }
-        b.setText(b.getText() + txtSDT.getText() + ": ");
-        b.setText(b.getText() + txtHoTen.getText());
+       
         try {
+             b.setText(b.getText() + txtSDT.getText() + ": ");
+             b.setText(b.getText() + txtHoTen.getText());
             b.print();
         } catch (PrinterException ex) {
             Logger.getLogger(frm_QL_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
@@ -1066,6 +1070,32 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
     }
 
+    
+    private void suaSp(){
+        tbl_sanPhamCho.getModel().addTableModelListener(new TableModelListener() {
+    @Override
+    public void tableChanged(TableModelEvent e) {
+        if (e.getColumn() == 2) { // Giả sử cột số lượng là cột thứ 3 (index 2)
+            capNhatSanPham();
+        }
+    }
+});
+    }
+        
+    
+    private void capNhatSanPham() {
+        for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
+            String maSPCho = tbl_sanPhamCho.getValueAt(i, 0).toString();
+            int soLuongCho = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2).toString());
+            for (int j = 0; j < tblBang_S.getRowCount(); j++) {
+                String maSP = tblBang_S.getValueAt(j, 0).toString();
+                if (maSP.equals(maSPCho)) {
+                    tblBang_S.setValueAt(soLuongCho, j, 3); // Giả sử cột số lượng là cột thứ 4 (index 3)
+                    break;
+                }
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
