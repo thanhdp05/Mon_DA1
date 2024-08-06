@@ -857,7 +857,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        this.Billin();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public int maHD() {
@@ -964,6 +964,37 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
         b.setText(b.getText() + txtSDT.getText() + ": ");
         b.setText(b.getText() + txtHoTen.getText());
+    }
+    
+    public void Billin() {
+        b.setText("                                   NTDK Shop \n");
+        b.setText(b.getText() + "                                   Nguyen Van Cu noi dai, \n");
+        b.setText(b.getText() + "                                   Nha Toi, Can Tho, \n");
+        b.setText(b.getText() + "                                   +098 ********, \n");
+        b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
+        b.setText(b.getText() + "  Sản Phẩm \t\tSố Lượng \tGiá" + "\n");
+        b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
+
+        DefaultTableModel df = (DefaultTableModel) tbl_sanPhamCho.getModel();
+
+        // get table Product details
+        for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
+
+            String Name = df.getValueAt(i, 0).toString();
+            String Qty = df.getValueAt(i, 2).toString();
+            String Price = df.getValueAt(i, 4).toString();
+
+            b.setText(b.getText() + "  " + Name + "\t\t" + Qty + "\t" + Price + "\n");
+
+            b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
+        }
+        b.setText(b.getText() + txtSDT.getText() + ": ");
+        b.setText(b.getText() + txtHoTen.getText());
+        try {
+            b.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(frm_QL_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void fillTableSanPham() {
