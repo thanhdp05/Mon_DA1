@@ -28,6 +28,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         initComponents();
         init();
         setBtn();
+
     }
 
     khachHang_DAO dao_kh = new khachHang_DAO();
@@ -646,7 +647,11 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
             if (!txtEmail.getText().trim().matches(email)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
-                txtEmail.setText("");
+                btnThem.setEnabled(false);
+                btnSua.setEnabled(false);
+            } else {
+                btnThem.setEnabled(true);
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtEmailFocusLost
@@ -657,15 +662,25 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             if (!txtSDT.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
                 txtSDT.setText("");
+                btnThem.setEnabled(false);
+                btnSua.setEnabled(false);
+            } else {
+                btnThem.setEnabled(true);
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtSDTFocusLost
 
     private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
         if (!txtHoTen.getText().isEmpty()) {
-            String reg = "[a-zA-Z\\\\s]+";
+            String reg = "[a-zA-Z\\s]+";
             if (!txtHoTen.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+                btnThem.setEnabled(false);
+                btnSua.setEnabled(false);
+            } else {
+                btnThem.setEnabled(true);
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtHoTenFocusLost
@@ -693,6 +708,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }
 
     KhachHang getForm() {
+        if (this.batLoiKoNull()) {
+            return null;
+        }
         KhachHang kh = new KhachHang();
         kh.setMaKH(Integer.parseInt(txtMaKH.getText()));
         kh.setHoTen(txtHoTen.getText());
@@ -700,7 +718,17 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         kh.setSdt(txtSDT.getText());
         kh.setNgayDK(new Date());
         kh.setVip(rdo_YesVip.isSelected());
+
         return kh;
+    }
+
+    public boolean batLoiKoNull() {
+        if (txtMaKH.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtSDT.getText().isEmpty() || txtEmail.getText().isEmpty()) {
+            MsgBox.alert(this, "Không được bỏ trống");
+            return true;
+        } else {
+            return false; 
+        }
     }
 
     void setForm(KhachHang kh) {
@@ -801,12 +829,15 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
             e.printStackTrace();
-            MsgBox.alert(this, "Cập ngật thất bại!");
+            MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }
 
     void insert() {
         KhachHang kh = getForm();
+        if (kh == null) {
+            return;
+        }
         try {
             dao_kh.insert(kh);
             this.fillTable();

@@ -918,7 +918,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
     private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
         if (!txtHoTen.getText().isEmpty()) {
-            String reg = "[a-zA-Z\\\\s]+";
+            String reg = "[a-zA-Z\\s]+";
             if (!txtHoTen.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
             }

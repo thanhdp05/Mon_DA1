@@ -105,11 +105,11 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }
 
     public void OpenDoiMatKhau() {
-       
+
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
-    
-     public void OpenDoanhThu() {
+
+    public void OpenDoanhThu() {
         if (Auth.isLogin()) {
             this.dispose();
             new frm_QL_DoanhThu().setVisible(true);
@@ -996,7 +996,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
     private void txtMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSPActionPerformed
-        
+
     }//GEN-LAST:event_txtMaSPActionPerformed
 
     private void txtGiaTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaTienActionPerformed
@@ -1004,15 +1004,18 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGiaTienActionPerformed
 
     private void txtMaSPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaSPFocusLost
-        if(!txtMaSP.getText().isEmpty()){
+        if (!txtMaSP.getText().isEmpty()) {
             String reg = "SP\\d{3,}";
-            if(!txtMaSP.getText().trim().matches(reg)){
+            if (!txtMaSP.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: SP001.");
                 txtMaSP.setText("");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
-        if(this.row1==-1){
-            if(dao_sp.selectById(txtMaSP.getText()) != null){
+        if (this.row1 == -1) {
+            if (dao_sp.selectById(txtMaSP.getText()) != null) {
                 MsgBox.alert(this, "Mã đã tồn tại!");
                 txtMaSP.setText("");
             }
@@ -1020,30 +1023,39 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMaSPFocusLost
 
     private void txtGiaTienFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiaTienFocusLost
-        if(!txtGiaTien.getText().isEmpty()){
+        if (!txtGiaTien.getText().isEmpty()) {
             String reg = "\\d{4,}";
-            if(!txtGiaTien.getText().trim().matches(reg)){
+            if (!txtGiaTien.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10000.");
                 txtGiaTien.setText("");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtGiaTienFocusLost
 
     private void txtSoLuongFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSoLuongFocusLost
-        if(!txtGiaTien.getText().isEmpty()){
+        if (!txtSoLuong.getText().isEmpty()) {
             String reg = "\\d";
-            if(!txtGiaTien.getText().trim().matches(reg)){
+            if (!txtSoLuong.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10.");
-                txtGiaTien.setText("");
+                txtSoLuong.setText("");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtSoLuongFocusLost
 
     private void txtTenSPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenSPFocusLost
         if (!txtTenSP.getText().isEmpty()) {
-            String reg = "[a-zA-Z\\\\s]+";
+            String reg = "[a-zA-Z\\s]+";
             if (!txtTenSP.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtTenSPFocusLost
@@ -1053,6 +1065,9 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             String reg = "[a-zA-Z\\\\s]+";
             if (!txtTenLoai.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtTenLoaiFocusLost
@@ -1073,6 +1088,9 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }
 
     loaiSP getForm_lsp() {
+          if (this.batLoiNullLoaiSp()) {
+            return null;
+        }
         loaiSP lsp = new loaiSP();
         lsp.setTenLoai(txtTenLoai.getText());
         if (this.row2 > 0) {
@@ -1172,6 +1190,9 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     void insert_lsp() {
         loaiSP lsp = getForm_lsp();
+        if(lsp == null){
+            return;
+        }
         try {
             dao_lsp.insert(lsp);
             this.fillTable_lsp();
@@ -1248,6 +1269,9 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }
 
     sanPham getForm() {
+        if (this.batLoiKoNullSp()) {
+            return null;
+        }
         sanPham sp = new sanPham();
         sp.setMaSP(txtMaSP.getText());
         sp.setTenSP(txtTenSP.getText());
@@ -1263,6 +1287,26 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         sp.setNgayTao(new Date());
 
         return sp;
+    }
+
+    public boolean batLoiKoNullSp() {
+        if (txtMaSP.getText().isEmpty() || txtTenSP.getText().isEmpty() || txtHang.getText().isEmpty() || txtSoLuong.getText().isEmpty() || txtGiaTien.getText().isEmpty()
+                || txtSize.getText().isEmpty()) {
+            MsgBox.alert(this, "Không được bỏ trống");
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean batLoiNullLoaiSp() {
+        if (txtTenLoai.getText().isEmpty()) {
+            MsgBox.alert(this, "Không được bỏ trống");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     void setForm(sanPham sp) {
@@ -1386,6 +1430,9 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     void insert_sp() {
         sanPham sp = getForm();
+        if (sp == null) {
+            return;
+        }
         try {
             dao_sp.insert(sp);
             this.fillTable_sp();

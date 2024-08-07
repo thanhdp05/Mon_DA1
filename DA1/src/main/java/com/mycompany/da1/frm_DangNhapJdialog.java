@@ -33,7 +33,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     }
     
     public void OpenQuenMK(){
-        new form_QuenMk().setVisible(true);
+        new frm_quenMK().setVisible(true);
     }
 
     /**

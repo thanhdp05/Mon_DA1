@@ -33,6 +33,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         setBtn();
         innit();
         btnThem.setEnabled(false);
+        btnSua.setEnabled(false);
     }
     nhanVien_DAO dao = new nhanVien_DAO();
     int row = -1;
@@ -700,8 +701,14 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             if (!txtMaNV.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: NV1.");
                 txtMaNV.setText("");
+                btnThem.setEnabled(false);
+                btnSua.setEnabled(false);
             }
+        } else {
+            btnThem.setEnabled(true);
+            btnSua.setEnabled(true);
         }
+
         if (this.row == -1) {
             if (dao.selectById(txtMaNV.getText()) != null) {
                 MsgBox.alert(this, "Mã đã tồn tại!");
@@ -716,6 +723,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             if (!txtEmail.getText().trim().matches(email)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
                 txtEmail.setText("");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtEmailFocusLost
@@ -761,9 +771,12 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
 
     private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
         if (!txtHoTen.getText().isEmpty()) {
-            String reg = "[a-zA-Z\\\\s]+";
+            String reg = "[a-zA-Z\\s]+";
             if (!txtHoTen.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+                btnSua.setEnabled(false);
+            } else {
+                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtHoTenFocusLost
@@ -810,6 +823,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }
 
     nhanVien getForm() {
+        if (this.batLoiKoNull()) {
+            return null;
+        }
         nhanVien nv = new nhanVien();
         nv.setMaNV(txtMaNV.getText());
         nv.setHoTen(txtHoTen.getText());
@@ -821,6 +837,15 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         return nv;
     }
 
+    public boolean batLoiKoNull() {
+        if (txtMaNV.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtEmail.getText().isEmpty() || txtMatKhau1.getText().isEmpty() || txtMatKhau2.getText().isEmpty()) {
+            MsgBox.alert(this, "Không được bỏ trống");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void clearForm() {
         nhanVien nv = new nhanVien();
         this.setForm(nv);
@@ -830,6 +855,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
 
     public void insert() {
         nhanVien nv = getForm();
+         if (nv == null) {
+            return;
+        }
         try {
             dao.insert(nv);
             this.fillTable();
