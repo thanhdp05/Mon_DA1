@@ -193,6 +193,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1069, 645));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -225,6 +226,11 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
+        txtTenSP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTenSPFocusLost(evt);
+            }
+        });
         txtTenSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenSPActionPerformed(evt);
@@ -618,6 +624,12 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         });
 
         jLabel17.setText("Tên loại sản phẩm");
+
+        txtTenLoai.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTenLoaiFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1027,6 +1039,24 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSoLuongFocusLost
 
+    private void txtTenSPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenSPFocusLost
+        if (!txtTenSP.getText().isEmpty()) {
+            String reg = "[a-zA-Z\\\\s]+";
+            if (!txtTenSP.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+            }
+        }
+    }//GEN-LAST:event_txtTenSPFocusLost
+
+    private void txtTenLoaiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenLoaiFocusLost
+        if (!txtTenLoai.getText().isEmpty()) {
+            String reg = "[a-zA-Z\\\\s]+";
+            if (!txtTenLoai.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+            }
+        }
+    }//GEN-LAST:event_txtTenLoaiFocusLost
+
     void updateStatus_lsp() {
         boolean edit = (this.row2 >= 0);
         boolean first = (this.row2 == 0);
@@ -1111,10 +1141,10 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     void delete_lsp() {
         if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xóa chuyên đề!");
+            MsgBox.alert(this, "Bạn không có quyền xóa loại sản phẩm!");
         } else {
             int maLoai = Integer.parseInt(txtMaLoai.getText());
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chuyên đề này!")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa loại sản phẩm này!")) {
                 try {
                     dao_lsp.delete(maLoai);
                     this.fillTable_lsp();
@@ -1325,10 +1355,10 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     void delete_sp() {
         if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xóa chuyên đề!");
+            MsgBox.alert(this, "Bạn không có quyền xóa sản phẩm!");
         } else {
             String maSP = txtMaSP.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chuyên đề này!")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này!")) {
                 try {
                     dao_sp.delete(maSP);
                     this.fillTable_sp();

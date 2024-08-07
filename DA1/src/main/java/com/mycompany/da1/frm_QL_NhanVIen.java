@@ -48,7 +48,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }
 
     public void OpenDoiMatKhau() {
-      
+
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
 
@@ -98,8 +98,8 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
-    
-     public void OpenDoanhThu() {
+
+    public void OpenDoanhThu() {
         if (Auth.isLogin()) {
             this.dispose();
             new frm_QL_DoanhThu().setVisible(true);
@@ -273,6 +273,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Quan Ly Nhan Vien");
 
+        txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoTenFocusLost(evt);
+            }
+        });
         txtHoTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoTenActionPerformed(evt);
@@ -690,15 +695,15 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
     private void txtMaNVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusLost
-         if(!txtMaNV.getText().isEmpty()){
+        if (!txtMaNV.getText().isEmpty()) {
             String reg = "NV\\d{1,}";
-            if(!txtMaNV.getText().trim().matches(reg)){
+            if (!txtMaNV.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: NV1.");
                 txtMaNV.setText("");
             }
         }
-        if(this.row==-1){
-            if(dao.selectById(txtMaNV.getText()) != null){
+        if (this.row == -1) {
+            if (dao.selectById(txtMaNV.getText()) != null) {
                 MsgBox.alert(this, "Mã đã tồn tại!");
                 txtMaNV.setText("");
             }
@@ -706,9 +711,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMaNVFocusLost
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        if(!txtEmail.getText().isEmpty()){
+        if (!txtEmail.getText().isEmpty()) {
             String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-            if(!txtEmail.getText().trim().matches(email)){
+            if (!txtEmail.getText().trim().matches(email)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
                 txtEmail.setText("");
             }
@@ -724,11 +729,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMatKhau1FocusLost
 
     private void txtMatKhau2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhau2FocusLost
-          char[] password1 = txtMatKhau1.getPassword();
+        char[] password1 = txtMatKhau1.getPassword();
         char[] password2 = txtMatKhau2.getPassword();
 
         if (password1.length != password2.length || !java.util.Arrays.equals(password1, password2)) {
-            MsgBox.alert(this,"Mật khẩu không trùng khớp với mật khẩu trên");
+            MsgBox.alert(this, "Mật khẩu không trùng khớp với mật khẩu trên");
             txtMatKhau2.setText("");
             btnThem.setEnabled(false);
             btnSua.setEnabled(false);
@@ -743,16 +748,25 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMaNVFocusGained
 
     private void txtMatKhau2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhau2KeyPressed
-       
+
     }//GEN-LAST:event_txtMatKhau2KeyPressed
 
     private void txtMatKhau2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhau2KeyReleased
-        
+
     }//GEN-LAST:event_txtMatKhau2KeyReleased
 
     private void txtMatKhau2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhau2KeyTyped
-      
+
     }//GEN-LAST:event_txtMatKhau2KeyTyped
+
+    private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
+        if (!txtHoTen.getText().isEmpty()) {
+            String reg = "[a-zA-Z\\\\s]+";
+            if (!txtHoTen.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+            }
+        }
+    }//GEN-LAST:event_txtHoTenFocusLost
 
     private void innit() {
         rdoNhanVIen.setSelected(true);
@@ -808,22 +822,23 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }
 
     public void clearForm() {
-        nhanVien cd = new nhanVien();
-        this.setForm(cd);
+        nhanVien nv = new nhanVien();
+        this.setForm(nv);
         this.row = -1;
         this.updateStatus();
     }
 
     public void insert() {
-        nhanVien cd = getForm();
+        nhanVien nv = getForm();
         try {
-            dao.insert(cd);
+            dao.insert(nv);
             this.fillTable();
             this.clearForm();
             MsgBox.alert(this, "Thêm thành công");
         } catch (Exception e) {
             MsgBox.alert(this, "Thêm không thành công");
         }
+
     }
 
     public void update() {
@@ -839,10 +854,13 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
     }
 
     public void delete() {
-        if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
-            String macd = txtMaNV.getText();
+        String maNV = txtMaNV.getText();
+        if (maNV.equals(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Bạn không được xóa chính bạn!");
+        } else if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
+            String manv = txtMaNV.getText();
             try {
-                dao.delete(macd);
+                dao.delete(manv);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công!");

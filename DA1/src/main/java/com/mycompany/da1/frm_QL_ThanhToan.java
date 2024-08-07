@@ -11,6 +11,7 @@ import com.ntdk.dao.sanPham_DAO;
 import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
 import com.ntdk.entity.hoaDonChiTiet;
+import com.ntdk.entity.loaiSP;
 import com.ntdk.entity.nhanVien;
 import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
@@ -152,9 +153,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_sanPhamCho = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -163,19 +164,20 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         txtTimKiem = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        btnThemKH = new javax.swing.JButton();
         txtSDT = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
         txt_TienThu = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        lblGiamGia = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         b = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lbl_tienKhachDua = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTinhTien = new javax.swing.JButton();
+        btnXuatHoaDon = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lbl_TongTien = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -315,24 +317,24 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tbl_sanPhamCho);
 
-        jButton8.setText("Sửa");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Thêm");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Xóa");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
 
@@ -353,11 +355,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton9)
+                .addComponent(btnThem)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addComponent(btnSua)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10)
+                .addComponent(btnXoa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLamMoi)
                 .addGap(16, 16, 16))
@@ -369,9 +371,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton8)
-                    .addComponent(jButton10)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa)
                     .addComponent(btnLamMoi))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -460,10 +462,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông Tin Khách Hàng"));
 
-        jButton4.setText("Thêm");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnThemKH.setText("Thêm");
+        btnThemKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnThemKHActionPerformed(evt);
             }
         });
 
@@ -476,12 +478,28 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        txtSDT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSDTFocusLost(evt);
+            }
+        });
         txtSDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSDTActionPerformed(evt);
             }
         });
 
+        txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoTenFocusLost(evt);
+            }
+        });
+
+        txt_TienThu.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_TienThuFocusLost(evt);
+            }
+        });
         txt_TienThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_TienThuActionPerformed(evt);
@@ -489,6 +507,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Tiền Thu");
+
+        lblGiamGia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblGiamGia.setForeground(new java.awt.Color(0, 255, 51));
+        lblGiamGia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -504,7 +526,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                             .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnThemKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -513,7 +537,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -521,7 +547,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(btnThemKH)
                 .addGap(111, 111, 111))
         );
 
@@ -576,17 +602,17 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         lbl_tienKhachDua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_tienKhachDua.setText("0 VNĐ");
 
-        jButton1.setText("Tính Tiền");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTinhTien.setText("Tính Tiền");
+        btnTinhTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTinhTienActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Xuất Hóa Đơn");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnXuatHoaDon.setText("Xuất Hóa Đơn");
+        btnXuatHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnXuatHoaDonActionPerformed(evt);
             }
         });
 
@@ -625,9 +651,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTinhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
@@ -664,8 +690,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                     .addComponent(lbl_TienThua, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTinhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -779,9 +805,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         this.OpenSanPham();
     }//GEN-LAST:event_btn_QL_SPActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKHActionPerformed
         this.insertkh();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnThemKHActionPerformed
 
     private void tblBang_SMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_SMouseClicked
 
@@ -800,9 +826,21 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         this.OpenDoanhThu();
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        this.them_sua();
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!txtSDT.getText().isEmpty()) {
+            if (!txtHoTen.getText().isEmpty()) {
+                if (tbl_sanPhamCho.getModel().getRowCount() != 0) {
+                    this.them_sua();
+                } else {
+                    MsgBox.alert(this, "Vui lòng chọn sản phẩm!");
+                }
+            } else {
+                MsgBox.alert(this, "Vui lòng thêm khách hàng mới!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng điền thông tin khách hàng!");
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
 
     private void tbl_sanPhamChoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tbl_sanPhamChoAncestorAdded
 
@@ -813,7 +851,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_tblBang_SAncestorAdded
 
     private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
-
+        timKiem();
     }//GEN-LAST:event_txtTimKiemActionPerformed
     int a = 0;
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -826,10 +864,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbl_sanPhamChoAncestorMoved
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         this.them_sua();
         this.suaSp();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     float tong = 0;
     private void lbl_TongTienAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lbl_TongTienAncestorAdded
@@ -849,20 +887,109 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         this.fill();
     }//GEN-LAST:event_txtSDTActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        this.xoaSpCho();
-        this.them_sua();
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        if (a != 0) {
+//            if (tbl_sanPhamCho.getModel().getRowCount() > 0) {
+            this.xoaSpCho();
+            this.them_sua();
+//            } else {
+//                MsgBox.alert(this, "Vui lòng chọn hầng cần xóa!");
+//            }
+        } else {
+            MsgBox.alert(this, "Không có sản phẩm!");
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
 
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void btnTinhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTinhTienActionPerformed
+        if (!txt_TienThu.getText().isEmpty()) {
+            if (Float.parseFloat(lbl_tienKhachDua.getText()) < tong) {
+                MsgBox.alert(this, "Số tiền nhận vào không được nhỏ hơn tổng tiền!");
+            } else {
+                this.themHoaDon();
+                this.soLuong();
+            }
+        }
+//        fillTableSanPham();
+    }//GEN-LAST:event_btnTinhTienActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.themHoaDon();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnXuatHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatHoaDonActionPerformed
         this.Billin();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnXuatHoaDonActionPerformed
 
+    private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
+        if (!txtHoTen.getText().isEmpty()) {
+            String reg = "[a-zA-Z\\\\s]+";
+            if (!txtHoTen.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+            }
+        }
+    }//GEN-LAST:event_txtHoTenFocusLost
+
+    private void txt_TienThuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_TienThuFocusLost
+        if (!txt_TienThu.getText().isEmpty()) {
+            String reg = "\\d{4,}";
+            if (!txt_TienThu.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10000.");
+                txt_TienThu.setText("");
+            }
+        }
+    }//GEN-LAST:event_txt_TienThuFocusLost
+
+    private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
+        if (!txtSDT.getText().isEmpty()) {
+            String reg = "\\d{10,10}";
+            if (!txtSDT.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
+                txtSDT.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtSDTFocusLost
+
+    public void soLuong() {
+        try {
+            for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
+                String ma = tbl_sanPhamCho.getValueAt(i, 0).toString();
+                int sl = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2).toString());
+                dao.updateSoLuong(sl, ma);
+            }
+            this.fillTableSanPham();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+//    sanPham getForm() {
+//        sanPham sp = new sanPham();
+////        sp.setTenSP(sp.getTenSP());
+////        sp.setHangSP(sp.getHangSP());
+////        sp.setGiaTien(sp.getGiaTien());
+////        sp.setSize(sp.getSize());
+////        sp.setGhiChu(sp.getGhiChu());
+////        sp.setMaNV(sp.getMaNV());
+////        sp.setNgayTao(sp.getNgayTao());
+////        sp.setHinh(sp.getHinh());
+////        sp.setLoaiSP(sp.getLoaiSP());
+//        
+//        for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
+//            sp.setMaSP(tbl_sanPhamCho.getValueAt(i, 0).toString());
+//            sp.setSoLuong(Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2).toString()));
+//            return sp;
+////            String maSPCho = tbl_sanPhamCho.getValueAt(i, 0).toString();
+////            System.out.println(maSPCho);
+////            int soLuongCho = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2).toString());
+////            System.out.println(soLuongCho);
+//        }
+//        return sp;
+//    }
+//    public void soLuong() {
+//        sanPham sp = getForm();
+//        try {
+//            dao.updateSoLuong(sp);
+//            this.fillTableSanPham();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     public int maHD() {
         List<hoaDon> list_hd = dao_hd.selectMax();
         int ma = 0;
@@ -871,6 +998,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
         return ma;
     }
+
     hoaDonChiTiet getForm_hdct() {
         hoaDonChiTiet hdct = new hoaDonChiTiet();
         hoaDon hd = new hoaDon();
@@ -930,15 +1058,20 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         float tienThua = tienThu - this.tong;
         lbl_TienThua.setText(tienThua + "");
     }
-
+    float giamGia = 0;
     public void them_sua() {
         b.setText("");
         tong = 0;
+        giamGia = 0;
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
             int soLuong = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2) + "");
             float gia = (float) tbl_sanPhamCho.getValueAt(i, 4);
             tong += soLuong * gia;
         }
+        if(lblGiamGia.getText().trim().equals("VIP")){
+                giamGia = tong / 100 * 10;
+            }
+            tong -= giamGia;
         lbl_TongTien.setText(tong + "");
         this.Bill();
     }
@@ -968,7 +1101,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         b.setText(b.getText() + txtSDT.getText() + ": ");
         b.setText(b.getText() + txtHoTen.getText());
     }
-    
+
     public void Billin() {
         b.setText("                                   NTDK Shop \n");
         b.setText(b.getText() + "                                   Nguyen Van Cu noi dai, \n");
@@ -991,19 +1124,26 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
             b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
         }
-       
+
         try {
-             b.setText(b.getText() + txtSDT.getText() + ": ");
-             b.setText(b.getText() + txtHoTen.getText());
+            b.setText(b.getText() + txtSDT.getText() + ": ");
+            b.setText(b.getText() + txtHoTen.getText());
             b.print();
         } catch (PrinterException ex) {
             Logger.getLogger(frm_QL_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    void timKiem() {
+        this.fillTableSanPham();
+        this.row = -1;
+    }
+
     public void fillTableSanPham() {
         DefaultTableModel model = (DefaultTableModel) tblBang_S.getModel();
         model.setRowCount(0);
+        DefaultTableModel model1 = (DefaultTableModel) tbl_sanPhamCho.getModel();
+        model1.setRowCount(0);
         try {
             String timTen = txtTimKiem.getText();
             List<sanPham> list_sp = dao.selectByKeyWord(timTen);
@@ -1022,10 +1162,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         String maSP = (String) tblBang_S.getValueAt(y, 0);
         sanPham sp = dao.selectById(maSP);
         DefaultTableModel model = (DefaultTableModel) tbl_sanPhamCho.getModel();
-        if (a == 0) {
-            model.setRowCount(0);
-            a++;
-        }
+//        if (a == 0) {
+//            model.setRowCount(0);
+//            a++;
+//        }
+        a++;
         Object[] row = {sp.getMaSP(), sp.getTenSP(), sp.getSoLuong(), sp.getSize(), sp.getGiaTien()};
         model.addRow(row);
     }
@@ -1056,6 +1197,12 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             Object[] row = {entity.getHoTen(), entity.getSdt()};
             txtHoTen.setText(entity.getHoTen());
             txtSDT.setText(entity.getSdt());
+            if(entity.isVip()){
+//                giamGia = tong / 100 * 10;
+                lblGiamGia.setText("VIP");
+            }else{
+                lblGiamGia.setText("");
+            }
         }
     }
 
@@ -1070,19 +1217,17 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
     }
 
-    
-    private void suaSp(){
+    private void suaSp() {
         tbl_sanPhamCho.getModel().addTableModelListener(new TableModelListener() {
-    @Override
-    public void tableChanged(TableModelEvent e) {
-        if (e.getColumn() == 2) { // Giả sử cột số lượng là cột thứ 3 (index 2)
-            capNhatSanPham();
-        }
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                if (e.getColumn() == 2) { // Giả sử cột số lượng là cột thứ 3 (index 2)
+                    capNhatSanPham();
+                }
+            }
+        });
     }
-});
-    }
-        
-    
+
     private void capNhatSanPham() {
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
             String maSPCho = tbl_sanPhamCho.getValueAt(i, 0).toString();
@@ -1096,6 +1241,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             }
         }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -1135,6 +1281,12 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea b;
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThemKH;
+    private javax.swing.JButton btnTinhTien;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatHoaDon;
     private javax.swing.JButton btn_QL_DT;
     private javax.swing.JButton btn_QL_KH;
     private javax.swing.JButton btn_QL_NV;
@@ -1143,12 +1295,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JButton btn_dangXuat;
     private javax.swing.JButton btn_doiMatKhau;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1167,6 +1313,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblGiamGia;
     private javax.swing.JLabel lbl_TienThua;
     private javax.swing.JLabel lbl_TongTien;
     private javax.swing.JLabel lbl_tienKhachDua;

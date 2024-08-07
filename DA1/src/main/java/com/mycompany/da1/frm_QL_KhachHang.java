@@ -93,11 +93,11 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }
 
     public void OpenDoiMatKhau() {
-       
+
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
 
-     public void OpenDoanhThu() {
+    public void OpenDoanhThu() {
         if (Auth.isLogin()) {
             this.dispose();
             new frm_QL_DoanhThu().setVisible(true);
@@ -105,6 +105,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -218,6 +219,11 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("QUẢN LÝ KHÁCH HÀNG");
 
+        txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoTenFocusLost(evt);
+            }
+        });
         txtHoTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoTenActionPerformed(evt);
@@ -577,7 +583,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_txtHoTenActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        
+
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
@@ -636,9 +642,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QL_DTActionPerformed
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-          if(!txtEmail.getText().isEmpty()){
+        if (!txtEmail.getText().isEmpty()) {
             String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-            if(!txtEmail.getText().trim().matches(email)){
+            if (!txtEmail.getText().trim().matches(email)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
                 txtEmail.setText("");
             }
@@ -646,14 +652,23 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
-          if(!txtSDT.getText().isEmpty()){
+        if (!txtSDT.getText().isEmpty()) {
             String reg = "\\d{10,10}";
-            if(!txtSDT.getText().trim().matches(reg)){
+            if (!txtSDT.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
                 txtSDT.setText("");
             }
         }
     }//GEN-LAST:event_txtSDTFocusLost
+
+    private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
+        if (!txtHoTen.getText().isEmpty()) {
+            String reg = "[a-zA-Z\\\\s]+";
+            if (!txtHoTen.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+            }
+        }
+    }//GEN-LAST:event_txtHoTenFocusLost
 
     void timKiem() {
         this.fillTable();
