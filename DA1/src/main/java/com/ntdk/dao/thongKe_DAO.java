@@ -11,7 +11,7 @@ import java.sql.ResultSet;
  */
 public class thongKe_DAO {
 
-    private int getSingleValue(String sql, String[] cols, Object... args) {
+    private int getIntleValue(String sql, String[] cols, Object... args) {
         try {
             int result = 0;
             ResultSet rs = JdbcHelper.query(sql, args);
@@ -28,19 +28,19 @@ public class thongKe_DAO {
     public int getSlKhachHang(Integer thang) {
         String sql = "{CALL SP_slkh(?)}";
         String[] cols = {"SoLuong"};
-        return this.getSingleValue(sql, cols, thang);
+        return this.getIntleValue(sql, cols, thang);
     }
 
     public int getSlsanPham(Integer thang) {
         String sql = "{CALL SP_slsp(?)}";
         String[] cols = {"slBan"};
-        return this.getSingleValue(sql, cols, thang);
+        return this.getIntleValue(sql, cols, thang);
     }
 
     public int getDoanhThu(Integer thang){
         String sql = "{CALL SP_doanhThu(?)}";
         String [] cols = {"doanhThu"};
-        return this.getSingleValue(sql, cols, thang);
+        return this.getIntleValue(sql, cols, thang);
     }
     
 }

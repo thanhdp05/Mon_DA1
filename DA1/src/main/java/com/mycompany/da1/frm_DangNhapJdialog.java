@@ -10,6 +10,16 @@ import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.Properties;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.ImageIcon;
 
 /**
@@ -30,10 +40,127 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         setbackground();
         txtMaNv.setBackground(anNen);
         txtMatKhau.setBackground(anNen);
+        
+        txtEmail.setBackground(anNen);
+        txtMaXacNhan.setBackground(anNen);
+        
+        txtManv.setBackground(anNen);
+        txtMk.setBackground(anNen);
+        
+        pnDangNhap.setOpaque(false);
+        pnMkMoi.setOpaque(false);
+        pnQuenMk.setOpaque(false);
     }
-    
-    public void OpenQuenMK(){
+
+    public void OpenQuenMK() {
         new frm_quenMK().setVisible(true);
+    }
+
+    int width = 390;
+    int heigh = 370;
+
+    public void OpenMenuQuenMk() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < width; i++) {
+                    pnQuenMk.setSize(i, heigh);
+                    try {
+                        Thread.sleep(2);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frm_DangNhapJdialog.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    public void closeMenuQuenMk() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = width; i > 0; i--) {
+                    pnQuenMk.setSize(i, heigh);
+                    try {
+                        Thread.sleep(2);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frm_DangNhapJdialog.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    public void OpenMenuMkMoi() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < width; i++) {
+                    pnMkMoi.setSize(i, heigh);
+                    try {
+                        Thread.sleep(2);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frm_DangNhapJdialog.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    public void closeMenuMkMoi() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = width; i > 0; i--) {
+                    pnMkMoi.setSize(i, heigh);
+                    try {
+                        Thread.sleep(2);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frm_DangNhapJdialog.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    public void OpenMenuQDn() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < width; i++) {
+                    pnDangNhap.setSize(i, heigh);
+                    try {
+                        Thread.sleep(2);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frm_DangNhapJdialog.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    public void closeMenuDn() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = width; i > 0; i--) {
+                    pnDangNhap.setSize(i, heigh);
+                    try {
+                        Thread.sleep(2);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frm_DangNhapJdialog.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
     }
 
     /**
@@ -46,14 +173,26 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        pnQuenMk = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtMaXacNhan = new javax.swing.JTextField();
+        btnxacNhan = new javax.swing.JButton();
+        btnGuima = new javax.swing.JButton();
+        pnDangNhap = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtMaNv = new javax.swing.JTextField();
+        lbl_IconUser = new javax.swing.JLabel();
+        lbl_IconKey = new javax.swing.JLabel();
+        txtMatKhau = new javax.swing.JPasswordField();
         cboShow = new javax.swing.JCheckBox();
         lblQuenMk = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
-        lbl_IconKey = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        lbl_IconUser = new javax.swing.JLabel();
-        txtMatKhau = new javax.swing.JPasswordField();
-        txtMaNv = new javax.swing.JTextField();
+        pnMkMoi = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtManv = new javax.swing.JTextField();
+        txtMk = new javax.swing.JPasswordField();
+        btnXacNhan = new javax.swing.JButton();
         lblClose = new javax.swing.JLabel();
         lbl_Hinh = new javax.swing.JLabel();
 
@@ -63,6 +202,111 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel1.setText("Q U Ê N  M Ậ T  K H Ẩ U");
+
+        txtEmail.setText("Email");
+
+        txtMaXacNhan.setText("Mã");
+
+        btnxacNhan.setText("XÁC NHẬN");
+        btnxacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxacNhanActionPerformed(evt);
+            }
+        });
+
+        btnGuima.setText("GỬI MÃ");
+        btnGuima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuimaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnQuenMkLayout = new javax.swing.GroupLayout(pnQuenMk);
+        pnQuenMk.setLayout(pnQuenMkLayout);
+        pnQuenMkLayout.setHorizontalGroup(
+            pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnQuenMkLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(btnGuima)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(btnxacNhan)
+                .addGap(17, 17, 17))
+            .addGroup(pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnQuenMkLayout.createSequentialGroup()
+                    .addGap(71, 71, 71)
+                    .addGroup(pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail)
+                            .addComponent(txtMaXacNhan, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                        .addGroup(pnQuenMkLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel1)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnQuenMkLayout.setVerticalGroup(
+            pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnQuenMkLayout.createSequentialGroup()
+                .addContainerGap(268, Short.MAX_VALUE)
+                .addGroup(pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuima, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnxacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
+            .addGroup(pnQuenMkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnQuenMkLayout.createSequentialGroup()
+                    .addGap(69, 69, 69)
+                    .addComponent(jLabel1)
+                    .addGap(26, 26, 26)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(txtMaXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(142, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(pnQuenMk, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 0, 370));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Đ Ă N G   N H Ậ P");
+
+        txtMaNv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMaNv.setText("TenDangNhap");
+        txtMaNv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtMaNv.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMaNvFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaNvFocusLost(evt);
+            }
+        });
+        txtMaNv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaNvActionPerformed(evt);
+            }
+        });
+
+        lbl_IconUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_IconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/icons8_user_20px_1.png"))); // NOI18N
+        lbl_IconUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        lbl_IconKey.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_IconKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/matKhau.png"))); // NOI18N
+        lbl_IconKey.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMatKhau.setText("Showlamcaichogi");
+        txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMatKhauFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMatKhauFocusLost(evt);
+            }
+        });
+
         cboShow.setText("Show");
         cboShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboShow.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +314,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
                 cboShowActionPerformed(evt);
             }
         });
-        jPanel1.add(cboShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, -1, -1));
 
         lblQuenMk.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuenMk.setText("Quên mật khẩu?");
@@ -89,7 +332,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
                 lblQuenMkMouseClicked(evt);
             }
         });
-        jPanel1.add(lblQuenMk, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
 
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDangNhap.setText("Đăng  Nhập");
@@ -99,53 +341,102 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
                 btnDangNhapActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 399, 280, 40));
 
-        lbl_IconKey.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_IconKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/matKhau.png"))); // NOI18N
-        lbl_IconKey.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(lbl_IconKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 40, 40));
+        javax.swing.GroupLayout pnDangNhapLayout = new javax.swing.GroupLayout(pnDangNhap);
+        pnDangNhap.setLayout(pnDangNhapLayout);
+        pnDangNhapLayout.setHorizontalGroup(
+            pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDangNhapLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnDangNhapLayout.createSequentialGroup()
+                        .addComponent(txtMaNv, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_IconUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnDangNhapLayout.createSequentialGroup()
+                        .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_IconKey, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnDangNhapLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(cboShow))
+                    .addGroup(pnDangNhapLayout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(lblQuenMk))
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnDangNhapLayout.setVerticalGroup(
+            pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDangNhapLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMaNv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_IconUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_IconKey, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(cboShow)
+                .addGap(10, 10, 10)
+                .addComponent(lblQuenMk)
+                .addGap(13, 13, 13)
+                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Đ Ă N G   N H Ậ P");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 200, 40));
+        jPanel1.add(pnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 360, 370));
 
-        lbl_IconUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_IconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNhe/icons8_user_20px_1.png"))); // NOI18N
-        lbl_IconUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(lbl_IconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 40, 40));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel2.setText("M Ậ T  K H Ẩ U  M Ớ I");
 
-        txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMatKhau.setText("Showlamcaichogi");
-        txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMatKhauFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMatKhauFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 230, 40));
+        txtManv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        txtMaNv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMaNv.setText("TenDangNhap");
-        txtMaNv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        txtMaNv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMaNvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMaNvFocusLost(evt);
-            }
-        });
-        txtMaNv.addActionListener(new java.awt.event.ActionListener() {
+        txtMk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        btnXacNhan.setText("XÁC NHẬN");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaNvActionPerformed(evt);
+                btnXacNhanActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaNv, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 230, 40));
+
+        javax.swing.GroupLayout pnMkMoiLayout = new javax.swing.GroupLayout(pnMkMoi);
+        pnMkMoi.setLayout(pnMkMoiLayout);
+        pnMkMoiLayout.setHorizontalGroup(
+            pnMkMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 311, Short.MAX_VALUE)
+            .addGroup(pnMkMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnMkMoiLayout.createSequentialGroup()
+                    .addGap(45, 45, 45)
+                    .addGroup(pnMkMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtManv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnXacNhan, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMkMoiLayout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(23, 23, 23)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnMkMoiLayout.setVerticalGroup(
+            pnMkMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(pnMkMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnMkMoiLayout.createSequentialGroup()
+                    .addGap(68, 68, 68)
+                    .addComponent(jLabel2)
+                    .addGap(39, 39, 39)
+                    .addComponent(txtManv, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(32, 32, 32)
+                    .addComponent(txtMk, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(26, 26, 26)
+                    .addComponent(btnXacNhan)
+                    .addContainerGap(69, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(pnMkMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 0, -1));
 
         lblClose.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -156,7 +447,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
             }
         });
         jPanel1.add(lblClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, -10, 40, 50));
-        jPanel1.add(lbl_Hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 570));
+        jPanel1.add(lbl_Hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,8 +475,9 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cboShowActionPerformed
 
     private void lblQuenMkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMkMouseClicked
-        this.dispose();
-        OpenQuenMK();
+        closeMenuDn();
+        OpenMenuQuenMk();
+
     }//GEN-LAST:event_lblQuenMkMouseClicked
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
@@ -232,6 +524,25 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblQuenMkAncestorAdded
 
+    private void btnxacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxacNhanActionPerformed
+        kiemtra();
+
+
+    }//GEN-LAST:event_btnxacNhanActionPerformed
+
+    private void btnGuimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuimaActionPerformed
+        password = generateRandomPassword(6);
+        Subiject();
+    }//GEN-LAST:event_btnGuimaActionPerformed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        doiMatKhau();
+//        this.dispose();
+//        OpenDoiDangNhap();
+
+
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
     public void setbackground() {
         ImageIcon icon2 = new ImageIcon(getClass().getResource("/background/login-bg.png"));
         Image img = icon2.getImage().getScaledInstance(lbl_Hinh.getWidth(), lbl_Hinh.getHeight(), Image.SCALE_SMOOTH);
@@ -255,6 +566,84 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     public void Kethuc() {
         if (MsgBox.confirm(this, "Bạn có muốn thoát ứng dụng")) {
             System.exit(0);
+        }
+    }
+
+    String password = null;
+
+    public void Subiject() {
+        Properties pro = new Properties();
+        pro.put("mail.smtp.auth", true);
+        pro.put("mail.smtp.starttls.enable", "true");
+        pro.put("mail.smtp.host", "smtp.gmail.com");
+        pro.put("mail.smtp.port", "587");
+        pro.put("mail.smtp.socketFactory.port", "587");
+        pro.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        pro.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        String Email = "nngguuyyeenn007@gmail.com";
+        String Pass = "teuhxzguxcppnobh";
+        Session session = Session.getInstance(pro,
+                new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(Email, Pass);
+            }
+        }
+        );
+        try {
+            Message myMessage = new MimeMessage(session);
+            myMessage.setFrom(new InternetAddress(Email));
+            myMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(txtEmail.getText()));
+            myMessage.setSubject("Mã Xác Nhận");
+            myMessage.setContent(password, "text/html;charset=utf-8");
+            Transport.send(myMessage);
+            MsgBox.alert(this, "Mã xác nhận đã được gửi thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String generateRandomPassword(int length) {
+        String characters = "0123456789";
+
+        String randomString = "";
+        Random random = new Random();
+
+        for (int i = 0; i < 6; i++) {
+            int index = random.nextInt(characters.length());
+            randomString += characters.charAt(index);
+        }
+        return randomString;
+    }
+
+    void kiemtra() {
+        if (txtMaXacNhan.getText().equalsIgnoreCase(password)) {
+            MsgBox.alert(this, "Mã đúng");
+            closeMenuQuenMk();
+            OpenMenuMkMoi();
+        } else {
+            MsgBox.alert(this, "Mã sai");
+        }
+    }
+
+    nhanVien getForm() {
+        nhanVien nv = new nhanVien();
+        nv.setMaNV(txtManv.getText());
+        nv.setMatKhau(new String(txtMk.getPassword()));
+
+        return nv;
+    }
+
+    public void doiMatKhau() {
+        nhanVien nv = getForm();
+        try {
+            dao.updateMk(nv);
+            MsgBox.alert(this, "Cập nhật mật khẩu thành công");
+            closeMenuMkMoi();
+            OpenMenuQDn();
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Cập nhật không thành công");
         }
     }
 
@@ -303,7 +692,12 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
+    private javax.swing.JButton btnGuima;
+    private javax.swing.JButton btnXacNhan;
+    private javax.swing.JButton btnxacNhan;
     private javax.swing.JCheckBox cboShow;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblClose;
@@ -311,7 +705,14 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     private javax.swing.JLabel lbl_Hinh;
     private javax.swing.JLabel lbl_IconKey;
     private javax.swing.JLabel lbl_IconUser;
+    private javax.swing.JPanel pnDangNhap;
+    private javax.swing.JPanel pnMkMoi;
+    private javax.swing.JPanel pnQuenMk;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMaNv;
+    private javax.swing.JTextField txtMaXacNhan;
+    private javax.swing.JTextField txtManv;
     private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JPasswordField txtMk;
     // End of variables declaration//GEN-END:variables
 }
