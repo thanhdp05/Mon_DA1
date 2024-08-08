@@ -277,20 +277,25 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
 
     public void OpenDoanhThu() {
         if (Auth.isLogin()) {
-            this.dispose();
-            new frm_QL_DoanhThu().setVisible(true);
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Ban khong co quyen xem doanh thu");
+               
+            }else{
+                 this.dispose();
+                new frm_QL_DoanhThu().setVisible(true);
+            }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
-    
+
     public void DangXuat() {
         Auth.clear();
         new frm_DangNhapJdialog(this, true).setVisible(true);
     }
-    
+
     public void OpenDoiMatKhau() {
-       
+
         new frm_DoiMatKhau(this, true).setVisible(true);
     }
 
@@ -302,8 +307,13 @@ public class frm_GiaoDienChinh extends javax.swing.JFrame {
 
     public void OpenNhanVien() {
         if (Auth.isLogin()) {
-            this.dispose();
-            new frm_QL_NhanVIen().setVisible(true);
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
+               
+            }else{
+                 this.dispose();
+                new frm_QL_NhanVIen().setVisible(true);
+            }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }

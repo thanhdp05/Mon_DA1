@@ -81,8 +81,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
     public void OpenNhanVien() {
         if (Auth.isLogin()) {
-            this.dispose();
-            new frm_QL_NhanVIen().setVisible(true);
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
+               
+            }else{
+                 this.dispose();
+                new frm_QL_NhanVIen().setVisible(true);
+            }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
@@ -122,8 +127,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
     public void OpenDoanhThu() {
         if (Auth.isLogin()) {
-            this.dispose();
-            new frm_QL_DoanhThu().setVisible(true);
+             if (!Auth.isManager()) {
+                MsgBox.alert(this, "Ban khong co quyen xem doanh thu");
+               
+            }else{
+                 this.dispose();
+                new frm_QL_DoanhThu().setVisible(true);
+            }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
