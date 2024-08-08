@@ -181,7 +181,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Mã Hóa Đơn", "Mã Khách Hàng", "Tổng Tiền", "Ngày Tạo ", "Mã Nhân Viên"
             }
         ));
         jScrollPane2.setViewportView(tblHoaDon);
@@ -441,43 +441,38 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         this.DangXuat();
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
-    public JFreeChart createLineChart() {
-        // Thay đổi hàm tạo để tạo biểu đồ đường
+    public JFreeChart createLineChart() {       
         JFreeChart lineChart = ChartFactory.createLineChart(
-                "Biểu đồ thống kê doanh thu", // Tiêu đề
-                "Tháng", // Trục hoành
-                "Tiền (VND)", // Trục tung
-                createDataset(), // Dữ liệu
-                PlotOrientation.VERTICAL, // Phương hướng biểu đồ
-                true, // Hiển thị legend
-                true, // Tooltips
-                false // URL
+                "Biểu đồ thống kê doanh thu", 
+                "Tháng", 
+                "Tiền (VND)", 
+                createDataset(), 
+                PlotOrientation.VERTICAL, true, true, false
         );
         return lineChart;
     }
 
     private CategoryDataset createDataset() {
-        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         for (int i = 1; i < 13; i++) {
             float doanhThu = dao_TKe.getDoanhThu(i);
-            dataset.addValue(doanhThu, "doanh thu", "" + i);
+            dataset.addValue(doanhThu, "Doanh thu", "" + i);
         }
-
         return dataset;
     }
 
     //------------------------------------//
     public JFreeChart createCharts() {
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng sản phẩm và khách hàng",
+                "Biểu đồ thống kê số lượng sản phẩm bán ra và số lượng khách hàng mới",
                 "Tháng", "sản phẩm và khách hàng",
-                createDatasets(), PlotOrientation.VERTICAL, false, false, false);
+                createDatasets(), PlotOrientation.VERTICAL, true, true, false);
         return barChart;
     }
 
     private CategoryDataset createDatasets() {
-        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         for (int i = 1; i < 13; i++) {
             int soLuongKhachHang = dao_TKe.getSlKhachHang(i);
