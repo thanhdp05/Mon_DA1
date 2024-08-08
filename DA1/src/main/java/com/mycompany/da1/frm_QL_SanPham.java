@@ -193,7 +193,6 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1069, 645));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -628,6 +627,11 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         txtTenLoai.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtTenLoaiFocusLost(evt);
+            }
+        });
+        txtTenLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenLoaiActionPerformed(evt);
             }
         });
 
@@ -1071,6 +1075,10 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtTenLoaiFocusLost
+
+    private void txtTenLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenLoaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenLoaiActionPerformed
 
     void updateStatus_lsp() {
         boolean edit = (this.row2 >= 0);

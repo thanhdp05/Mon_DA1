@@ -24,23 +24,31 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         initComponents();
     }
     private void DoiMatKhau() {
-        String manv = txtTenDangNhap.getText();
-        String mk = new String(txtMatKhauCu.getText());
-        String mkMoi = new String(txtmkmoi.getText());
-        String XacNahnmk = new String(txtXacNhanmkmoi.getText());
+    String manv = txtTenDangNhap.getText().trim();
+    String mk = new String(txtMatKhauCu.getText().trim());
+    String mkMoi = new String(txtmkmoi.getText().trim());
+    String XacNahnmk = new String(txtXacNhanmkmoi.getText().trim());
 
-        if (!manv.equalsIgnoreCase(Auth.user.getMaNV())) {
-            MsgBox.alert(this, "Sai tên đăng nhập");
-        } else if (!mk.equals(Auth.user.getMatKhau())) {
-            MsgBox.alert(this, "Sai mật khẩu");
-        } else if (!mkMoi.equals(XacNahnmk)) {
-            MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
-        } else {
-            Auth.user.setMatKhau(mkMoi);
-            dao.update(Auth.user);
-            MsgBox.alert(this, "Đổi mật khẩu thành công");
-        }
+    if (manv.isEmpty()) {
+        MsgBox.alert(this, "Tên đăng nhập không được để trống");
+    } else if (mk.isEmpty()) {
+        MsgBox.alert(this, "Mật khẩu cũ không được để trống");
+    } else if (mkMoi.isEmpty()) {
+        MsgBox.alert(this, "Mật khẩu mới không được để trống");
+    } else if (XacNahnmk.isEmpty()) {
+        MsgBox.alert(this, "Xác nhận mật khẩu không được để trống");
+    } else if (!manv.equalsIgnoreCase(Auth.user.getMaNV())) {
+        MsgBox.alert(this, "Sai tên đăng nhập");
+    } else if (!mk.equals(Auth.user.getMatKhau())) {
+        MsgBox.alert(this, "Sai mật khẩu");
+    } else if (!mkMoi.equals(XacNahnmk)) {
+        MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
+    } else {
+        Auth.user.setMatKhau(mkMoi);
+        dao.update(Auth.user);
+        MsgBox.alert(this, "Đổi mật khẩu thành công");
     }
+}
     
     private void HuyBo() {
         this.dispose();
@@ -58,6 +66,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -75,15 +84,17 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anh/snapedit_con4.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 189, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel1.setBackground(new java.awt.Color(0, 51, 255));
@@ -98,6 +109,11 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Mật khẩu cũ:");
 
+        txtTenDangNhap.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTenDangNhapFocusLost(evt);
+            }
+        });
         txtTenDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenDangNhapActionPerformed(evt);
@@ -194,6 +210,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTenDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDangNhapActionPerformed
@@ -207,6 +224,10 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         HuyBo();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtTenDangNhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDangNhapFocusLost
+        DoiMatKhau();
+    }//GEN-LAST:event_txtTenDangNhapFocusLost
 
     /**
      * @param args the command line arguments
@@ -259,6 +280,7 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField txtMatKhauCu;
