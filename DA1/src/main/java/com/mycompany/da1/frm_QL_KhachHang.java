@@ -61,9 +61,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
-               
-            }else{
-                 this.dispose();
+
+            } else {
+                this.dispose();
                 new frm_QL_NhanVIen().setVisible(true);
             }
         } else {
@@ -107,9 +107,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem doanh thu");
-               
-            }else{
-                 this.dispose();
+
+            } else {
+                this.dispose();
                 new frm_QL_DoanhThu().setVisible(true);
             }
         } else {
@@ -657,26 +657,17 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
             if (!txtEmail.getText().trim().matches(email)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
-                btnThem.setEnabled(false);
-                btnSua.setEnabled(false);
-            } else {
-                btnThem.setEnabled(true);
-                btnSua.setEnabled(true);
+                txtEmail.setText("");
             }
         }
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
         if (!txtSDT.getText().isEmpty()) {
-            String reg = "\\d{10,10}";
+            String reg = "\\d{10}";
             if (!txtSDT.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
                 txtSDT.setText("");
-                btnThem.setEnabled(false);
-                btnSua.setEnabled(false);
-            } else {
-                btnThem.setEnabled(true);
-                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtSDTFocusLost
@@ -686,11 +677,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             String reg = "[a-zA-Z\\s]+";
             if (!txtHoTen.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
-                btnThem.setEnabled(false);
-                btnSua.setEnabled(false);
-            } else {
-                btnThem.setEnabled(true);
-                btnSua.setEnabled(true);
+                txtHoTen.setText("");
             }
         }
     }//GEN-LAST:event_txtHoTenFocusLost
@@ -737,7 +724,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             MsgBox.alert(this, "Không được bỏ trống");
             return true;
         } else {
-            return false; 
+            return false;
         }
     }
 

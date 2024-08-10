@@ -72,9 +72,8 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
-               
-            }else{
-                 this.dispose();
+            } else {
+                this.dispose();
                 new frm_QL_NhanVIen().setVisible(true);
             }
         } else {
@@ -118,9 +117,8 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem doanh thu");
-               
-            }else{
-                 this.dispose();
+            } else {
+                this.dispose();
                 new frm_QL_DoanhThu().setVisible(true);
             }
         } else {
@@ -1023,9 +1021,6 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             if (!txtMaSP.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: SP001.");
                 txtMaSP.setText("");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
             }
         }
         if (this.row1 == -1) {
@@ -1042,22 +1037,16 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             if (!txtGiaTien.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10000.");
                 txtGiaTien.setText("");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtGiaTienFocusLost
 
     private void txtSoLuongFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSoLuongFocusLost
         if (!txtSoLuong.getText().isEmpty()) {
-            String reg = "\\d";
+            String reg = "\\d{1,1000}";
             if (!txtSoLuong.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: 10.");
                 txtSoLuong.setText("");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtSoLuongFocusLost
@@ -1067,9 +1056,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             String reg = "[a-zA-Z\\s]+";
             if (!txtTenSP.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
+                txtTenSP.setText("");
             }
         }
     }//GEN-LAST:event_txtTenSPFocusLost
@@ -1079,9 +1066,6 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             String reg = "[a-zA-Z\\\\s]+";
             if (!txtTenLoai.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtTenLoaiFocusLost
@@ -1106,7 +1090,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     }
 
     loaiSP getForm_lsp() {
-          if (this.batLoiNullLoaiSp()) {
+        if (this.batLoiNullLoaiSp()) {
             return null;
         }
         loaiSP lsp = new loaiSP();
@@ -1208,7 +1192,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     void insert_lsp() {
         loaiSP lsp = getForm_lsp();
-        if(lsp == null){
+        if (lsp == null) {
             return;
         }
         try {

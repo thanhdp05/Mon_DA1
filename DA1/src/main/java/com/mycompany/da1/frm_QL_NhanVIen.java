@@ -32,8 +32,6 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         initComponents();
         setBtn();
         innit();
-        btnThem.setEnabled(false);
-        btnSua.setEnabled(false);
     }
     nhanVien_DAO dao = new nhanVien_DAO();
     int row = -1;
@@ -701,12 +699,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             if (!txtMaNV.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: NV1.");
                 txtMaNV.setText("");
-                btnThem.setEnabled(false);
-                btnSua.setEnabled(false);
             }
-        } else {
-            btnThem.setEnabled(true);
-            btnSua.setEnabled(true);
         }
 
         if (this.row == -1) {
@@ -723,9 +716,6 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             if (!txtEmail.getText().trim().matches(email)) {
                 MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
                 txtEmail.setText("");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
             }
         }
     }//GEN-LAST:event_txtEmailFocusLost
@@ -745,11 +735,6 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         if (password1.length != password2.length || !java.util.Arrays.equals(password1, password2)) {
             MsgBox.alert(this, "Mật khẩu không trùng khớp với mật khẩu trên");
             txtMatKhau2.setText("");
-            btnThem.setEnabled(false);
-            btnSua.setEnabled(false);
-        } else {
-            btnSua.setEnabled(true);
-            btnThem.setEnabled(true);
         }
     }//GEN-LAST:event_txtMatKhau2FocusLost
 
@@ -774,9 +759,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             String reg = "[a-zA-Z\\s]+";
             if (!txtHoTen.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
-                btnSua.setEnabled(false);
-            } else {
-                btnSua.setEnabled(true);
+                txtHoTen.setText("");
             }
         }
     }//GEN-LAST:event_txtHoTenFocusLost
@@ -855,7 +838,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
 
     public void insert() {
         nhanVien nv = getForm();
-         if (nv == null) {
+        if (nv == null) {
             return;
         }
         try {

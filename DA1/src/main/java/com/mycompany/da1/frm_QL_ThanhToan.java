@@ -53,6 +53,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         initComponents();
         setBtn();
         this.fillTableSanPham();
+        Bill();
     }
 
     int row = -1;
@@ -558,23 +559,24 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnThemKH)
+                        .addGap(33, 33, 33)))
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_TienThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnResetAll))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnThemKH)
-                .addGap(111, 111, 111))
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -891,8 +893,21 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_sanPhamChoAncestorMoved
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        this.them_sua();
-        this.suaSp();
+        if (!txtSDT.getText().isEmpty()) {
+            if (!txtHoTen.getText().isEmpty()) {
+                if (tbl_sanPhamCho.getModel().getRowCount() != 0) {
+                    this.them_sua();
+                    this.suaSp();
+                } else {
+                    MsgBox.alert(this, "Vui lòng chọn sản phẩm!");
+                }
+            } else {
+                MsgBox.alert(this, "Vui lòng thêm khách hàng mới!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng điền thông tin khách hàng!");
+        }
+        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     float tong = 0;
@@ -964,13 +979,15 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_TienThuFocusLost
 
     private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
-//        if (!txtSDT.getText().isEmpty()) {
-//            String reg = "\\d{10,10}";
-//            if (!txtSDT.getText().trim().matches(reg)) {
-//                MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
-//                txtSDT.setText("");
-//            }
-//        }
+        if (!txtSDT.getText().isEmpty()) {
+            String reg = "\\d{10}";
+            if (!txtSDT.getText().trim().matches(reg)) {
+                MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
+                txtSDT.setText("");
+                txtHoTen.setText(t);
+                lblGiamGia.setText(t);
+            }
+        }
     }//GEN-LAST:event_txtSDTFocusLost
 
     String t = "";
@@ -1003,38 +1020,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
     }
 
-//    sanPham getForm() {
-//        sanPham sp = new sanPham();
-////        sp.setTenSP(sp.getTenSP());
-////        sp.setHangSP(sp.getHangSP());
-////        sp.setGiaTien(sp.getGiaTien());
-////        sp.setSize(sp.getSize());
-////        sp.setGhiChu(sp.getGhiChu());
-////        sp.setMaNV(sp.getMaNV());
-////        sp.setNgayTao(sp.getNgayTao());
-////        sp.setHinh(sp.getHinh());
-////        sp.setLoaiSP(sp.getLoaiSP());
-//        
-//        for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
-//            sp.setMaSP(tbl_sanPhamCho.getValueAt(i, 0).toString());
-//            sp.setSoLuong(Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2).toString()));
-//            return sp;
-////            String maSPCho = tbl_sanPhamCho.getValueAt(i, 0).toString();
-////            System.out.println(maSPCho);
-////            int soLuongCho = Integer.parseInt(tbl_sanPhamCho.getValueAt(i, 2).toString());
-////            System.out.println(soLuongCho);
-//        }
-//        return sp;
-//    }
-//    public void soLuong() {
-//        sanPham sp = getForm();
-//        try {
-//            dao.updateSoLuong(sp);
-//            this.fillTableSanPham();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
     public int maHD() {
         List<hoaDon> list_hd = dao_hd.selectMax();
         int ma = 0;
@@ -1315,11 +1300,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
     }
 
-    void setForm_kh(KhachHang kh) {
-        txtHoTen.setText(kh.getHoTen());
-        txtSDT.setText(kh.getSdt());
-    }
-
     public void fill() {
         String timKiem = txtSDT.getText();
         List<KhachHang> list_kh = khDao.selectByKeyWord(timKiem);
@@ -1328,7 +1308,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             txtHoTen.setText(entity.getHoTen());
             txtSDT.setText(entity.getSdt());
             if (entity.isVip()) {
-//                giamGia = tong / 100 * 10;
                 lblGiamGia.setText("VIP");
             } else {
                 lblGiamGia.setText("");
