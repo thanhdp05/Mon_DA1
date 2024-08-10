@@ -83,9 +83,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
-               
-            }else{
-                 this.dispose();
+
+            } else {
+                this.dispose();
                 new frm_QL_NhanVIen().setVisible(true);
             }
         } else {
@@ -127,11 +127,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
     public void OpenDoanhThu() {
         if (Auth.isLogin()) {
-             if (!Auth.isManager()) {
+            if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem doanh thu");
-               
-            }else{
-                 this.dispose();
+
+            } else {
+                this.dispose();
                 new frm_QL_DoanhThu().setVisible(true);
             }
         } else {
@@ -180,6 +180,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         txt_TienThu = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         lblGiamGia = new javax.swing.JLabel();
+        btnResetAll = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         b = new javax.swing.JTextArea();
@@ -370,7 +371,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addComponent(btnSua)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnXoa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(btnLamMoi)
                 .addGap(16, 16, 16))
         );
@@ -522,6 +523,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         lblGiamGia.setForeground(new java.awt.Color(0, 255, 51));
         lblGiamGia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btnResetAll.setText("Lam moi");
+        btnResetAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -529,17 +537,23 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_TienThu, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(txt_TienThu, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnResetAll))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnThemKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(125, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnThemKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +567,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_TienThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_TienThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetAll))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -887,6 +903,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private void txt_TienThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TienThuActionPerformed
         int tien = Integer.parseInt(txt_TienThu.getText());
         lbl_tienKhachDua.setText(tien + "");
+        this.Bill();
         this.tienThua();
     }//GEN-LAST:event_txt_TienThuActionPerformed
 
@@ -894,6 +911,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSDTAncestorAdded
 
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+
         this.fill();
     }//GEN-LAST:event_txtSDTActionPerformed
 
@@ -946,14 +964,31 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_TienThuFocusLost
 
     private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
-        if (!txtSDT.getText().isEmpty()) {
-            String reg = "\\d{10,10}";
-            if (!txtSDT.getText().trim().matches(reg)) {
-                MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
-                txtSDT.setText("");
-            }
-        }
+//        if (!txtSDT.getText().isEmpty()) {
+//            String reg = "\\d{10,10}";
+//            if (!txtSDT.getText().trim().matches(reg)) {
+//                MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
+//                txtSDT.setText("");
+//            }
+//        }
     }//GEN-LAST:event_txtSDTFocusLost
+
+    String t = "";
+
+    private void btnResetAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAllActionPerformed
+        txtHoTen.setText(t);
+        txtSDT.setText(t);
+        txtTimKiem.setText(t);
+        txt_TienThu.setText(t);
+        lbl_TienThua.setText(t);
+        lbl_tienKhachDua.setText(t);
+        lbl_TongTien.setText(t);
+        lblGiamGia.setText(t);
+        a = 0;
+        DefaultTableModel model = (DefaultTableModel) tbl_sanPhamCho.getModel();
+        model.setRowCount(0);
+        this.BillreSet();
+    }//GEN-LAST:event_btnResetAllActionPerformed
 
     public void soLuong() {
         try {
@@ -1069,6 +1104,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         lbl_TienThua.setText(tienThua + "");
     }
     float giamGia = 0;
+
     public void them_sua() {
         b.setText("");
         tong = 0;
@@ -1078,10 +1114,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             float gia = (float) tbl_sanPhamCho.getValueAt(i, 4);
             tong += soLuong * gia;
         }
-        if(lblGiamGia.getText().trim().equals("VIP")){
-                giamGia = tong / 100 * 10;
-            }
-            tong -= giamGia;
+        if (lblGiamGia.getText().trim().equals("VIP")) {
+            giamGia = tong / 100 * 10;
+        }
+        tong -= giamGia;
         lbl_TongTien.setText(tong + "");
         this.Bill();
     }
@@ -1104,12 +1140,26 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             String Qty = df.getValueAt(i, 2).toString();
             String Price = df.getValueAt(i, 4).toString();
 
-            b.setText(b.getText() + "  " + Name + "\t\t" + Qty + "\t" + Price + "\n");
+            String doDaiSp = "";
+
+            // Chia nhỏ tên sản phẩm thành các dòng có 10 ký tự
+            for (int j = 0; j < Name.length(); j++) {
+                if (j > 0 && j % 15 == 0) {
+                    doDaiSp += "\n";
+                }
+                doDaiSp += Name.charAt(j);
+            }
+
+            b.setText(b.getText() + "  " + doDaiSp + "\t\t" + Qty + "\t" + Price + "\n");
 
             b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
         }
-        b.setText(b.getText() + txtSDT.getText() + ": ");
-        b.setText(b.getText() + txtHoTen.getText());
+        b.setText(b.getText() + "                                Số điện thoại: " + txtSDT.getText() + "\n");
+        b.setText(b.getText() + "                                Họ tên: " + txtHoTen.getText() + "\n");
+        b.setText(b.getText() + "                                Tiền khách đưa: " + lbl_tienKhachDua.getText() + "\n");
+        b.setText(b.getText() + "                                Tổng tiền: " + lbl_TongTien.getText() + "\n");
+        b.setText(b.getText() + "                                Tiền thừa: " + lbl_TienThua.getText() + "\n");
+
     }
 
     public void Billin() {
@@ -1130,18 +1180,66 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             String Qty = df.getValueAt(i, 2).toString();
             String Price = df.getValueAt(i, 4).toString();
 
-            b.setText(b.getText() + "  " + Name + "\t\t" + Qty + "\t" + Price + "\n");
+            String doDaiSp = "";
+
+            // Chia nhỏ tên sản phẩm thành các dòng có 10 ký tự
+            for (int j = 0; j < Name.length(); j++) {
+                if (j > 0 && j % 15 == 0) {
+                    doDaiSp += "\n";
+                }
+                doDaiSp += Name.charAt(j);
+            }
+
+            b.setText(b.getText() + "  " + doDaiSp + "\t\t" + Qty + "\t" + Price + "\n");
 
             b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
         }
 
         try {
-            b.setText(b.getText() + txtSDT.getText() + ": ");
-            b.setText(b.getText() + txtHoTen.getText());
+            b.setText(b.getText() + "                                Số điện thoại: " + txtSDT.getText() + "\n");
+            b.setText(b.getText() + "                                Họ tên: " + txtHoTen.getText() + "\n");
+            b.setText(b.getText() + "                                Tiền khách đưa: " + lbl_tienKhachDua.getText() + "\n");
+            b.setText(b.getText() + "                                Tổng tiền: " + lbl_TongTien.getText() + "\n");
+            b.setText(b.getText() + "                                Tiền thừa: " + lbl_TienThua.getText() + "\n");
             b.print();
         } catch (PrinterException ex) {
             Logger.getLogger(frm_QL_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void BillreSet() {
+        b.setText("                                   NTDK Shop \n");
+        b.setText(b.getText() + "                                   Nguyen Van Cu noi dai, \n");
+        b.setText(b.getText() + "                                   Nha Toi, Can Tho, \n");
+        b.setText(b.getText() + "                                   +098 ********, \n");
+        b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
+        b.setText(b.getText() + "  Sản Phẩm \t\tSố Lượng \tGiá" + "\n");
+        b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
+
+        DefaultTableModel df = (DefaultTableModel) tbl_sanPhamCho.getModel();
+
+        // get table Product details
+        for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
+
+            String Name = df.getValueAt(i, 1).toString();
+            String Qty = df.getValueAt(i, 2).toString();
+            String Price = df.getValueAt(i, 4).toString();
+
+            String doDaiSp = "";
+
+            // Chia nhỏ tên sản phẩm thành các dòng có 10 ký tự
+            for (int j = 0; j < Name.length(); j++) {
+                if (j > 0 && j % 15 == 0) {
+                    doDaiSp += "\n";
+                }
+                doDaiSp += Name.charAt(j);
+            }
+
+            b.setText(b.getText() + "  " + doDaiSp + "\t\t" + Qty + "\t" + Price + "\n");
+            b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
+        }
+        b.setText(b.getText() + t);
+
     }
 
     void timKiem() {
@@ -1188,11 +1286,33 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }
 
     KhachHang getForm_kh() {
+        if (this.koNull()) {
+            return null;
+        }
         KhachHang kh = new KhachHang();
         kh.setHoTen(txtHoTen.getText());
         kh.setSdt(txtSDT.getText());
         kh.setNgayDK(new Date());
         return kh;
+    }
+
+    String reg = "\\d{10,10}";
+    String regten = "[a-zA-Z\\s]+";
+
+    public boolean koNull() {
+        if (txtHoTen.getText().isEmpty() || txtSDT.getText().isEmpty()) {
+            MsgBox.alert(this, "Không được bỏ trống");
+            return true;
+        } else if (!txtSDT.getText().trim().matches(reg)) {
+            MsgBox.alert(this, "Vui lòng nhập đủ 10 số vd:1234567890.");
+            txtSDT.setText("");
+            return true;
+        } else if (!txtHoTen.getText().trim().matches(regten)) {
+            MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     void setForm_kh(KhachHang kh) {
@@ -1207,10 +1327,10 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             Object[] row = {entity.getHoTen(), entity.getSdt()};
             txtHoTen.setText(entity.getHoTen());
             txtSDT.setText(entity.getSdt());
-            if(entity.isVip()){
+            if (entity.isVip()) {
 //                giamGia = tong / 100 * 10;
                 lblGiamGia.setText("VIP");
-            }else{
+            } else {
                 lblGiamGia.setText("");
             }
         }
@@ -1218,6 +1338,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 
     void insertkh() {
         KhachHang kh = getForm_kh();
+        if (kh == null) {
+            return;
+        }
         try {
             khDao.insert(kh);
             MsgBox.alert(this, "Thêm mới thành công!");
@@ -1291,6 +1414,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea b;
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnResetAll;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemKH;

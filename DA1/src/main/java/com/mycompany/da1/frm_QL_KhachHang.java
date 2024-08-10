@@ -733,7 +733,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }
 
     public boolean batLoiKoNull() {
-        if (txtMaKH.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtSDT.getText().isEmpty() || txtEmail.getText().isEmpty()) {
+        if (txtMaKH.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtSDT.getText().isEmpty()) {
             MsgBox.alert(this, "Không được bỏ trống");
             return true;
         } else {
