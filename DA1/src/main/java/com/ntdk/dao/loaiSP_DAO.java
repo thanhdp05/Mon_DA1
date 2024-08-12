@@ -5,6 +5,7 @@
 package com.ntdk.dao;
 
 import com.ntdk.entity.loaiSP;
+import com.ntdk.entity.sanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -83,5 +84,5 @@ public class loaiSP_DAO extends NTDK_DAO<loaiSP , Integer>{
             throw new RuntimeException(ex);
         }
     }
-    
+          
 }

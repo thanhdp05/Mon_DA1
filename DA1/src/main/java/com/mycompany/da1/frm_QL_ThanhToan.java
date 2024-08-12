@@ -57,8 +57,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         initComponents();
         setBtn();
         this.fillTableSanPham();
+//        this.fillCboLoaiSp();
         Bill();
-        this.fillCboLoaiSp();
     }
 
     int row = -1;
@@ -199,8 +199,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         lbl_TongTien = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbl_TienThua = new javax.swing.JLabel();
-        cbo_loaiSp = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -513,6 +511,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 txtHoTenFocusLost(evt);
             }
         });
+        txtHoTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoTenActionPerformed(evt);
+            }
+        });
 
         txt_TienThu.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -727,19 +730,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        cbo_loaiSp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_loaiSpActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setText("Nhập Size ");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -749,12 +739,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(cbo_loaiSp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1)))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -772,10 +757,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_loaiSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1028,14 +1009,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         this.BillreSet();
     }//GEN-LAST:event_btnResetAllActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void cbo_loaiSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_loaiSpActionPerformed
-//        int tenLsp = (Integer) cbo_loaiSp.getSelectedItem();
-//        fillTableSanPham(tenLsp);
-    }//GEN-LAST:event_cbo_loaiSpActionPerformed
+    }//GEN-LAST:event_txtHoTenActionPerformed
 
     public void soLuong() {
         try {
@@ -1059,19 +1035,19 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         return ma;
     }
 
-    public void fillCboLoaiSp() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbo_loaiSp.getModel();
-        model.removeAllElements();
-        try {
-            List<loaiSP> list_lsp = dao_lsp.selectAll();
-            for (loaiSP lsp : list_lsp) {
-                model.addElement(lsp.getTenLoai());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
-    }
+//    public void fillCboLoaiSp() {
+//        DefaultComboBoxModel model = (DefaultComboBoxModel) cbo_loaiSp.getModel();
+//        model.removeAllElements();
+//        try {
+//            List<loaiSP> list_lsp = dao_lsp.selectAll();
+//            for (loaiSP lsp : list_lsp) {
+//                model.addElement(lsp.getTenLoai());
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+//        }
+//    }
 
     List<hoaDonChiTiet> getForm_hdct() {
         List<hoaDonChiTiet> listHdct = new ArrayList<>();
@@ -1281,13 +1257,13 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }
 
     public String getTenLoaiSp(int ma) {
-        List<loaiSP> tenlsp = dao_lsp.selectAll(); 
+        List<loaiSP> tenlsp = dao_lsp.selectAll();
         for (loaiSP lspNeP : tenlsp) {
             if (lspNeP.getMaLoai() == ma) {
                 return lspNeP.getTenLoai();
             }
         }
-       return "";
+        return "";
     }
 
     public void fillTableSanPham() {
@@ -1409,6 +1385,23 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
     }
 
+    public void capNhatBangSanPham(String loaiSP) {
+        List<sanPham> list = dao.selectByLoaiSP(loaiSP);
+
+        DefaultTableModel model = (DefaultTableModel) tblBang_S.getModel();
+        model.setRowCount(0);
+
+        for (sanPham e : list) {
+            String tenSP = getTenLoaiSp(e.getLoaiSP());
+            Object[] rowData = {
+                e.getMaSP(), e.getTenSP(), tenSP, e.getSoLuong(), e.getSize(), e.getGiaTien()
+            };
+            model.addRow(rowData);
+        }
+    }
+
+   
+
     /**
      * @param args the command line arguments
      */
@@ -1463,7 +1456,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JButton btn_dangXuat;
     private javax.swing.JButton btn_doiMatKhau;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbo_loaiSp;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1482,7 +1474,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblGiamGia;
     private javax.swing.JLabel lbl_TienThua;
     private javax.swing.JLabel lbl_TongTien;

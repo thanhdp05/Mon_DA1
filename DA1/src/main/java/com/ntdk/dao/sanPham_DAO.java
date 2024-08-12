@@ -29,11 +29,10 @@ public class sanPham_DAO extends NTDK_DAO<sanPham, String> {
     public void updateSoLuong(int sl, String ma) throws SQLException {
         JdbcHelper.update(UPDATE_SOLUONG, sl, ma);
     }
-    
+
 //    public void updateSoLuong(sanPham e) throws SQLException {
 //        JdbcHelper.update(UPDATE_SOLUONG, e.getSoLuong(), e.getMaSP());
 //    }
-
 //    public List<sanPham> updateSoLuong(int soLuonngString, String ma){
 //        String sql = "update sanPham set soLuong = soLuong - ? where maSP = ?";
 //        return this.selectBySql(sql, soLuonngString, ma);
@@ -109,6 +108,14 @@ public class sanPham_DAO extends NTDK_DAO<sanPham, String> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public List<sanPham> selectByLoaiSP(String loaiSP) {
+        String sql = "SELECT *\n"
+                + "FROM sanPham sp\n"
+                + "JOIN loaiSP lsp ON sp.loaiSP = lsp.maLoai\n"
+                + "WHERE lsp.tenLoai like ?";
+        return this.selectBySql(sql, loaiSP);
     }
 
 }
