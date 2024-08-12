@@ -6,12 +6,15 @@ package com.mycompany.da1;
 
 import com.ntdk.dao.hoaDonChiTiet_DAO;
 import com.ntdk.dao.hoaDon_DAO;
+import com.ntdk.dao.khachHang_DAO;
 import com.ntdk.dao.loaiSP_DAO;
 import com.ntdk.dao.sanPham_DAO;
 import com.ntdk.dao.thongKe_DAO;
 import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
 import com.ntdk.entity.hoaDonChiTiet;
+import com.ntdk.entity.loaiSP;
+import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
 import java.awt.Color;
@@ -35,6 +38,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     hoaDon_DAO hdDao = new hoaDon_DAO();
     hoaDonChiTiet_DAO hdctDao = new hoaDonChiTiet_DAO();
     thongKe_DAO dao_TKe = new thongKe_DAO();
+    khachHang_DAO dao_kh = new khachHang_DAO();
 
     /**
      * Creates new form frm_QL_SanPham
@@ -181,9 +185,17 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã Hóa Đơn", "Mã Khách Hàng", "Tổng Tiền", "Ngày Tạo ", "Mã Nhân Viên"
+                "Mã Hóa Đơn", "Tên Khách Hàng", "Tổng Tiền", "Ngày Tạo ", "Mã Nhân Viên"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHoaDonMouseClicked(evt);
@@ -231,7 +243,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Mã HD", "Mã SP", "Số Lượng", "Đơn Giá"
+                "Mã HD", "Tên SP", "Số Lượng", "Đơn Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -502,6 +514,18 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
         return dataset;
     }
+    
+    
+    public String getTenByMaKh(int ma){
+        List<KhachHang> list_kh = dao_kh.selectAll();
+        for(KhachHang kh: list_kh ){
+            if(kh.getMaKH() == ma){
+                return kh.getHoTen();
+            }
+        }
+        
+        return "";
+    }
 
 //.....................................................................................................
     public void fillTableHoaDon() {
@@ -510,13 +534,24 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         try {
             List<hoaDon> list_spHD = hdDao.selectAll();
             for (hoaDon e : list_spHD) {
-                Object[] row = {e.getMaHD(), e.getMaKH(), e.getTongTien(), e.getNgayTao(), e.getMaNV()};
+                String tenKh = getTenByMaKh(e.getMaKH());
+                Object[] row = {e.getMaHD(), tenKh, e.getTongTien(), e.getNgayTao(), e.getMaNV()};
                 model.addRow(row);
             }
         } catch (Exception e) {
             e.printStackTrace();
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
+    }
+    
+     public String getTenLoaiSp(String ma) {
+        List<sanPham> list_Sp = dao_sp.selectAll(); 
+        for (sanPham tenSp : list_Sp) {
+            if(tenSp.getMaSP().equals(ma)){
+                return tenSp.getTenSP();
+            }
+        }
+       return "";
     }
 
     public void fillTableHDCT() {
@@ -526,7 +561,8 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
             List<hoaDonChiTiet> list_HDCT = hdctDao.selectAll();
             for (hoaDonChiTiet e : list_HDCT) {
-                Object[] row = {e.getMaHD(), e.getMaSP(), e.getSoLuong(), e.getDonGia()};
+                String tenSP = getTenLoaiSp(e.getMaSP());
+                Object[] row = {e.getMaHD(),tenSP, e.getSoLuong(), e.getDonGia()};
                 model.addRow(row);
             }
         } catch (Exception e) {
@@ -545,9 +581,10 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
         model.setRowCount(0); 
         for (hoaDonChiTiet hdct : listHdct) {
+            String tenSp = getTenLoaiSp(hdct.getMaSP());
             Object[] rowData = {
                 hdct.getMaHD(),
-                hdct.getMaSP(),
+                tenSp,
                 hdct.getSoLuong(),
                 hdct.getDonGia()
             };

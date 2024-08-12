@@ -7,6 +7,7 @@ package com.mycompany.da1;
 import com.ntdk.dao.hoaDonChiTiet_DAO;
 import com.ntdk.dao.hoaDon_DAO;
 import com.ntdk.dao.khachHang_DAO;
+import com.ntdk.dao.loaiSP_DAO;
 import com.ntdk.dao.sanPham_DAO;
 import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
@@ -28,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -48,6 +50,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     khachHang_DAO khDao = new khachHang_DAO();
     hoaDon_DAO dao_hd = new hoaDon_DAO();
     hoaDonChiTiet_DAO dao_hdct = new hoaDonChiTiet_DAO();
+    loaiSP_DAO dao_lsp = new loaiSP_DAO();
     Color cl_btn = new Color(0, 0, 0, 0);
 
     public frm_QL_ThanhToan() {
@@ -55,6 +58,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         setBtn();
         this.fillTableSanPham();
         Bill();
+        this.fillCboLoaiSp();
     }
 
     int row = -1;
@@ -723,6 +727,12 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        cbo_loaiSp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_loaiSpActionPerformed(evt);
+            }
+        });
+
         jTextField1.setText("Nhập Size ");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -923,7 +933,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         } else {
             MsgBox.alert(this, "Vui lòng điền thông tin khách hàng!");
         }
-        
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     float tong = 0;
@@ -1022,6 +1032,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void cbo_loaiSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_loaiSpActionPerformed
+//        int tenLsp = (Integer) cbo_loaiSp.getSelectedItem();
+//        fillTableSanPham(tenLsp);
+    }//GEN-LAST:event_cbo_loaiSpActionPerformed
+
     public void soLuong() {
         try {
             for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
@@ -1043,16 +1058,28 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         }
         return ma;
     }
-    
-    public void fillCboLoaiSp(){
-        
+
+    public void fillCboLoaiSp() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbo_loaiSp.getModel();
+        model.removeAllElements();
+        loaiSP lspa = (loaiSP) cbo_loaiSp.getSelectedItem();
+        try {
+            
+            List<loaiSP> list_lsp = dao_lsp.selectAll();
+            for (loaiSP lsp : list_lsp) {
+                model.addElement(lsp.getTenLoai());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
     }
 
     List<hoaDonChiTiet> getForm_hdct() {
-        List<hoaDonChiTiet> listHdct  = new ArrayList<>();
+        List<hoaDonChiTiet> listHdct = new ArrayList<>();
         hoaDon hd = new hoaDon();
         for (int i = 0; i < tbl_sanPhamCho.getRowCount(); i++) {
-                   hoaDonChiTiet hdct = new hoaDonChiTiet();
+            hoaDonChiTiet hdct = new hoaDonChiTiet();
             int maHD = maHD();
             hdct.setMaHD(maHD);
             String maSP = (String) tbl_sanPhamCho.getValueAt(i, 0);
@@ -1061,22 +1088,21 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             hdct.setMaSP(maSP);
             hdct.setSoLuong(soLuong);
             hdct.setDonGia(gia);
-               listHdct.add(hdct);
+            listHdct.add(hdct);
         }
         return listHdct;
     }
 
     public void themHDCT() {
-    List<hoaDonChiTiet> listHdct = getForm_hdct();
-    try {
-        for (hoaDonChiTiet hdct : listHdct) {
-            dao_hdct.insert(hdct);  
+        List<hoaDonChiTiet> listHdct = getForm_hdct();
+        try {
+            for (hoaDonChiTiet hdct : listHdct) {
+                dao_hdct.insert(hdct);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-}
-    
 
     khachHang_DAO dao_kh = new khachHang_DAO();
 
@@ -1256,6 +1282,16 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         this.row = -1;
     }
 
+    public String getTenLoaiSp(int ma) {
+        List<loaiSP> tenlsp = dao_lsp.selectAll(); 
+        for (loaiSP lspNeP : tenlsp) {
+            if (lspNeP.getMaLoai() == ma) {
+                return lspNeP.getTenLoai();
+            }
+        }
+       return "";
+    }
+
     public void fillTableSanPham() {
         DefaultTableModel model = (DefaultTableModel) tblBang_S.getModel();
         model.setRowCount(0);
@@ -1265,7 +1301,8 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             String timTen = txtTimKiem.getText();
             List<sanPham> list_sp = dao.selectByKeyWord(timTen);
             for (sanPham e : list_sp) {
-                Object[] row = {e.getMaSP(), e.getTenSP(), e.getLoaiSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
+                String tenSP = getTenLoaiSp(e.getLoaiSP());
+                Object[] row = {e.getMaSP(), e.getTenSP(), tenSP, e.getSoLuong(), e.getSize(), e.getGiaTien()};
                 model.addRow(row);
             }
         } catch (Exception e) {
