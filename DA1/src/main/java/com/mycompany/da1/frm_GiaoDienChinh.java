@@ -4,17 +4,13 @@
  */
 package com.mycompany.da1;
 
-import com.ntdk.entity.nhanVien;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
-import com.tndk.utils.XImage;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**

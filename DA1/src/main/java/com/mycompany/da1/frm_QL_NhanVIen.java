@@ -270,7 +270,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Quan Ly Nhan Vien");
+        jLabel2.setText("Quản Lý Nhân Viên");
 
         txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -486,7 +486,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         btnTrangChu.setBackground(new java.awt.Color(204, 204, 255));
         btnTrangChu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnTrangChu.setForeground(new java.awt.Color(255, 255, 255));
-        btnTrangChu.setText("Trang Chu");
+        btnTrangChu.setText("Trang Chủ");
         btnTrangChu.setBorder(null);
         btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -826,7 +826,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         if (txtMaNV.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtEmail.getText().isEmpty() || txtMatKhau1.getText().isEmpty() || txtMatKhau2.getText().isEmpty()) {
             MsgBox.alert(this, "Không được bỏ trống");
             return true;
-        } else if (!txtEmail.getText().trim().matches(email)){
+        } else if (!txtEmail.getText().trim().matches(email)) {
             MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
             return true;
         } else {

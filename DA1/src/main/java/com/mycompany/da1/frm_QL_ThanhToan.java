@@ -13,26 +13,16 @@ import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
 import com.ntdk.entity.hoaDonChiTiet;
 import com.ntdk.entity.loaiSP;
-import com.ntdk.entity.nhanVien;
 import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
-import com.tndk.utils.XDate;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.Timer;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -60,9 +50,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         DefaultTableModel model1 = (DefaultTableModel) tbl_sanPhamCho.getModel();
         model1.setRowCount(0);
         b.disable();
-//        this.fillCboLoaiSp();
-        //       Bill();
-
     }
 
     int row = -1;
@@ -1324,7 +1311,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         return kh;
     }
 
-    String reg = "\\d{10,10}";
+    String reg = "\\d{10}";
     String regten = "[a-zA-Z\\s]+";
 
     public boolean koNull() {

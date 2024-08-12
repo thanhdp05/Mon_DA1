@@ -720,11 +720,12 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }
 
     String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+com$";
+
     public boolean batLoiKoNull() {
         if (txtMaKH.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtSDT.getText().isEmpty()) {
             MsgBox.alert(this, "Không được bỏ trống");
             return true;
-        }else if (!txtEmail.getText().trim().matches(email)){
+        } else if (!txtEmail.getText().trim().matches(email)) {
             MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
             return true;
         } else {

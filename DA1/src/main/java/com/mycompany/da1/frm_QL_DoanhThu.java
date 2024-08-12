@@ -13,13 +13,11 @@ import com.ntdk.dao.thongKe_DAO;
 import com.ntdk.entity.KhachHang;
 import com.ntdk.entity.hoaDon;
 import com.ntdk.entity.hoaDonChiTiet;
-import com.ntdk.entity.loaiSP;
 import com.ntdk.entity.sanPham;
 import com.tndk.utils.Auth;
 import com.tndk.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
@@ -117,6 +115,15 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         if (Auth.isLogin()) {
             this.dispose();
             new frm_GiaoDienChinh().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void OpenSanPham() {
+        if (Auth.isLogin()) {
+            this.dispose();
+            new frm_QL_SanPham().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
@@ -439,7 +446,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
-        this.OpenTrangChu();
+        this.OpenSanPham();
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
     private void btn_QL_NVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QL_NVActionPerformed
@@ -471,12 +478,12 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         this.hienThiChiTietHoaDon();
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
-    public JFreeChart createLineChart() {       
+    public JFreeChart createLineChart() {
         JFreeChart lineChart = ChartFactory.createLineChart(
-                "Biểu đồ thống kê doanh thu", 
-                "Tháng", 
-                "Tiền (VND)", 
-                createDataset(), 
+                "Biểu đồ thống kê doanh thu",
+                "Tháng",
+                "Tiền (VND)",
+                createDataset(),
                 PlotOrientation.VERTICAL, true, true, false
         );
         return lineChart;
@@ -514,16 +521,15 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
 
         return dataset;
     }
-    
-    
-    public String getTenByMaKh(int ma){
+
+    public String getTenByMaKh(int ma) {
         List<KhachHang> list_kh = dao_kh.selectAll();
-        for(KhachHang kh: list_kh ){
-            if(kh.getMaKH() == ma){
+        for (KhachHang kh : list_kh) {
+            if (kh.getMaKH() == ma) {
                 return kh.getHoTen();
             }
         }
-        
+
         return "";
     }
 
@@ -543,15 +549,15 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
     }
-    
-     public String getTenLoaiSp(String ma) {
-        List<sanPham> list_Sp = dao_sp.selectAll(); 
+
+    public String getTenLoaiSp(String ma) {
+        List<sanPham> list_Sp = dao_sp.selectAll();
         for (sanPham tenSp : list_Sp) {
-            if(tenSp.getMaSP().equals(ma)){
+            if (tenSp.getMaSP().equals(ma)) {
                 return tenSp.getTenSP();
             }
         }
-       return "";
+        return "";
     }
 
     public void fillTableHDCT() {
@@ -562,7 +568,7 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
             List<hoaDonChiTiet> list_HDCT = hdctDao.selectAll();
             for (hoaDonChiTiet e : list_HDCT) {
                 String tenSP = getTenLoaiSp(e.getMaSP());
-                Object[] row = {e.getMaHD(),tenSP, e.getSoLuong(), e.getDonGia()};
+                Object[] row = {e.getMaHD(), tenSP, e.getSoLuong(), e.getDonGia()};
                 model.addRow(row);
             }
         } catch (Exception e) {
@@ -570,31 +576,29 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
     }
-    
+
     public void hienThiChiTietHoaDon() {
-    int selectedRow = tblHoaDon.getSelectedRow();
-    if (selectedRow != -1) {
-        int maHD = (int) tblHoaDon.getValueAt(selectedRow, 0);
-       
-        List<hoaDonChiTiet> listHdct = hdctDao.selectBymaHD(maHD);
-        
-        DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
-        model.setRowCount(0); 
-        for (hoaDonChiTiet hdct : listHdct) {
-            String tenSp = getTenLoaiSp(hdct.getMaSP());
-            Object[] rowData = {
-                hdct.getMaHD(),
-                tenSp,
-                hdct.getSoLuong(),
-                hdct.getDonGia()
-            };
-            model.addRow(rowData);
+        int selectedRow = tblHoaDon.getSelectedRow();
+        if (selectedRow != -1) {
+            int maHD = (int) tblHoaDon.getValueAt(selectedRow, 0);
+
+            List<hoaDonChiTiet> listHdct = hdctDao.selectBymaHD(maHD);
+
+            DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
+            model.setRowCount(0);
+            for (hoaDonChiTiet hdct : listHdct) {
+                String tenSp = getTenLoaiSp(hdct.getMaSP());
+                Object[] rowData = {
+                    hdct.getMaHD(),
+                    tenSp,
+                    hdct.getSoLuong(),
+                    hdct.getDonGia()
+                };
+                model.addRow(rowData);
+            }
+            tabs.setSelectedIndex(1);
         }
-        tabs.setSelectedIndex(1); 
     }
-}
-
-
 
     /**
      * @param args the command line arguments

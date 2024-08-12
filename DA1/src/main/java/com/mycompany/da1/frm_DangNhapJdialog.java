@@ -592,10 +592,6 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         doiMatKhau();
-//        this.dispose();
-//        OpenDoiDangNhap();
-
-
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     private void txtManvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtManvFocusGained
