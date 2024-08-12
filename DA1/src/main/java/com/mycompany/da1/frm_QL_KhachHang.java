@@ -60,7 +60,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     public void OpenNhanVien() {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
-                MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
+                MsgBox.alert(this, "Bạn không có quyền xem nhân viên");
 
             } else {
                 this.dispose();
@@ -106,7 +106,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     public void OpenDoanhThu() {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
-                MsgBox.alert(this, "Ban khong co quyen xem doanh thu");
+                MsgBox.alert(this, "Bạn không có quyền xem doanh thu");
 
             } else {
                 this.dispose();
@@ -719,9 +719,13 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         return kh;
     }
 
+    String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+com$";
     public boolean batLoiKoNull() {
         if (txtMaKH.getText().isEmpty() || txtHoTen.getText().isEmpty() || txtSDT.getText().isEmpty()) {
             MsgBox.alert(this, "Không được bỏ trống");
+            return true;
+        }else if (!txtEmail.getText().trim().matches(email)){
+            MsgBox.alert(this, "Vui lòng nhập đúng đinh dạng!\nVD: aaaa@gmail.com.");
             return true;
         } else {
             return false;
