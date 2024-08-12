@@ -17,44 +17,39 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     /**
      * Creates new form doimk
      */
-    
     nhanVien_DAO dao = new nhanVien_DAO();
+
     public frm_DoiMatKhau(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        String manv = Auth.user.getMaNV();
+        txtTenDangNhap.setText(manv);
+        txtTenDangNhap.disable();
     }
-    private void DoiMatKhau() {
-    String manv = txtTenDangNhap.getText().trim();
-    String mk = new String(txtMatKhauCu.getText().trim());
-    String mkMoi = new String(txtmkmoi.getText().trim());
-    String XacNahnmk = new String(txtXacNhanmkmoi.getText().trim());
 
-    if (manv.isEmpty()) {
-        MsgBox.alert(this, "Tên đăng nhập không được để trống");
-    } else if (mk.isEmpty()) {
-        MsgBox.alert(this, "Mật khẩu cũ không được để trống");
-    } else if (mkMoi.isEmpty()) {
-        MsgBox.alert(this, "Mật khẩu mới không được để trống");
-    } else if (XacNahnmk.isEmpty()) {
-        MsgBox.alert(this, "Xác nhận mật khẩu không được để trống");
-    } else if (!manv.equalsIgnoreCase(Auth.user.getMaNV())) {
-        MsgBox.alert(this, "Sai tên đăng nhập");
-    } else if (!mk.equals(Auth.user.getMatKhau())) {
-        MsgBox.alert(this, "Sai mật khẩu");
-    } else if (!mkMoi.equals(XacNahnmk)) {
-        MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
-    } else {
-        Auth.user.setMatKhau(mkMoi);
-        dao.update(Auth.user);
-        MsgBox.alert(this, "Đổi mật khẩu thành công");
+    private void DoiMatKhau() {
+        String manv = Auth.user.getMaNV();
+        txtTenDangNhap.setText(manv);
+        String mk = new String(txtMatKhauCu.getPassword());
+        String mkMoi = new String(txtmkmoi.getPassword());
+        String XacNahnmk = new String(txtXacNhanmkmoi.getPassword());
+
+        if (!manv.equalsIgnoreCase(Auth.user.getMaNV())) {           
+            MsgBox.alert(this, "Sai tên đăng nhập");
+        } else if (!mk.equals(Auth.user.getMatKhau())) {
+            MsgBox.alert(this, "Sai mật khẩu");
+        } else if (!mkMoi.equals(XacNahnmk)) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
+        } else {
+            Auth.user.setMatKhau(mkMoi);
+            dao.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công");
+        }
     }
-}
-    
+
     private void HuyBo() {
         this.dispose();
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,8 +72,8 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         txtmkmoi = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         txtXacNhanmkmoi = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_xacNhan = new javax.swing.JButton();
+        btn_huyBo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -124,17 +119,17 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
 
         jLabel5.setText("Xác nhận mật khẩu mới:");
 
-        jButton1.setText("XÁC NHẬN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_xacNhan.setText("XÁC NHẬN");
+        btn_xacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_xacNhanActionPerformed(evt);
             }
         });
 
-        jButton2.setText("HỦY");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_huyBo.setText("HỦY");
+        btn_huyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_huyBoActionPerformed(evt);
             }
         });
 
@@ -147,9 +142,9 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btn_huyBo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btn_xacNhan)
                         .addGap(29, 29, 29))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -189,8 +184,8 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
                 .addComponent(txtXacNhanmkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btn_xacNhan)
+                    .addComponent(btn_huyBo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,16 +212,16 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenDangNhapActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_xacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacNhanActionPerformed
         DoiMatKhau();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_xacNhanActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_huyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huyBoActionPerformed
         HuyBo();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_huyBoActionPerformed
 
     private void txtTenDangNhapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDangNhapFocusLost
-        DoiMatKhau();
+
     }//GEN-LAST:event_txtTenDangNhapFocusLost
 
     /**
@@ -273,8 +268,8 @@ public class frm_DoiMatKhau extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_huyBo;
+    private javax.swing.JButton btn_xacNhan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

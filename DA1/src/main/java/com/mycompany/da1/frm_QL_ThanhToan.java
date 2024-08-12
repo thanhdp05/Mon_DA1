@@ -57,8 +57,12 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         initComponents();
         setBtn();
         this.fillTableSanPham();
+        DefaultTableModel model1 = (DefaultTableModel) tbl_sanPhamCho.getModel();
+        model1.setRowCount(0);
+        b.disable();
 //        this.fillCboLoaiSp();
-        Bill();
+        //       Bill();
+
     }
 
     int row = -1;
@@ -534,7 +538,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         lblGiamGia.setForeground(new java.awt.Color(0, 255, 51));
         lblGiamGia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        btnResetAll.setText("Lam moi");
+        btnResetAll.setText("Làm mới");
         btnResetAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetAllActionPerformed(evt);
@@ -845,8 +849,11 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemKHActionPerformed
 
     private void tblBang_SMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBang_SMouseClicked
+        if (evt.getClickCount() == 2) {
+            this.fillTableSpCho();
 
-        this.fillTableSpCho();
+        }
+
     }//GEN-LAST:event_tblBang_SMouseClicked
 
     private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
@@ -999,9 +1006,9 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         txtSDT.setText(t);
         txtTimKiem.setText(t);
         txt_TienThu.setText(t);
-        lbl_TienThua.setText(t);
-        lbl_tienKhachDua.setText(t);
-        lbl_TongTien.setText(t);
+        lbl_TienThua.setText("0 VNĐ");
+        lbl_tienKhachDua.setText("0 VNĐ");
+        lbl_TongTien.setText("0 VNĐ");
         lblGiamGia.setText(t);
         a = 0;
         DefaultTableModel model = (DefaultTableModel) tbl_sanPhamCho.getModel();
@@ -1048,7 +1055,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
 //            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
 //        }
 //    }
-
     List<hoaDonChiTiet> getForm_hdct() {
         List<hoaDonChiTiet> listHdct = new ArrayList<>();
         hoaDon hd = new hoaDon();
@@ -1168,6 +1174,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
         b.setText(b.getText() + "                                Tiền khách đưa: " + lbl_tienKhachDua.getText() + "\n");
         b.setText(b.getText() + "                                Tổng tiền: " + lbl_TongTien.getText() + "\n");
         b.setText(b.getText() + "                                Tiền thừa: " + lbl_TienThua.getText() + "\n");
+        b.setText(b.getText() + "                                Mã Nhân Viên: " + Auth.user.getMaNV() + "\n");
 
     }
 
@@ -1210,6 +1217,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             b.setText(b.getText() + "                                Tiền khách đưa: " + lbl_tienKhachDua.getText() + "\n");
             b.setText(b.getText() + "                                Tổng tiền: " + lbl_TongTien.getText() + "\n");
             b.setText(b.getText() + "                                Tiền thừa: " + lbl_TienThua.getText() + "\n");
+            b.setText(b.getText() + "                                Mã Nhân Viên: " + Auth.user.getMaNV() + "\n");
             b.print();
         } catch (PrinterException ex) {
             Logger.getLogger(frm_QL_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
@@ -1247,7 +1255,12 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             b.setText(b.getText() + "  " + doDaiSp + "\t\t" + Qty + "\t" + Price + "\n");
             b.setText(b.getText() + "--------------------------------------------------------------------------------\n");
         }
-        b.setText(b.getText() + t);
+        b.setText(b.getText() + "                                Số điện thoại: " + t + "\n");
+        b.setText(b.getText() + "                                Họ tên: " + t + "\n");
+        b.setText(b.getText() + "                                Tiền khách đưa: " + t + "0 vnđ" + "\n");
+        b.setText(b.getText() + "                                Tổng tiền: " + t + "0 vnđ" + "\n");
+        b.setText(b.getText() + "                                Tiền thừa: " + t + " 0vnđ" + "\n");
+        b.setText(b.getText() + "                                Mã Nhân Viên: " + Auth.user.getMaNV() + "\n");
 
     }
 
@@ -1269,8 +1282,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     public void fillTableSanPham() {
         DefaultTableModel model = (DefaultTableModel) tblBang_S.getModel();
         model.setRowCount(0);
-        DefaultTableModel model1 = (DefaultTableModel) tbl_sanPhamCho.getModel();
-        model1.setRowCount(0);
+
         try {
             String timTen = txtTimKiem.getText();
             List<sanPham> list_sp = dao.selectByKeyWord(timTen);
@@ -1399,8 +1411,6 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-
-   
 
     /**
      * @param args the command line arguments

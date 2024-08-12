@@ -186,7 +186,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Ma NV", "Ho va Ten", "Vai Tro", "Email", "Hinh"
+                "Mã NV", "Họ và Tên", "Vai trò", "Email", "Hình"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,14 +204,14 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblBang_NV);
 
-        btnXoa.setText("Xoa");
+        btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
 
-        btnLamMoi.setText("Lam Moi");
+        btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
@@ -225,35 +225,35 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         });
 
-        btnTruoc.setText("Truoc");
+        btnTruoc.setText("Trước");
         btnTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocActionPerformed(evt);
             }
         });
 
-        btnDau.setText("Dau");
+        btnDau.setText("Đầu");
         btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauActionPerformed(evt);
             }
         });
 
-        btnCuoi.setText("Cuoi");
+        btnCuoi.setText("Cuối");
         btnCuoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoiActionPerformed(evt);
             }
         });
 
-        btnSua.setText("Sua");
+        btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        btnThem.setText("Them");
+        btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -283,9 +283,9 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Ma NV");
+        jLabel3.setText("Mã NV");
 
-        jLabel4.setText("Ho va Ten");
+        jLabel4.setText("Họ và tên");
 
         lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -294,7 +294,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Hinh");
+        jLabel6.setText("Hình");
 
         jLabel7.setText("Email");
 
@@ -309,11 +309,11 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Mat Khau");
+        jLabel8.setText("Mật khẩu");
 
-        jLabel9.setText("Xac Nhan Mat Khau");
+        jLabel9.setText("Xác nhận mật khẩu");
 
-        jLabel10.setText("Vai Tro");
+        jLabel10.setText("Vai trò");
 
         buttonGroup1.add(rdoTruongPhong);
         rdoTruongPhong.setText("Trưởng phòng");
@@ -321,7 +321,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
         buttonGroup1.add(rdoNhanVIen);
         rdoNhanVIen.setText("Nhân VIên");
 
-        jLabel11.setText("Tim Kiem");
+        jLabel11.setText("Tìm kím");
 
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,7 +380,7 @@ public class frm_QL_NhanVIen extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 277, Short.MAX_VALUE))
+                        .addGap(0, 280, Short.MAX_VALUE))
                     .addComponent(txtMaNV)
                     .addComponent(txtMatKhau1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMatKhau2, javax.swing.GroupLayout.Alignment.TRAILING))

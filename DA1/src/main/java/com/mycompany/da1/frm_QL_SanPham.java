@@ -213,14 +213,14 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
-        btnSua.setText("Sua");
+        btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        btnThem.setText("Them");
+        btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -338,7 +338,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
         jLabel10.setText("Số Lượng");
 
-        btnXoa.setText("Xoa");
+        btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -347,7 +347,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
         jLabel13.setText("Size");
 
-        btnLamMoi.setText("Lam Moi");
+        btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
@@ -365,7 +365,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
         jLabel11.setText("Tìm Kiếm");
 
-        btnTruoc.setText("Truoc");
+        btnTruoc.setText("Trước");
         btnTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocActionPerformed(evt);
@@ -378,14 +378,14 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
-        btnDau.setText("Dau");
+        btnDau.setText("Đầu");
         btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauActionPerformed(evt);
             }
         });
 
-        btnCuoi.setText("Cuoi");
+        btnCuoi.setText("Cuối");
         btnCuoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoiActionPerformed(evt);
@@ -545,28 +545,28 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setText("QUẢN LÝ LOẠI SẢN PHẨM");
 
-        btnSua1Loai.setText("Sua");
+        btnSua1Loai.setText("Sửa");
         btnSua1Loai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSua1LoaiActionPerformed(evt);
             }
         });
 
-        btnXoaLoai.setText("Xoa");
+        btnXoaLoai.setText("Xóa");
         btnXoaLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaLoaiActionPerformed(evt);
             }
         });
 
-        btnThemLoai.setText("Them");
+        btnThemLoai.setText("Thêm");
         btnThemLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemLoaiActionPerformed(evt);
             }
         });
 
-        btnLamMoiLoai.setText("Lam Moi");
+        btnLamMoiLoai.setText("Làm mới");
         btnLamMoiLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiLoaiActionPerformed(evt);
@@ -580,21 +580,21 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             }
         });
 
-        btnTruocLoai.setText("Truoc");
+        btnTruocLoai.setText("Trước");
         btnTruocLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocLoaiActionPerformed(evt);
             }
         });
 
-        btnDauLoai.setText("Dau");
+        btnDauLoai.setText("Đầu");
         btnDauLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauLoaiActionPerformed(evt);
             }
         });
 
-        btnCuoiLoai.setText("Cuoi");
+        btnCuoiLoai.setText("Cuối");
         btnCuoiLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoiLoaiActionPerformed(evt);
@@ -1355,6 +1355,16 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         }
     }
 
+    public String getTenLoaiSp(int ma) {
+        List<loaiSP> tenlsp = dao_lsp.selectAll();
+        for (loaiSP lspNeP : tenlsp) {
+            if (lspNeP.getMaLoai() == ma) {
+                return lspNeP.getTenLoai();
+            }
+        }
+        return "";
+    }
+
     void fillTable_sp() {
         DefaultTableModel model = (DefaultTableModel) tblBang_SP.getModel();
         model.setRowCount(0);
@@ -1362,7 +1372,8 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
             String timTen = txtTimKiem.getText();
             List<sanPham> list_sp = dao_sp.selectByKeyWord(timTen);
             for (sanPham e : list_sp) {
-                Object[] row = {e.getMaSP(), e.getTenSP(), e.getLoaiSP(), e.getSoLuong(), e.getSize(), e.getGiaTien()};
+                String ten = getTenLoaiSp(e.getLoaiSP());
+                Object[] row = {e.getMaSP(), e.getTenSP(), ten, e.getSoLuong(), e.getSize(), e.getGiaTien()};
                 model.addRow(row);
             }
         } catch (Exception e) {

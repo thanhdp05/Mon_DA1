@@ -100,7 +100,7 @@
                               <Component id="jLabel4" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="277" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
                       </Group>
                       <Component id="txtMaNV" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtMatKhau1" alignment="1" max="32767" attributes="0"/>
@@ -223,11 +223,11 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
-                    <Column editable="false" title="Ma NV" type="java.lang.Object"/>
-                    <Column editable="false" title="Ho va Ten" type="java.lang.Object"/>
-                    <Column editable="false" title="Vai Tro" type="java.lang.Object"/>
+                    <Column editable="false" title="M&#xe3; NV" type="java.lang.Object"/>
+                    <Column editable="false" title="H&#x1ecd; v&#xe0; T&#xea;n" type="java.lang.Object"/>
+                    <Column editable="false" title="Vai tr&#xf2;" type="java.lang.Object"/>
                     <Column editable="false" title="Email" type="java.lang.Object"/>
-                    <Column editable="false" title="Hinh" type="java.lang.Object"/>
+                    <Column editable="false" title="H&#xec;nh" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
@@ -239,7 +239,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnXoa">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Xoa"/>
+            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
@@ -247,7 +247,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnLamMoi">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Lam Moi"/>
+            <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiActionPerformed"/>
@@ -263,7 +263,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnTruoc">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Truoc"/>
+            <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edb;c"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTruocActionPerformed"/>
@@ -271,7 +271,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDau">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Dau"/>
+            <Property name="text" type="java.lang.String" value="&#x110;&#x1ea7;u"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDauActionPerformed"/>
@@ -279,7 +279,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCuoi">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cuoi"/>
+            <Property name="text" type="java.lang.String" value="Cu&#x1ed1;i"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCuoiActionPerformed"/>
@@ -287,7 +287,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSua">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sua"/>
+            <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
@@ -295,7 +295,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnThem">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Them"/>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
@@ -323,12 +323,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ma NV"/>
+            <Property name="text" type="java.lang.String" value="M&#xe3; NV"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ho va Ten"/>
+            <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblHinh">
@@ -345,7 +345,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hinh"/>
+            <Property name="text" type="java.lang.String" value="H&#xec;nh"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -361,17 +361,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mat Khau"/>
+            <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Xac Nhan Mat Khau"/>
+            <Property name="text" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n m&#x1ead;t kh&#x1ea9;u"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Vai Tro"/>
+            <Property name="text" type="java.lang.String" value="Vai tr&#xf2;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rdoTruongPhong">
@@ -392,7 +392,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tim Kiem"/>
+            <Property name="text" type="java.lang.String" value="T&#xec;m k&#xed;m"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTimKiem">

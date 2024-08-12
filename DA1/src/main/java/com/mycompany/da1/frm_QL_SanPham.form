@@ -291,7 +291,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSua">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Sua"/>
+                    <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
@@ -299,7 +299,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThem">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Them"/>
+                    <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
@@ -439,7 +439,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoa">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Xoa"/>
+                    <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
@@ -452,7 +452,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLamMoi">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Lam Moi"/>
+                    <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiActionPerformed"/>
@@ -478,7 +478,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTruoc">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Truoc"/>
+                    <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edb;c"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTruocActionPerformed"/>
@@ -491,7 +491,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDau">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dau"/>
+                    <Property name="text" type="java.lang.String" value="&#x110;&#x1ea7;u"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDauActionPerformed"/>
@@ -499,7 +499,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCuoi">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cuoi"/>
+                    <Property name="text" type="java.lang.String" value="Cu&#x1ed1;i"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCuoiActionPerformed"/>
@@ -628,7 +628,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSua1Loai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Sua"/>
+                    <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSua1LoaiActionPerformed"/>
@@ -636,7 +636,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoaLoai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Xoa"/>
+                    <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaLoaiActionPerformed"/>
@@ -644,7 +644,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThemLoai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Them"/>
+                    <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemLoaiActionPerformed"/>
@@ -652,7 +652,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLamMoiLoai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Lam Moi"/>
+                    <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiLoaiActionPerformed"/>
@@ -668,7 +668,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTruocLoai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Truoc"/>
+                    <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edb;c"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTruocLoaiActionPerformed"/>
@@ -676,7 +676,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDauLoai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dau"/>
+                    <Property name="text" type="java.lang.String" value="&#x110;&#x1ea7;u"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDauLoaiActionPerformed"/>
@@ -684,7 +684,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCuoiLoai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cuoi"/>
+                    <Property name="text" type="java.lang.String" value="Cu&#x1ed1;i"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCuoiLoaiActionPerformed"/>

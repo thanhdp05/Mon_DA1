@@ -135,7 +135,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         btnTruoc = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         btnDau = new javax.swing.JButton();
-        btnCuoi = new javax.swing.JButton();
+        Cuối = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         txtMaKH = new javax.swing.JTextField();
@@ -167,7 +167,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         setUndecorated(true);
 
         buttonGroup1.add(rdo_YesVip);
-        rdo_YesVip.setText("Yes");
+        rdo_YesVip.setText("Có");
         rdo_YesVip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdo_YesVipActionPerformed(evt);
@@ -175,7 +175,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(rdo_NoVip);
-        rdo_NoVip.setText("No");
+        rdo_NoVip.setText("Không");
 
         btnSau.setText("Sau");
         btnSau.addActionListener(new java.awt.event.ActionListener() {
@@ -184,9 +184,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Tim Kiem");
+        jLabel11.setText("Tìm kím");
 
-        btnTruoc.setText("Truoc");
+        btnTruoc.setText("Trước");
         btnTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocActionPerformed(evt);
@@ -199,28 +199,28 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             }
         });
 
-        btnDau.setText("Dau");
+        btnDau.setText("Đầu");
         btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauActionPerformed(evt);
             }
         });
 
-        btnCuoi.setText("Cuoi");
-        btnCuoi.addActionListener(new java.awt.event.ActionListener() {
+        Cuối.setText("Cuối");
+        Cuối.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCuoiActionPerformed(evt);
+                CuốiActionPerformed(evt);
             }
         });
 
-        btnSua.setText("Sua");
+        btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        btnThem.setText("Them");
+        btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -241,9 +241,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Ma khách hàng");
+        jLabel3.setText("Mã khách hàng");
 
-        jLabel4.setText("Ho va Ten");
+        jLabel4.setText("Họ và tên");
 
         jLabel7.setText("Email");
 
@@ -299,14 +299,14 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
 
         jLabel10.setText("Vip");
 
-        btnXoa.setText("Xoa");
+        btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
 
-        btnLamMoi.setText("Lam Moi");
+        btnLamMoi.setText("làm Mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
@@ -357,7 +357,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCuoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Cuối, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnSau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,7 +413,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDau)
-                            .addComponent(btnCuoi)
+                            .addComponent(Cuối)
                             .addComponent(lblNgay)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -636,9 +636,9 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         this.first();
     }//GEN-LAST:event_btnDauActionPerformed
 
-    private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
+    private void CuốiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuốiActionPerformed
         this.last();
-    }//GEN-LAST:event_btnCuoiActionPerformed
+    }//GEN-LAST:event_CuốiActionPerformed
 
     private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
         this.OpenDoiMatKhau();
@@ -701,7 +701,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
         btnDau.setEnabled(edit && !first);
         btnTruoc.setEnabled(edit && !first);
         btnSau.setEnabled(edit && !last);
-        btnCuoi.setEnabled(edit && !last);
+        Cuối.setEnabled(edit && !last);
     }
 
     KhachHang getForm() {
@@ -893,7 +893,7 @@ public class frm_QL_KhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCuoi;
+    private javax.swing.JButton Cuối;
     private javax.swing.JButton btnDau;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSau;

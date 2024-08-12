@@ -40,13 +40,13 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         setbackground();
         txtMaNv.setBackground(anNen);
         txtMatKhau.setBackground(anNen);
-        
+
         txtEmail.setBackground(anNen);
         txtMaXacNhan.setBackground(anNen);
-        
+
         txtManv.setBackground(anNen);
         txtMk.setBackground(anNen);
-        
+
         pnDangNhap.setOpaque(false);
         pnMkMoi.setOpaque(false);
         pnQuenMk.setOpaque(false);
@@ -203,12 +203,32 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Q U Ê N  M Ậ T  K H Ẩ U");
 
         txtEmail.setText("Email");
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
 
         txtMaXacNhan.setText("Mã");
+        txtMaXacNhan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtMaXacNhan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMaXacNhanFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaXacNhanFocusLost(evt);
+            }
+        });
 
+        btnxacNhan.setForeground(new java.awt.Color(0, 0, 0));
         btnxacNhan.setText("XÁC NHẬN");
         btnxacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +236,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
             }
         });
 
+        btnGuima.setForeground(new java.awt.Color(0, 0, 0));
         btnGuima.setText("GỬI MÃ");
         btnGuima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,10 +288,12 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         jPanel1.add(pnQuenMk, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 0, 370));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Đ Ă N G   N H Ậ P");
 
         txtMaNv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMaNv.setForeground(new java.awt.Color(255, 255, 255));
         txtMaNv.setText("TenDangNhap");
         txtMaNv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         txtMaNv.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -296,7 +319,8 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         lbl_IconKey.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMatKhau.setText("Showlamcaichogi");
+        txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        txtMatKhau.setText("111111");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -307,7 +331,8 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
             }
         });
 
-        cboShow.setText("Show");
+        cboShow.setForeground(new java.awt.Color(255, 255, 255));
+        cboShow.setText("Hiển thị");
         cboShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +340,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
             }
         });
 
+        lblQuenMk.setForeground(new java.awt.Color(255, 255, 255));
         lblQuenMk.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuenMk.setText("Quên mật khẩu?");
         lblQuenMk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -334,6 +360,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         });
 
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnDangNhap.setForeground(new java.awt.Color(0, 0, 0));
         btnDangNhap.setText("Đăng  Nhập");
         btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -351,19 +378,20 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
                 .addGroup(pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnDangNhapLayout.createSequentialGroup()
                         .addComponent(txtMaNv, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(lbl_IconUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnDangNhapLayout.createSequentialGroup()
-                        .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_IconKey, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnDangNhapLayout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(cboShow))
                     .addGroup(pnDangNhapLayout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(lblQuenMk))
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(cboShow)
+                        .addGroup(pnDangNhapLayout.createSequentialGroup()
+                            .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(lbl_IconKey, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         pnDangNhapLayout.setVerticalGroup(
             pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,24 +406,51 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
                 .addGroup(pnDangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_IconKey, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cboShow)
-                .addGap(10, 10, 10)
+                .addGap(8, 8, 8)
                 .addComponent(lblQuenMk)
                 .addGap(13, 13, 13)
                 .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel1.add(pnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 360, 370));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("M Ậ T  K H Ẩ U  M Ớ I");
 
+        txtManv.setForeground(new java.awt.Color(255, 255, 255));
+        txtManv.setText("Mã Nhân Viên");
         txtManv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtManv.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtManvFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtManvFocusLost(evt);
+            }
+        });
+        txtManv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtManvActionPerformed(evt);
+            }
+        });
 
+        txtMk.setForeground(new java.awt.Color(255, 255, 255));
+        txtMk.setText("matKhau");
         txtMk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtMk.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMkFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMkFocusLost(evt);
+            }
+        });
 
+        btnXacNhan.setForeground(new java.awt.Color(0, 0, 0));
         btnXacNhan.setText("XÁC NHẬN");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -431,8 +486,8 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
                     .addComponent(txtManv, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(32, 32, 32)
                     .addComponent(txtMk, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(26, 26, 26)
-                    .addComponent(btnXacNhan)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(69, Short.MAX_VALUE)))
         );
 
@@ -499,7 +554,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMaNvFocusLost
 
     private void txtMatKhauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusGained
-        if (txtMatKhau.getText().equals("Showlamcaichogi")) {
+        if (txtMatKhau.getText().equals("111111")) {
             txtMatKhau.setText("");
             txtMatKhau.setForeground(new Color(255, 255, 255));
         }
@@ -507,7 +562,7 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
 
     private void txtMatKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusLost
         if (txtMatKhau.getText().equals("")) {
-            txtMatKhau.setText("Showlamcaichogi");
+            txtMatKhau.setText("111111");
             txtMatKhau.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_txtMatKhauFocusLost
@@ -543,6 +598,66 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
+    private void txtManvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtManvFocusGained
+        if (txtManv.getText().equals("Mã Nhân Viên")) {
+            txtManv.setText("");
+            txtManv.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtManvFocusGained
+
+    private void txtManvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtManvActionPerformed
+
+    private void txtManvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtManvFocusLost
+        if (txtManv.getText().equals("")) {
+            txtManv.setText("Mã Nhân Viên");
+            txtManv.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtManvFocusLost
+
+    private void txtMkFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMkFocusGained
+        if (txtMk.getText().equals("matKhau")) {
+            txtMk.setText("");
+            txtMk.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtMkFocusGained
+
+    private void txtMkFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMkFocusLost
+        if (txtMk.getText().equals("")) {
+            txtMk.setText("matKhau");
+            txtMk.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtMkFocusLost
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        if (txtEmail.getText().equals("Email")) {
+            txtEmail.setText("");
+            txtEmail.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtEmailFocusGained
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        if (txtEmail.getText().equals("")) {
+            txtEmail.setText("Email");
+            txtEmail.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtMaXacNhanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaXacNhanFocusGained
+        if (txtMaXacNhan.getText().equals("Mã")) {
+            txtMaXacNhan.setText("");
+            txtMaXacNhan.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtMaXacNhanFocusGained
+
+    private void txtMaXacNhanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaXacNhanFocusLost
+        if (txtMaXacNhan.getText().equals("")) {
+            txtMaXacNhan.setText("Mã");
+            txtMaXacNhan.setForeground(new Color(255, 255, 255));
+        }
+    }//GEN-LAST:event_txtMaXacNhanFocusLost
+
     public void setbackground() {
         ImageIcon icon2 = new ImageIcon(getClass().getResource("/background/login-bg.png"));
         Image img = icon2.getImage().getScaledInstance(lbl_Hinh.getWidth(), lbl_Hinh.getHeight(), Image.SCALE_SMOOTH);
@@ -572,11 +687,14 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
     String password = null;
 
     public void Subiject() {
-        Properties pro = new Properties();
-        pro.put("mail.smtp.auth", true);
-        pro.put("mail.smtp.starttls.enable", "true");
-        pro.put("mail.smtp.host", "smtp.gmail.com");
-        pro.put("mail.smtp.port", "587");
+        //Đoạn dưới đâu là cấu hình SMTP server
+
+        Properties pro = new Properties(); //Tạo một đối tượng Properties để lưu trữ các cặp giá trị key-value,
+        //dùng để cấu hình các thuộc tính liên quan đến việc kết nối với SMTP server.
+        pro.put("mail.smtp.auth", true); // Xác định rằng cần phải xác thực khi kết nối với SMTP server.
+        pro.put("mail.smtp.starttls.enable", "true"); //Kích hoạt TLS (Transport Layer Security) để bảo mật kết nối.
+        pro.put("mail.smtp.host", "smtp.gmail.com"); // Địa chỉ của SMTP server, ở đây là smtp.gmail.com.
+        pro.put("mail.smtp.port", "587"); //Cổng để kết nối với SMTP server, Gmail dùng cổng 587.
         pro.put("mail.smtp.socketFactory.port", "587");
         pro.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         pro.put("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -592,9 +710,9 @@ public class frm_DangNhapJdialog extends javax.swing.JDialog {
         );
         try {
             Message myMessage = new MimeMessage(session);
-            myMessage.setFrom(new InternetAddress(Email));
+            myMessage.setFrom(new InternetAddress(Email)); //Thiết lập địa chỉ email người gửi.
             myMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(txtEmail.getText()));
-            myMessage.setSubject("Mã Xác Nhận");
+            myMessage.setSubject("Mã Xác Nhận"); // thiết lập tiêu đề email
             myMessage.setContent(password, "text/html;charset=utf-8");
             Transport.send(myMessage);
             MsgBox.alert(this, "Mã xác nhận đã được gửi thành công");
