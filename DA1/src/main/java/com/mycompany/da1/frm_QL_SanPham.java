@@ -207,6 +207,11 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         cboLoaiSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLoaiSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLoaiSPActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sua");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -922,6 +927,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     private void btnThemLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLoaiActionPerformed
         this.insert_lsp();
+        this.fillComboBoxLoaiSP();
     }//GEN-LAST:event_btnThemLoaiActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -1063,7 +1069,7 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
 
     private void txtTenLoaiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenLoaiFocusLost
         if (!txtTenLoai.getText().isEmpty()) {
-            String reg = "[a-zA-Z\\\\s]+";
+            String reg = "[a-zA-Z\\s]+";
             if (!txtTenLoai.getText().trim().matches(reg)) {
                 MsgBox.alert(this, "Tên không được chứa sô hay ký tự đặc biệt!");
             }
@@ -1073,6 +1079,10 @@ public class frm_QL_SanPham extends javax.swing.JFrame {
     private void txtTenLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenLoaiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenLoaiActionPerformed
+
+    private void cboLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboLoaiSPActionPerformed
 
     void updateStatus_lsp() {
         boolean edit = (this.row2 >= 0);
