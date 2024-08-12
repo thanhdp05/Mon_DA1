@@ -184,6 +184,11 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 "Mã Hóa Đơn", "Mã Khách Hàng", "Tổng Tiền", "Ngày Tạo ", "Mã Nhân Viên"
             }
         ));
+        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblHoaDon);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -226,9 +231,17 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã HD", "Mã SP", "Số Lượng", "Đơn Giá"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(tblHDCT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -441,6 +454,11 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         this.DangXuat();
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
+    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
+
+        this.hienThiChiTietHoaDon();
+    }//GEN-LAST:event_tblHoaDonMouseClicked
+
     public JFreeChart createLineChart() {       
         JFreeChart lineChart = ChartFactory.createLineChart(
                 "Biểu đồ thống kê doanh thu", 
@@ -490,7 +508,6 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
         try {
-
             List<hoaDon> list_spHD = hdDao.selectAll();
             for (hoaDon e : list_spHD) {
                 Object[] row = {e.getMaHD(), e.getMaKH(), e.getTongTien(), e.getNgayTao(), e.getMaNV()};
@@ -517,6 +534,30 @@ public class frm_QL_DoanhThu extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi try vấn dữ liệu!");
         }
     }
+    
+    public void hienThiChiTietHoaDon() {
+    int selectedRow = tblHoaDon.getSelectedRow();
+    if (selectedRow != -1) {
+        int maHD = (int) tblHoaDon.getValueAt(selectedRow, 0);
+       
+        List<hoaDonChiTiet> listHdct = hdctDao.selectBymaHD(maHD);
+        
+        DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
+        model.setRowCount(0); 
+        for (hoaDonChiTiet hdct : listHdct) {
+            Object[] rowData = {
+                hdct.getMaHD(),
+                hdct.getMaSP(),
+                hdct.getSoLuong(),
+                hdct.getDonGia()
+            };
+            model.addRow(rowData);
+        }
+        tabs.setSelectedIndex(1); 
+    }
+}
+
+
 
     /**
      * @param args the command line arguments

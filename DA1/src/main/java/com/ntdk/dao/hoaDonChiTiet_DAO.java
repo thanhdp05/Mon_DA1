@@ -56,6 +56,8 @@ public class hoaDonChiTiet_DAO extends NTDK_DAO<hoaDonChiTiet, Integer> {
         return this.selectBySql(SELECT_HOADONCT);
     }
 
+    
+    
     @Override
     protected List<hoaDonChiTiet> selectBySql(String sql, Object... args) {
         List<hoaDonChiTiet> list_hdct = new ArrayList<hoaDonChiTiet>();
@@ -75,4 +77,10 @@ public class hoaDonChiTiet_DAO extends NTDK_DAO<hoaDonChiTiet, Integer> {
             throw new RuntimeException(ex);
         }
     }
+    
+     public List<hoaDonChiTiet> selectBymaHD(int maHD) {
+        String sql = "select * from hoaDonChiTiet where maHD like ?";
+        return this.selectBySql(sql, "%" + maHD + "%");
+    }
+     
 }
