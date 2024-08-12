@@ -1062,9 +1062,7 @@ public class frm_QL_ThanhToan extends javax.swing.JFrame {
     public void fillCboLoaiSp() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbo_loaiSp.getModel();
         model.removeAllElements();
-        loaiSP lspa = (loaiSP) cbo_loaiSp.getSelectedItem();
         try {
-            
             List<loaiSP> list_lsp = dao_lsp.selectAll();
             for (loaiSP lsp : list_lsp) {
                 model.addElement(lsp.getTenLoai());
